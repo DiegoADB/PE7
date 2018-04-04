@@ -1748,7 +1748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefix: P1_
-  activeModel: {fileID: 0}
+  activeModel: {fileID: 4224373033851026}
   maxDefaultSpeed: 15
   maxBoostAmount: 30
   mainCamera: {fileID: 0}

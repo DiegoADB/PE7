@@ -23,6 +23,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     private bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
     private float boostTimer = 0;
+    private Animator activeModelAnim;
 
     //Input del jugador
     private float verticalInput;    
@@ -56,6 +57,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     private void Start()
     {
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
+        activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
     }
 
     private void Update()
@@ -74,13 +76,15 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         //Checamos si esta en el suelo
         isGrounded = IsGrounded();
-        Debug.DrawRay(transform.position, myRB.velocity * 10, Color.blue);
-        if (myRB.velocity == Vector3.zero)
-            myRB.velocity = transform.forward;
-        Quaternion myRotation = Quaternion.LookRotation(myRB.velocity);
-        activeModel.rotation = myRotation;
+        AnimationManager();   //Animaciones
         if (!isGrounded)
+        {
+            if (myRB.velocity == Vector3.zero)
+                myRB.velocity = transform.forward;
+            Quaternion myRotation = Quaternion.LookRotation(myRB.velocity);
+            activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
+        }
 
         //Checamos si estamos derrapando
         DriftingBehaviour();
@@ -106,7 +110,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             steerVector = transform.forward;
         Quaternion steerDirection = Quaternion.LookRotation(steerVector);
         transform.rotation = Quaternion.Slerp(transform.rotation, steerDirection, _delta);
-        activeModel.rotation = activeModelRotation;
+        activeModel.rotation = Quaternion.Slerp(activeModel.rotation, activeModelRotation, _delta * 10);
 
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
@@ -125,7 +129,17 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     }
 
+    //Aqui iran todas las animaciones
+    void AnimationManager()
+    {
+        MovementAnimations();
+    }
 
+    //Funcion que maneja las animaciones de movimiento
+    void MovementAnimations()
+    {
+        activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
+    }
     //Funcion que detecta cuando el jugador esta derrapando
     void DriftingBehaviour()
     {
