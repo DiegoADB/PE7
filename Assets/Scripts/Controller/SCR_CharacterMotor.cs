@@ -18,6 +18,7 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     //Referencia del rigidbody
     private Rigidbody myRB;
+    private Quaternion activeModelRotation;
     //Bool para checar en que momento esta tocando el suelo el jugador
     private bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
@@ -105,6 +106,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             steerVector = transform.forward;
         Quaternion steerDirection = Quaternion.LookRotation(steerVector);
         transform.rotation = Quaternion.Slerp(transform.rotation, steerDirection, _delta);
+        activeModel.rotation = activeModelRotation;
 
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
@@ -189,6 +191,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             grounded = true;
             normalVector = hit.normal;  //Capturamos el vector normal a la superficie
+            activeModelRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             Vector3 targetPosition = hit.point;
         }
         Debug.DrawRay(origin, direction * distanceToGround, Color.red);
