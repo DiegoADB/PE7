@@ -1,8 +1,9 @@
 ﻿//Made by Diego Diaz
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class SCR_CharacterMotor : MonoBehaviour 
+public class SCR_CharacterMotor_Net : NetworkBehaviour
 {
     /// <summary>
     /// 
@@ -24,8 +25,8 @@ public class SCR_CharacterMotor : MonoBehaviour
     private float boostTimer = 0;
 
     //Input del jugador
-    private float verticalInput;    
-    private float horizontalInput;  
+    private float verticalInput;
+    private float horizontalInput;
     private bool aButton;
     private bool bButton;
     private bool drifting;
@@ -40,7 +41,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float maxBoostAmount = 30;
 
     [Header("Camera")]
-    public Transform mainCamera;
+    public GameObject prefabCamera;
+    [SerializeField]
+    Transform mainCamera;
 
     [Header("Battle Variables")]
     public float maxForwardSpeed = 15;  //Velocidad maxima cuando se va hacia adelante
@@ -51,9 +54,21 @@ public class SCR_CharacterMotor : MonoBehaviour
     public Vector3 steerVector;    //Direccion a la que se mueve el volante, se puede invertir
     public float cameraDirection = 1;   //Direccion en la que se pone la camara, 1 para atras del jugador y -1 para adelante
 
+    private void Awake()
+    {
+      
+    }
     private void Start()
     {
+        if (!isLocalPlayer)  //Si no soy el jugador local destruyelo
+        {
+            Destroy(this);
+            return;
+        }
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
+        mainCamera = Instantiate(prefabCamera).transform;
+
+        
     }
 
     private void Update()
@@ -147,7 +162,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         verticalInput = Mathf.Abs(Input.GetAxisRaw(_playerPrefix + "Vertical"));
         verticalInput = Mathf.Clamp(verticalInput, 0.5f, 1.0f);
-        if(!drifting)
+        if (!drifting)
             horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce);
         aButton = Input.GetButton(_playerPrefix + "A");
         bButton = Input.GetButton(_playerPrefix + "B");
@@ -163,8 +178,8 @@ public class SCR_CharacterMotor : MonoBehaviour
     void CameraPlacement()
     {
         Vector3 desiredPosition = (-cameraDirection * (transform.forward * 4) + (transform.up * 2)) + transform.position;
-        mainCamera.position = Vector3.Lerp(mainCamera.transform.position, desiredPosition, Time.fixedDeltaTime * 5);
-        mainCamera.LookAt(transform.position);
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, desiredPosition, Time.fixedDeltaTime * 5);
+        mainCamera.transform.LookAt(transform.position);
         //Acomodamos la camara segun la direccion en la que estemos moviendonos
         if (currentSpeed < 0)
             cameraDirection = -1;
@@ -211,7 +226,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             {
                 maxForwardSpeed -= Time.fixedDeltaTime;
             }
-            if (maxForwardSpeed < maxDefaultSpeed)  
+            if (maxForwardSpeed < maxDefaultSpeed)
                 maxForwardSpeed = maxDefaultSpeed;
             boostTimer = 0;
         }

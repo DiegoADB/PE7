@@ -217,11 +217,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4252176036326130}
   - component: {fileID: 54843692380436850}
-  - component: {fileID: 114215817540832672}
   - component: {fileID: 136281737158455062}
   - component: {fileID: 114010232701505366}
+  - component: {fileID: 114129062475077832}
+  - component: {fileID: 114947982094005402}
   m_Layer: 0
-  m_Name: Pingo
+  m_Name: Pingo_Net
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,25 +557,25 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 53
-    i1: 186
-    i2: 225
-    i3: 24
-    i4: 210
-    i5: 99
-    i6: 203
-    i7: 196
-    i8: 187
-    i9: 42
-    i10: 241
-    i11: 37
-    i12: 28
-    i13: 20
-    i14: 89
-    i15: 125
+    i0: 125
+    i1: 21
+    i2: 177
+    i3: 41
+    i4: 221
+    i5: 136
+    i6: 158
+    i7: 68
+    i8: 58
+    i9: 62
+    i10: 113
+    i11: 5
+    i12: 16
+    i13: 235
+    i14: 106
+    i15: 6
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114215817540832672
+--- !u!114 &114129062475077832
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -582,12 +583,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1896936459198510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ead6ad560b57b14bb24362276a3c078, type: 3}
+  m_Script: {fileID: 11500000, guid: b7a3696769936b543a14380a76b67408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefix: P1_
   maxDefaultSpeed: 15
   maxBoostAmount: 30
+  prefabCamera: {fileID: 1485056504522048, guid: be3fcb6d3e697984185c2d8634d20feb,
+    type: 2}
   mainCamera: {fileID: 0}
   maxForwardSpeed: 15
   maxReverseSpeed: -10
@@ -596,6 +599,27 @@ MonoBehaviour:
   steerForce: 0.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
+--- !u!114 &114947982094005402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896936459198510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.04761905
+  m_SyncRotationAxis: 4
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 15
+  m_InterpolateMovement: 1
 --- !u!136 &136281737158455062
 CapsuleCollider:
   m_ObjectHideFlags: 1
