@@ -18,10 +18,12 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     //Referencia del rigidbody
     private Rigidbody myRB;
+    private Quaternion activeModelRotation;
     //Bool para checar en que momento esta tocando el suelo el jugador
     private bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
     private float boostTimer = 0;
+    private Animator activeModelAnim;
 
     //Input del jugador
     private float verticalInput;    
@@ -33,6 +35,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Controlador
     [Header("Controller")]
     public string playerPrefix = "P1_";
+    public Transform activeModel;
 
     //Stats Default del jugador
     [Header("Default Stats")]
@@ -54,6 +57,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     private void Start()
     {
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
+        activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
     }
 
     private void Update()
@@ -72,8 +76,15 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         //Checamos si esta en el suelo
         isGrounded = IsGrounded();
+        AnimationManager();   //Animaciones
         if (!isGrounded)
+        {
+            if (myRB.velocity == Vector3.zero)
+                myRB.velocity = transform.forward;
+            Quaternion myRotation = Quaternion.LookRotation(myRB.velocity);
+            activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
+        }
 
         //Checamos si estamos derrapando
         DriftingBehaviour();
@@ -99,6 +110,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             steerVector = transform.forward;
         Quaternion steerDirection = Quaternion.LookRotation(steerVector);
         transform.rotation = Quaternion.Slerp(transform.rotation, steerDirection, _delta);
+        activeModel.rotation = Quaternion.Slerp(activeModel.rotation, activeModelRotation, _delta * 10);
 
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
@@ -114,12 +126,20 @@ public class SCR_CharacterMotor : MonoBehaviour
             //Asignamos la velocidad a nuestro RB
             myRB.velocity = GetRealForward() * currentSpeed;
         }
-        //Quaternion normalRotation = Quaternion.FromToRotation(Vector3.up, normalVector);
-        //normalRotation = new Quaternion(normalRotation.x, transform.rotation.y, normalRotation.z, normalRotation.w);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, normalRotation, _delta);
+
     }
 
+    //Aqui iran todas las animaciones
+    void AnimationManager()
+    {
+        MovementAnimations();
+    }
 
+    //Funcion que maneja las animaciones de movimiento
+    void MovementAnimations()
+    {
+        activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
+    }
     //Funcion que detecta cuando el jugador esta derrapando
     void DriftingBehaviour()
     {
@@ -176,7 +196,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     public bool IsGrounded()
     {
         bool grounded = false;
-        float distanceToGround = 0.05f;
+        float distanceToGround = 0.1f;
         Vector3 origin = transform.position;
         Vector3 direction = -Vector3.up;
 
@@ -185,8 +205,10 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             grounded = true;
             normalVector = hit.normal;  //Capturamos el vector normal a la superficie
+            activeModelRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             Vector3 targetPosition = hit.point;
         }
+        Debug.DrawRay(origin, direction * distanceToGround, Color.red);
         return grounded;
     }
 
