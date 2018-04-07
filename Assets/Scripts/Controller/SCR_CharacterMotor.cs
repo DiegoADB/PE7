@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SCR_CharacterMotor : MonoBehaviour 
+public class SCR_CharacterMotor : MonoBehaviour
 {
     /// <summary>
     /// 
@@ -26,8 +26,8 @@ public class SCR_CharacterMotor : MonoBehaviour
     private Animator activeModelAnim;
 
     //Input del jugador
-    private float verticalInput;    
-    private float horizontalInput;  
+    private float verticalInput;
+    private float horizontalInput;
     private bool aButton;
     private bool bButton;
     private bool drifting;
@@ -51,20 +51,38 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float currentSpeed;  //Velocidad actual del jugador
     public float acceleration = 10;  //Que tan rapido alcanza la velocidad maxima el jugador
     public float steerForce = 0.5f; //Que tan aguda es la vuelta 
+    public float walkingSpeed = 1.5f;   //Velocidad del pinguino cuando esta caminando 
     public Vector3 steerVector;    //Direccion a la que se mueve el volante, se puede invertir
     public float cameraDirection = 1;   //Direccion en la que se pone la camara, 1 para atras del jugador y -1 para adelante
 
+    //Inicializamos a nuestro jugador
     private void Start()
     {
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
         activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
     }
 
+    //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+            isGrounded = true;
+    }
+
+    //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+            isGrounded = false;
+    }
+
+    //Update en el que registramos los inputs y efectos externos
     private void Update()
     {
         GetInput(playerPrefix); //Captura de movimiento
         BoostTimerManager();    //Manejo del boost
     }
+    //Fixed Update para calcular fisica y movimiento de camara
     private void FixedUpdate()
     {
         CharacterMovement(Time.fixedDeltaTime); //Motor del jugador
@@ -74,8 +92,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Funcion que se encarga de manejar el movimiento del jugador
     void CharacterMovement(float _delta)
     {
-        //Checamos si esta en el suelo
-        isGrounded = IsGrounded();
+        RaycastManager();   //Funcion donde se maneja la posicion del jugador con respecto al mundo
         AnimationManager();   //Animaciones
         if (!isGrounded)
         {
@@ -119,12 +136,16 @@ public class SCR_CharacterMotor : MonoBehaviour
         if (currentSpeed <= 0.1f && currentSpeed >= -0.1f)
         {
             verticalInput = Input.GetAxisRaw(playerPrefix + "Vertical");
-            myRB.velocity = steerVector * verticalInput;    //Asignamos la velocidad a nuestro RB
+            Vector3 myVelocity = steerVector * verticalInput * walkingSpeed;
+            myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);    //Asignamos la velocidad a nuestro RB
+            Quaternion pingoRotation = Quaternion.LookRotation(steerVector);
+            activeModel.rotation = Quaternion.Slerp(activeModel.rotation, pingoRotation, _delta *5);
         }
         else
         {
             //Asignamos la velocidad a nuestro RB
-            myRB.velocity = GetRealForward() * currentSpeed;
+            Vector3 myVelocity = transform.forward * currentSpeed;
+            myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
         }
 
     }
@@ -138,6 +159,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Funcion que maneja las animaciones de movimiento
     void MovementAnimations()
     {
+        activeModelAnim.SetBool("Grounded", isGrounded);
         activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
     }
     //Funcion que detecta cuando el jugador esta derrapando
@@ -167,7 +189,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         verticalInput = Mathf.Abs(Input.GetAxisRaw(_playerPrefix + "Vertical"));
         verticalInput = Mathf.Clamp(verticalInput, 0.5f, 1.0f);
-        if(!drifting)
+        if (!drifting)
             horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce);
         aButton = Input.GetButton(_playerPrefix + "A");
         bButton = Input.GetButton(_playerPrefix + "B");
@@ -193,23 +215,20 @@ public class SCR_CharacterMotor : MonoBehaviour
     }
 
     //Lanzamos un raycast hacia abajo para determinar si estamos en el suelo
-    public bool IsGrounded()
+    public void RaycastManager()
     {
-        bool grounded = false;
-        float distanceToGround = 0.1f;
-        Vector3 origin = transform.position;
-        Vector3 direction = -Vector3.up;
+        float distanceToGround = 1.2f;
+        Vector3 origin = transform.position + new Vector3(0, 0.1f, 0);
+        Vector3 direction = -transform.up;
 
         RaycastHit hit;
         if (Physics.Raycast(origin, direction, out hit, distanceToGround))
         {
-            grounded = true;
             normalVector = hit.normal;  //Capturamos el vector normal a la superficie
             activeModelRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            Vector3 targetPosition = hit.point;
+            //transform.position = hit.point;
         }
         Debug.DrawRay(origin, direction * distanceToGround, Color.red);
-        return grounded;
     }
 
     //Impulso de velocidad
@@ -233,7 +252,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             {
                 maxForwardSpeed -= Time.fixedDeltaTime;
             }
-            if (maxForwardSpeed < maxDefaultSpeed)  
+            if (maxForwardSpeed < maxDefaultSpeed)
                 maxForwardSpeed = maxDefaultSpeed;
             boostTimer = 0;
         }
