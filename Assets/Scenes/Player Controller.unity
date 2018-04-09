@@ -248,33 +248,7 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1553491119}
-    - target: {fileID: 95920935289472084, guid: 35bae118d263cbc4bb2af1251c14597d,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 476d9292db1091745a40688e87002f77, type: 2}
-    - target: {fileID: 54435755732099006, guid: 35bae118d263cbc4bb2af1251c14597d,
-        type: 2}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54435755732099006, guid: 35bae118d263cbc4bb2af1251c14597d,
-        type: 2}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114120411153686686, guid: 35bae118d263cbc4bb2af1251c14597d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114120411153686686, guid: 35bae118d263cbc4bb2af1251c14597d,
-        type: 2}
-      propertyPath: walkingSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 136555707858586912, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &624664680 stripped
@@ -1114,32 +1088,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe7b91ad3bda28b4da4e98883bcd833b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2074073271 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1385597347808846, guid: 35bae118d263cbc4bb2af1251c14597d,
-    type: 2}
-  m_PrefabInternal: {fileID: 491359056}
---- !u!135 &2074073272
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2074073271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!65 &2074073273
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2074073271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.2, z: 0.5}
-  m_Center: {x: 0, y: 0.5, z: -0.2}
