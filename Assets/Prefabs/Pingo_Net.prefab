@@ -155,11 +155,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4892837595510182}
   - component: {fileID: 54435755732099006}
-  - component: {fileID: 114120411153686686}
-  - component: {fileID: 135298926632993042}
-  - component: {fileID: 65392763984666334}
+  - component: {fileID: 136555707858586912}
+  - component: {fileID: 114986269402174856}
+  - component: {fileID: 114650468067917846}
+  - component: {fileID: 114196286646123000}
+  - component: {fileID: 65329279059133044}
   m_Layer: 0
-  m_Name: Pingo
+  m_Name: Pingo_Net
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +555,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223771379186062}
-  m_LocalRotation: {x: 0.21409632, y: 0.7171345, z: -0.2499171, w: 0.6143471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -805,8 +807,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 67.24807, y: 152.09, z: -55.6}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 67.54684, y: 105.4, z: -108.0194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
@@ -1720,7 +1722,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65392763984666334
+--- !u!65 &65329279059133044
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1749,7 +1751,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114120411153686686
+--- !u!114 &114196286646123000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1757,14 +1759,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385597347808846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ead6ad560b57b14bb24362276a3c078, type: 3}
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.04761905
+  m_SyncRotationAxis: 4
+  m_RotationSyncCompression: 2
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 15
+  m_InterpolateMovement: 1
+--- !u!114 &114650468067917846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 93
+    i1: 95
+    i2: 185
+    i3: 129
+    i4: 8
+    i5: 120
+    i6: 121
+    i7: 244
+    i8: 27
+    i9: 244
+    i10: 168
+    i11: 81
+    i12: 12
+    i13: 239
+    i14: 209
+    i15: 42
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114986269402174856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337c7e484fcd80842ba6f2a8075b9e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefix: P1_
-  activeModel: {fileID: 4224373033851026}
+  activeModel: {fileID: 4224373033851026, guid: 35bae118d263cbc4bb2af1251c14597d,
+    type: 2}
   maxDefaultSpeed: 15
   maxBoostAmount: 30
-  mainCamera: {fileID: 0}
+  prefabCamera: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
+    type: 2}
   maxForwardSpeed: 15
   maxReverseSpeed: -10
   currentSpeed: 0
@@ -1773,8 +1830,8 @@ MonoBehaviour:
   walkingSpeed: 1.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
---- !u!135 &135298926632993042
-SphereCollider:
+--- !u!136 &136555707858586912
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1782,8 +1839,9 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!137 &137763943758658048
 SkinnedMeshRenderer:
