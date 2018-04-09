@@ -156,7 +156,8 @@ GameObject:
   - component: {fileID: 4892837595510182}
   - component: {fileID: 54435755732099006}
   - component: {fileID: 114120411153686686}
-  - component: {fileID: 136555707858586912}
+  - component: {fileID: 135298926632993042}
+  - component: {fileID: 65392763984666334}
   m_Layer: 0
   m_Name: Pingo
   m_TagString: Untagged
@@ -804,8 +805,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 67.54684, y: 105.4, z: -108.0194}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 67.24807, y: 152.09, z: -55.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
@@ -1719,6 +1720,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &65392763984666334
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.2, z: 0.5}
+  m_Center: {x: 0, y: 0.5, z: -0.2}
 --- !u!95 &95920935289472084
 Animator:
   serializedVersion: 3
@@ -1728,7 +1741,7 @@ Animator:
   m_GameObject: {fileID: 1223771379186062}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 501c9bc5bb468ec4d9e28912cbb89a81, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 476d9292db1091745a40688e87002f77, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1757,10 +1770,11 @@ MonoBehaviour:
   currentSpeed: 0
   acceleration: 10
   steerForce: 0.5
+  walkingSpeed: 1.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
---- !u!136 &136555707858586912
-CapsuleCollider:
+--- !u!135 &135298926632993042
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1768,9 +1782,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!137 &137763943758658048
 SkinnedMeshRenderer:
