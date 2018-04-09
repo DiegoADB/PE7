@@ -9,7 +9,7 @@ public class SCR_PlayerTempStats : MonoBehaviour {
     int tempScore;
     public float distanceToNext;
     public GameObject[] myCheckpoints;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject nextTarget;
     [HideInInspector]
     public GameObject pastTarget;

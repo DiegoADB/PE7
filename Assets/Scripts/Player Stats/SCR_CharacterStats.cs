@@ -5,6 +5,9 @@ using UnityEngine;
 public class SCR_CharacterStats : MonoBehaviour 
 {
     private float playerHP;
+    private float strength;
+    private float speed;
+    private float handling;
 
     public float GetCurrentHP()
     {

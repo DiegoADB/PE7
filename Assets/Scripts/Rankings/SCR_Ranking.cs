@@ -17,6 +17,7 @@ public class SCR_Ranking : MonoBehaviour {
 
         for (int i = 0; i < playerNum; i++)
         {
+            Debug.Log("Im in");
             myStats[i] = players[i].GetComponent<SCR_PlayerTempStats>();
             mySortingList.Add(myStats[i]);
 
