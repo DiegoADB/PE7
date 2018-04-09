@@ -1198,9 +1198,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
+  - {fileID: 0}
   - {fileID: 904327166}
   - {fileID: 1580992027}
-  playerNum: 2
+  playerNum: 3
 --- !u!1 &1563937644
 GameObject:
   m_ObjectHideFlags: 0
