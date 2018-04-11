@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+
 public class SCR_CharacterMotor_Net : NetworkBehaviour
 {
     /// <summary>
@@ -18,12 +19,13 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
     //Referencia del rigidbody
     private Rigidbody myRB;
-    private Quaternion activeModelRotation;
+    private SCR_CharacterStats myStats; //Referencia de los stats del jugador para determinar que tipo de pinguino es
+    private Quaternion activeModelRotation; //Rotacion del modelo
     //Bool para checar en que momento esta tocando el suelo el jugador
     private bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
     private float boostTimer = 0;
-    private Animator activeModelAnim;
+    public Animator activeModelAnim;
 
     //Input del jugador
     private float verticalInput;
@@ -43,7 +45,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public float maxBoostAmount = 30;
 
     [Header("Camera")]
-    public GameObject prefabCamera;
+    public GameObject prefab;
     Transform mainCamera;
 
     [Header("Battle Variables")]
@@ -59,16 +61,14 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     //Inicializamos a nuestro jugador
     private void Start()
     {
-        if (!isLocalPlayer)  //Si no soy el jugador local destruyelo
+        if(!isLocalPlayer)
         {
-
-
             Destroy(this);
-            return;
         }
+
+        mainCamera = Instantiate(prefab).transform;
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
-        mainCamera = Instantiate(prefabCamera).transform;
-        activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
+       // activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
     }
 
     //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
@@ -88,7 +88,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     //Update en el que registramos los inputs y efectos externos
     private void Update()
     {
-        Debug.Log(activeModel.name);
         GetInput(playerPrefix); //Captura de movimiento
         BoostTimerManager();    //Manejo del boost
     }
@@ -112,7 +111,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
         }
-
         //Checamos si estamos derrapando
         DriftingBehaviour();
         //Acelerar
@@ -138,7 +136,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         Quaternion steerDirection = Quaternion.LookRotation(steerVector);
         transform.rotation = Quaternion.Slerp(transform.rotation, steerDirection, _delta);
         activeModel.rotation = Quaternion.Slerp(activeModel.rotation, activeModelRotation, _delta * 10);
-
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
 
@@ -155,6 +152,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         {
             //Asignamos la velocidad a nuestro RB
             Vector3 myVelocity = transform.forward * currentSpeed;
+            if (myRB.velocity.magnitude <= 0.01f)
+                currentSpeed = 0;
             myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
         }
 
@@ -169,8 +168,13 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     //Funcion que maneja las animaciones de movimiento
     void MovementAnimations()
     {
-        activeModelAnim.SetBool("Grounded", isGrounded);
-        activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
+        activeModel.gameObject.SetActive(true);
+         activeModelAnim.SetBool("Grounded", isGrounded);
+        
+        
+        
+         activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
+      
     }
     //Funcion que detecta cuando el jugador esta derrapando
     void DriftingBehaviour()

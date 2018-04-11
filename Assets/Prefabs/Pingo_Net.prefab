@@ -160,6 +160,8 @@ GameObject:
   - component: {fileID: 114650468067917846}
   - component: {fileID: 114196286646123000}
   - component: {fileID: 65329279059133044}
+  - component: {fileID: 95480025343998116}
+  - component: {fileID: 114967129114241406}
   m_Layer: 0
   m_Name: Pingo_Net
   m_TagString: Untagged
@@ -808,7 +810,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 67.54684, y: 105.4, z: -108.0194}
+  m_LocalPosition: {x: 82.483086, y: 155.71494, z: -50.53804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
@@ -1734,6 +1736,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2, z: 0.5}
   m_Center: {x: 0, y: 0.5, z: -0.2}
+--- !u!95 &95480025343998116
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 501c9bc5bb468ec4d9e28912cbb89a81, type: 3}
+  m_Controller: {fileID: 9100000, guid: 476d9292db1091745a40688e87002f77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95920935289472084
 Animator:
   serializedVersion: 3
@@ -1741,7 +1760,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223771379186062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 501c9bc5bb468ec4d9e28912cbb89a81, type: 3}
   m_Controller: {fileID: 9100000, guid: 476d9292db1091745a40688e87002f77, type: 2}
   m_CullingMode: 1
@@ -1804,6 +1823,25 @@ MonoBehaviour:
     i15: 42
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114967129114241406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95920935289472084}
+  m_ParameterSendBits: 3
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114986269402174856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1815,13 +1853,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337c7e484fcd80842ba6f2a8075b9e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeModelAnim: {fileID: 95480025343998116}
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026, guid: 35bae118d263cbc4bb2af1251c14597d,
     type: 2}
   maxDefaultSpeed: 15
   maxBoostAmount: 30
-  prefabCamera: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
-    type: 2}
+  prefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4, type: 2}
   maxForwardSpeed: 15
   maxReverseSpeed: -10
   currentSpeed: 0
