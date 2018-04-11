@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
+public struct MyEvent : UnityEvent<int>
+{
 
+}
 public class DisplayControl : MonoBehaviour {
 
 	void Assert(bool Expression)
@@ -14,19 +19,19 @@ public class DisplayControl : MonoBehaviour {
 			//System.AccessViolationException;
 		}
 	}
-	/*
-	float max;
-	float min;
+
+	public MyEvent Event;
 
 	struct custom_elements
 	{
 		public float Velocity;
-		public float Control;
+		/*public float Control;
 		public float Force;
-		public float HP;
+		public float HP;*/
 	};
-	//static custom_elements CustomElement;
-*/
+
+	static custom_elements [] CustomElements;
+
 	//public Text MyText;
 	public RectTransform [] Rects;
 
@@ -38,14 +43,23 @@ public class DisplayControl : MonoBehaviour {
 	Component [] c;
 
 	void Start () {
-		//Text VelocityText = MyText.GetComponent<Text> ();
+		int ElementIndex = 0;
+		CustomElements[ElementIndex++].Velocity = 100.0f;	
+		CustomElements[ElementIndex++].Velocity = 200.0f;	
+		CustomElements[ElementIndex++].Velocity = 250.0f;	
 
-		Buttons[0].onClick.AddListener(ModifyVelocity);
-		Buttons[1].onClick.AddListener(ModifyControl);
+		Assert(ElementIndex <= CustomElements.Length);
+
+		Assert(CustomElements.Length);
+
+		//Buttons[0].onClick.
+		Event.AddListener(ModifyStat);
+		//Buttons[1].onClick.
+		Event.AddListener(ModifyStat);
+		/*
 		Buttons[2].onClick.AddListener(ModifyForce);
 		Buttons[3].onClick.AddListener(ModifyHP);
 
-		/*
 		Buttons[2].onClick.AddListener(SelectImage);
 		Buttons[3].onClick.AddListener(SelectImage);
 
@@ -65,7 +79,13 @@ public class DisplayControl : MonoBehaviour {
 		RectDimY = Rects[0].sizeDelta.y;
 		*/
 	}
+		
+	void ModifyStat(int ElementIndex)
+	{
+		StartCoroutine (Draw (Rects[0], ElementIndex));
+	}
 
+	/*
 	void ModifyVelocity()
 	{
 		//TODO: Check what happens when calling it multiple times
@@ -89,40 +109,52 @@ public class DisplayControl : MonoBehaviour {
 		//TODO: Check what happens when calling it multiple times
 		StartCoroutine (Draw (Rects[3], 100));
 	}
+	*/
 
+	//public float Duration; //NOTE:Seconds
 
-	public float Duration; //NOTE:Seconds
-
-	IEnumerator Draw(UnityEngine.RectTransform rect, float EndSize)
+	public float 
+	Abs(float Value)
 	{
-		float RectDimX = rect.sizeDelta.x;
+		float Result = (Value < 0) ? -Value : Value;
+		return Result;
+	}
+
+	public float CurrentSize;
+
+	IEnumerator 
+	Draw(UnityEngine.RectTransform rect, float DestSize)
+	{
+		Assert (CurrentSize != DestSize);
+		float DeltaP = DestSize - CurrentSize;
+		float Sign = DeltaP / Abs(DeltaP);
+
 		float RectDimY = rect.sizeDelta.y;
 
-		Assert (RectDimX > EndSize);
-		//NOTE: Set the InitSize as the one set by the user
-		float InitSize = RectDimX;
-
-		float t = 0.0f;
-
-		float Proportion = 1.0f / Duration;
+		float t = CurrentSize;
+		float RecVel = .001f; //m / s;
 		float BaseTimeInSeconds = Time.realtimeSinceStartup;
-		while(t < 1.0f)
+		while(t != DestSize)
 		{
-			//NOTE: Parameter size 
-			float Value = (1.0f - t) * InitSize + t * EndSize;
+			rect.sizeDelta = new Vector2 (t, RectDimY);
 
-			rect.sizeDelta = new Vector2 (Value, RectDimY);
-			//yield return new WaitForEndOfFrame (2);
 			//Debug.Log ("X: " + VelocityRect.sizeDelta.x.ToString() + "Y: " + VelocityRect.sizeDelta.y.ToString());
-			Debug.Log ("Time: " + Time.unscaledTime.ToString());
-			//Debug.Log ("BaseTime: " + BaseTimeInSeconds.ToString());
+			//Debug.Log ("Time: " + Time.unscaledTime.ToString());
 			yield return new WaitForEndOfFrame();
 
-			t = (Time.realtimeSinceStartup - BaseTimeInSeconds) * Proportion;
+			float DeltaT = Time.realtimeSinceStartup - BaseTimeInSeconds;
+			t += DeltaT * RecVel * Sign;
+			Debug.Log ("BaseTime: " + DeltaT.ToString());
+
+			//NOTE: Try DeltaTime 
 
 		}
 	}
 
+	public void OnPointerDown(PointerEventData Data)
+	{
+		//So bizarre!!
+	}
 	// Update is called once per frame
 	void Update () {
 		
