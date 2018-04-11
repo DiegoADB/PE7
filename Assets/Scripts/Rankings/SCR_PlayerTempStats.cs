@@ -9,7 +9,6 @@ public class SCR_PlayerTempStats : MonoBehaviour {
     int tempScore;
     public float distanceToNext;
     public GameObject[] myCheckpoints;
-    [HideInInspector]
     public GameObject nextTarget;
     [HideInInspector]
     public GameObject pastTarget;
@@ -26,9 +25,8 @@ public class SCR_PlayerTempStats : MonoBehaviour {
             myScore++;
             tempScore++;
             pastTarget = nextTarget;
-            tempScore = myScore;
-
-            if (tempScore>7)
+            Debug.Log(tempScore);
+            if (tempScore>myCheckpoints.Length-1)
             {
                 tempScore = 0;
             }
