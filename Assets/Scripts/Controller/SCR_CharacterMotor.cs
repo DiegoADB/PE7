@@ -18,7 +18,8 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     //Referencia del rigidbody
     private Rigidbody myRB;
-    private Quaternion activeModelRotation;
+    private SCR_CharacterStats myStats; //Referencia de los stats del jugador para determinar que tipo de pinguino es
+    private Quaternion activeModelRotation; //Rotacion del modelo
     //Bool para checar en que momento esta tocando el suelo el jugador
     private bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
@@ -102,7 +103,6 @@ public class SCR_CharacterMotor : MonoBehaviour
             activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
         }
-
         //Checamos si estamos derrapando
         DriftingBehaviour();
         //Acelerar
@@ -120,7 +120,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             if (currentSpeed < 0)
                 currentSpeed += _delta * 2;
         }
-
+        
         //Manejamos a que direccion queremos ir
         steerVector = ((verticalInput * transform.forward) + (horizontalInput * transform.right)).normalized;
         if (steerVector == Vector3.zero)
@@ -128,10 +128,9 @@ public class SCR_CharacterMotor : MonoBehaviour
         Quaternion steerDirection = Quaternion.LookRotation(steerVector);
         transform.rotation = Quaternion.Slerp(transform.rotation, steerDirection, _delta);
         activeModel.rotation = Quaternion.Slerp(activeModel.rotation, activeModelRotation, _delta * 10);
-
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
-
+       
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
         if (currentSpeed <= 0.1f && currentSpeed >= -0.1f)
         {
@@ -145,6 +144,8 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             //Asignamos la velocidad a nuestro RB
             Vector3 myVelocity = transform.forward * currentSpeed;
+            if (myRB.velocity.magnitude <= 0.01f)
+                currentSpeed = 0;
             myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
         }
 
