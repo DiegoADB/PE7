@@ -257,4 +257,10 @@ public class SCR_CharacterMotor : MonoBehaviour
             boostTimer = 0;
         }
     }
+
+    //Getter de RigidBody
+    public Rigidbody GetMyRB()
+    {
+        return myRB;
+    }
 }

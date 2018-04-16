@@ -7,23 +7,43 @@ public class SCR_UICamMovements : MonoBehaviour {
     public Transform mainTransform;
     public Transform optionsTransform;
 
+    private void Start()
+    {
+        transform.position = mainTransform.position;
+        transform.rotation = mainTransform.rotation;
+    }
+
+    private void Update()
+    {
+        Debug.Log("camera: " + transform.localRotation);
+        Debug.Log("mainT: " + mainTransform.localRotation);
+    }
 
     public void OnOptionsClicked()
     {
-        Debug.Log("I HAVE BEEN CLICKED");
-        StartCoroutine(MoveCamera(optionsTransform));
+        //StartCoroutine(MoveCamera(optionsTransform));
+        MoveCameraTween(optionsTransform);
+    }
+
+    public void MoveCameraTween(Transform _endpos)
+    {
+        iTween.MoveTo(gameObject, _endpos.position, 1.0f);
+        iTween.RotateTo(gameObject, _endpos.localEulerAngles, 1.0f);
     }
 
     public void OnBackToMainClicked()
     {
-        StartCoroutine(MoveCamera(mainTransform));
+        MoveCameraTween(mainTransform); 
+        //StartCoroutine(MoveCamera(mainTransform));
     }
 
     IEnumerator MoveCamera(Transform _endPos)
     {
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, _endPos.position, 5.0f * Time.deltaTime);
-        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, _endPos.rotation, 5.0f * Time.deltaTime);
-        yield return new WaitForSeconds(0.05f);
+        transform.position = Vector3.Lerp(transform.position, _endPos.position, 5.0f * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, _endPos.localRotation, 5.0f * Time.deltaTime);
+        Debug.Log(_endPos.localEulerAngles);
+        yield return new WaitForEndOfFrame();
+
         StartCoroutine(MoveCamera(_endPos));
     }
 }
