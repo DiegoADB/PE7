@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public struct MyEvent : UnityEvent<int>
-{
+//public struct MyEvent : UnityEvent<int>
+//{
 
-}
+//}
 public class DisplayControl : MonoBehaviour {
 
 	void Assert(bool Expression)
@@ -20,7 +20,7 @@ public class DisplayControl : MonoBehaviour {
 		}
 	}
 
-	public MyEvent Event;
+	//public MyEvent Event;
 
 	struct custom_elements
 	{
@@ -50,12 +50,12 @@ public class DisplayControl : MonoBehaviour {
 
 		Assert(ElementIndex <= CustomElements.Length);
 
-		Assert(CustomElements.Length);
+		//Assert(CustomElements.Length);
 
-		//Buttons[0].onClick.
-		Event.AddListener(ModifyStat);
-		//Buttons[1].onClick.
-		Event.AddListener(ModifyStat);
+		////Buttons[0].onClick.
+		//Event.AddListener(ModifyStat);
+		////Buttons[1].onClick.
+		//Event.AddListener(ModifyStat);
 		/*
 		Buttons[2].onClick.AddListener(ModifyForce);
 		Buttons[3].onClick.AddListener(ModifyHP);
