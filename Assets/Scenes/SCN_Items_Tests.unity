@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &104896251
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 181.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964444861549064, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &175904275
 Prefab:
   m_ObjectHideFlags: 0
@@ -122,7 +164,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4892837595510182, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.697954
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 4892837595510182, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -130,7 +172,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4892837595510182, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 188.33331
+      value: 183.61
       objectReference: {fileID: 0}
     - target: {fileID: 4892837595510182, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -175,6 +217,12 @@ Prefab:
       propertyPath: maxDefaultSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114120411153686686, guid: 35bae118d263cbc4bb2af1251c14597d,
+        type: 2}
+      propertyPath: itemInstance
+      value: 
+      objectReference: {fileID: 1159330865026886, guid: 45ec1f7fcc8f5534f8e48791aed99f63,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
   m_IsPrefabParent: 0
@@ -1354,7 +1402,7 @@ GameObject:
   - component: {fileID: 1445805979}
   m_Layer: 0
   m_Name: RankingManager
-  m_TagString: Untagged
+  m_TagString: RankingManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,6 +1435,7 @@ MonoBehaviour:
   - {fileID: 360156010}
   - {fileID: 904327166}
   - {fileID: 1580992027}
+  mySortingList: []
   playerNum: 3
 --- !u!1 &1563937644
 GameObject:

@@ -15,7 +15,6 @@ public class SCR_CharacterMotor : MonoBehaviour
     /// 
     /// </summary>
 
-
     //Referencia del rigidbody
     private Rigidbody myRB;
     private SCR_CharacterStats myStats; //Referencia de los stats del jugador para determinar que tipo de pinguino es

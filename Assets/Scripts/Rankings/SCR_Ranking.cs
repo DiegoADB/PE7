@@ -6,7 +6,8 @@ public class SCR_Ranking : MonoBehaviour {
 
     public GameObject[] players;
     SCR_PlayerTempStats[] myStats;
-    List<SCR_PlayerTempStats> mySortingList;
+    [HideInInspector]
+    public List<SCR_PlayerTempStats> mySortingList;
     public int playerNum;
 
 
