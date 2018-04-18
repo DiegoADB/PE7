@@ -39,17 +39,17 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     //Stats Default del jugador
     [Header("Default Stats")]
-    public float maxDefaultSpeed = 15;
+    public float maxDefaultSpeed = 20;
     public float maxBoostAmount = 30;
 
     [Header("Camera")]
     public Transform mainCamera;
 
     [Header("Battle Variables")]
-    public float maxForwardSpeed = 15;  //Velocidad maxima cuando se va hacia adelante
+    public float maxForwardSpeed = 20;  //Velocidad maxima cuando se va hacia adelante
     public float maxReverseSpeed = -10; //Velocidad maxima cuando se va en reversa
     public float currentSpeed;  //Velocidad actual del jugador
-    public float acceleration = 10;  //Que tan rapido alcanza la velocidad maxima el jugador
+    public float acceleration = 5;  //Que tan rapido alcanza la velocidad maxima el jugador
     public float steerForce = 0.5f; //Que tan aguda es la vuelta 
     public float walkingSpeed = 1.5f;   //Velocidad del pinguino cuando esta caminando 
     public Vector3 steerVector;    //Direccion a la que se mueve el volante, se puede invertir
@@ -60,6 +60,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
         activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
+        myStats = GetComponent<SCR_CharacterStats>();   //Referencia de las stats del jugador. Varia en las clases de los pinguinos
     }
 
     //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
@@ -145,7 +146,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             Vector3 myVelocity = transform.forward * currentSpeed;
             if (myRB.velocity.magnitude <= 0.01f)
                 currentSpeed = 0;
-            myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
+            myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z) * myStats.speed;
         }
 
     }
@@ -161,6 +162,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         activeModelAnim.SetBool("Grounded", isGrounded);
         activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
+        activeModelAnim.SetFloat("Horizontal", horizontalInput);
     }
     //Funcion que detecta cuando el jugador esta derrapando
     void DriftingBehaviour()
@@ -168,7 +170,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         if (drifting)
         {
             float driftDirection = Mathf.Sign(horizontalInput);
-            horizontalInput = driftDirection * 10;
+            horizontalInput = driftDirection * 10 * myStats.handling;
         }
     }
 
@@ -190,7 +192,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         verticalInput = Mathf.Abs(Input.GetAxisRaw(_playerPrefix + "Vertical"));
         verticalInput = Mathf.Clamp(verticalInput, 0.5f, 1.0f);
         if (!drifting)
-            horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce);
+            horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
         aButton = Input.GetButton(_playerPrefix + "A");
         bButton = Input.GetButton(_playerPrefix + "B");
 
