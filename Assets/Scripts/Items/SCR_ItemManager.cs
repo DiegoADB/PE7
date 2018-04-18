@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class SCR_ItemManager : MonoBehaviour {
 
-    public GameObject[] myItems;
+    public GameObject[] itemsList;
+
+    public enum ItemIndex
+    {
+        NONE=-1,
+        SWITCHEROO,
+        REDSHELL
+    }
+    public static ItemIndex myItem;
+
+
 
 }

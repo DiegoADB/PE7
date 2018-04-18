@@ -7,10 +7,10 @@ public class SCR_Switcheroo : MonoBehaviour {
     GameObject myGo;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
-    
+
 	// Use this for initialization
 	void Start () {
-        myStats = myGo.GetComponent<SCR_PlayerTempStats>();
+
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         for (int i = 0; i < myRanks.playerNum; i++)
         {

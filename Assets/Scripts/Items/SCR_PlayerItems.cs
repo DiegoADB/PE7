@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SCR_PlayerItems : MonoBehaviour {
 
-    SCR_ItemManager myItemsManager;
+    SCR_ItemManager.ItemIndex myItem;
     GameObject currentItem;
     public int numItems = 0;
     // Use this for initialization
     void Start()
     {
-        myItemsManager = FindObjectOfType<SCR_ItemManager>();
+
     }
 
     // Update is called once per frame
@@ -26,8 +26,13 @@ public class SCR_PlayerItems : MonoBehaviour {
         }
     }
 
-    public void SetCurrentItem()
+    public void SpawnCurrentItem()
     {
-        //currentItem = myItems[Random.Range(0, numItems)];
+        switch (myItem)
+        {
+            case SCR_ItemManager.ItemIndex.SWITCHEROO:
+
+                break;
+        }
     }
 }
