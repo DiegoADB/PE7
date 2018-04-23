@@ -12,7 +12,6 @@ public class SCR_ItemManager : MonoBehaviour {
         SWITCHEROO,
         REDSHELL
     }
-    public static ItemIndex myItem;
 
 
 
