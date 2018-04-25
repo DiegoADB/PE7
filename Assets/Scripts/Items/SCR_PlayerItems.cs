@@ -13,7 +13,7 @@ public class SCR_PlayerItems : MonoBehaviour {
     void Start()
     {
         itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager>();
-        myItem = SCR_ItemManager.ItemIndex.SWITCHEROO;
+        myItem = SCR_ItemManager.ItemIndex.REDSHELL;
     }
 
     // Update is called once per frame
@@ -45,7 +45,8 @@ public class SCR_PlayerItems : MonoBehaviour {
                 break;
             case SCR_ItemManager.ItemIndex.REDSHELL:
                 {
-
+                    Instantiate(itemManager.itemsList[(int)myItem]).GetComponent<SCR_RedShell>().SetInstancer(gameObject);
+                    myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;
         }

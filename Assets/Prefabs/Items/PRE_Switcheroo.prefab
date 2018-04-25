@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4964444861549064}
   - component: {fileID: 114837371413542000}
   m_Layer: 0
-  m_Name: Switcheroo
+  m_Name: PRE_Switcheroo
   m_TagString: Untagged
   m_Icon: {fileID: -6431860639581277017, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -51,3 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed133b01efe73aa4a82ea98d7527f6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myGo: {fileID: 0}
