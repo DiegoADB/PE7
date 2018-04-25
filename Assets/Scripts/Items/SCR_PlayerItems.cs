@@ -5,6 +5,7 @@ using UnityEngine;
 public class SCR_PlayerItems : MonoBehaviour {
 
     SCR_ItemManager itemManager;
+    [SerializeField]
     SCR_ItemManager.ItemIndex myItem;
     GameObject currentItem;
     public int numItems = 0;
@@ -18,14 +19,12 @@ public class SCR_PlayerItems : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (currentItem == null)
+        if(Input.GetKeyDown(KeyCode.F))
         {
+            SpawnCurrentItem();
+        }
 
-        }
-        else
-        {
-            //Instantiate(currentItem, gameObject.transform).GetComponent
-        }
+
     }
 
     public void SpawnCurrentItem()
@@ -41,6 +40,7 @@ public class SCR_PlayerItems : MonoBehaviour {
             case SCR_ItemManager.ItemIndex.SWITCHEROO:
                 {
                     Instantiate(itemManager.itemsList[(int)myItem]).GetComponent<SCR_Switcheroo>().SetInstancer(gameObject);
+                    myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;
             case SCR_ItemManager.ItemIndex.REDSHELL:

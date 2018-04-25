@@ -1,33 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SCR_Switcheroo : MonoBehaviour {
+using UnityEngine.AI;
+public class SCR_RedShell1 : MonoBehaviour {
 
     [SerializeField]
     GameObject myGo;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
-	// Use this for initialization
-	void Start () {
+    NavMeshAgent navAgent;
+    // Use this for initialization
+    void Start () {
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         for (int i = 0; i < myRanks.playerNum; i++)
         {
-            if(myRanks.mySortingList[i].myPlace == myStats.myPlace-1)
+            if (myRanks.mySortingList[i].myPlace == myStats.myPlace - 1)
             {
                 //Switch!
-                StartCoroutine(IESwitcheroo(myRanks.mySortingList[i].gameObject));
+                StartCoroutine(IERedShell(myRanks.mySortingList[i].gameObject));
             }
-            else if(myStats.myPlace ==1)
+            else if (myStats.myPlace == 1)
             {
                 Destroy(gameObject);
             }
         }
 
     }
-	
-    IEnumerator IESwitcheroo(GameObject _target)
+
+    IEnumerator IERedShell(GameObject _target)
     {
         Vector3 otherPos = _target.transform.position;
         yield return new WaitForSeconds(1.5f);
@@ -40,4 +41,6 @@ public class SCR_Switcheroo : MonoBehaviour {
     {
         myGo = _go;
     }
+
+
 }

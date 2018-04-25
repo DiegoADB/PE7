@@ -155,16 +155,16 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         Vector3 myVelocity = transform.forward * currentSpeed * myStats.speed;
         float distanceToGround = 1.0f;
-        Vector3 origin = transform.position + new Vector3(0, 0.5f, 0);
+        Vector3 origin = transform.position + new Vector3(0, 1.0f, 0);
         Vector3 direction = activeModel.forward;
 
-        RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, distanceToGround) && currentSpeed > 10)
-        {
-            currentSpeed = 0;
-            myVelocity = Vector3.zero;
-        }
-        Debug.DrawRay(origin, direction * distanceToGround, Color.blue);
+        //RaycastHit hit;
+        //if (Physics.Raycast(origin, direction, out hit, distanceToGround) && currentSpeed > 10)
+        //{
+        //    currentSpeed = 0;
+        //    myVelocity = Vector3.zero;
+        //}
+        //Debug.DrawRay(origin, direction * distanceToGround, Color.blue);
 
         return myVelocity;
     }
