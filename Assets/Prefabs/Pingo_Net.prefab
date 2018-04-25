@@ -162,6 +162,8 @@ GameObject:
   - component: {fileID: 65329279059133044}
   - component: {fileID: 95480025343998116}
   - component: {fileID: 114967129114241406}
+  - component: {fileID: 114607288547450106}
+  - component: {fileID: 114076085194373736}
   m_Layer: 0
   m_Name: Pingo_Net
   m_TagString: Untagged
@@ -1770,6 +1772,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114076085194373736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc851818f79209478cad918de72a644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 0
+  strength: 0
+  speed: 1
+  handling: 1
+  startingHP: 100
 --- !u!114 &114196286646123000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1791,6 +1809,30 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 15
   m_InterpolateMovement: 1
+--- !u!114 &114607288547450106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ead6ad560b57b14bb24362276a3c078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefix: P1_
+  activeModel: {fileID: 4892837595510182}
+  maxDefaultSpeed: 20
+  maxBoostAmount: 30
+  mainCamera: {fileID: 0}
+  maxForwardSpeed: 20
+  maxReverseSpeed: -10
+  currentSpeed: 0
+  acceleration: 5
+  steerForce: 0.5
+  walkingSpeed: 1.5
+  steerVector: {x: 0, y: 0, z: 0}
+  cameraDirection: 1
 --- !u!114 &114650468067917846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1853,21 +1895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337c7e484fcd80842ba6f2a8075b9e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeModelAnim: {fileID: 95480025343998116}
-  playerPrefix: P1_
-  activeModel: {fileID: 4224373033851026, guid: 35bae118d263cbc4bb2af1251c14597d,
-    type: 2}
-  maxDefaultSpeed: 15
-  maxBoostAmount: 30
-  prefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4, type: 2}
-  maxForwardSpeed: 15
-  maxReverseSpeed: -10
-  currentSpeed: 0
-  acceleration: 10
-  steerForce: 0.5
-  walkingSpeed: 1.5
-  steerVector: {x: 0, y: 0, z: 0}
-  cameraDirection: 1
+  helloMoto: {fileID: 114607288547450106}
 --- !u!136 &136555707858586912
 CapsuleCollider:
   m_ObjectHideFlags: 1

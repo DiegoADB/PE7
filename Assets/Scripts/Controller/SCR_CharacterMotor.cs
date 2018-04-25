@@ -56,7 +56,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float cameraDirection = 1;   //Direccion en la que se pone la camara, 1 para atras del jugador y -1 para adelante
 
     //Inicializamos a nuestro jugador
-    private void Start()
+    public void MyStart()
     {
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
         activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
@@ -78,13 +78,13 @@ public class SCR_CharacterMotor : MonoBehaviour
     }
 
     //Update en el que registramos los inputs y efectos externos
-    private void Update()
+    public void MyUpdate()
     {
         GetInput(playerPrefix); //Captura de movimiento
         BoostTimerManager();    //Manejo del boost
     }
     //Fixed Update para calcular fisica y movimiento de camara
-    private void FixedUpdate()
+    public void MyFixedUpdate()
     {
         CharacterMovement(Time.fixedDeltaTime); //Motor del jugador
         CameraPlacement();  //Comportamiento de la camara
