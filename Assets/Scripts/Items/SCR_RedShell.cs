@@ -15,6 +15,7 @@ public class SCR_RedShell : MonoBehaviour {
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
+        navAgent.Warp(new Vector3(myGo.transform.position.x, myGo.transform.position.y, myGo.transform.position.z)+gameObject.transform.forward);
         for (int i = 0; i < myRanks.playerNum; i++)
         {
             if (myRanks.mySortingList[i].myPlace == myStats.myPlace - 1)
@@ -24,6 +25,8 @@ public class SCR_RedShell : MonoBehaviour {
             }
             else if (myStats.myPlace == 1)
             {
+                //StartCoroutine(IERedShell(myRanks.mySortingList[7].gameObject));
+
                 Destroy(gameObject);
             }
         }
@@ -41,5 +44,19 @@ public class SCR_RedShell : MonoBehaviour {
     public void SetInstancer(GameObject _go)
     {
         myGo = _go;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag=="Player")
+        {
+            StartCoroutine(IEDestroy());
+        }
+    }
+
+    IEnumerator IEDestroy()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }
