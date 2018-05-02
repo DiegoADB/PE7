@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 114076085194373736}
   m_Layer: 0
   m_Name: Pingo_Net
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -812,7 +812,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 82.483086, y: 155.71494, z: -50.53804}
+  m_LocalPosition: {x: 65.527016, y: 150.06073, z: -52.117725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
@@ -1736,8 +1736,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.2, z: 0.5}
-  m_Center: {x: 0, y: 0.5, z: -0.2}
+  m_Size: {x: 1, y: 1.2, z: 0.92341536}
+  m_Center: {x: 0, y: 0.5, z: 0.011707693}
 --- !u!95 &95480025343998116
 Animator:
   serializedVersion: 3
@@ -1783,8 +1783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc851818f79209478cad918de72a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 0
-  strength: 0
+  playerHP: 100
+  strength: 1
   speed: 1
   handling: 1
   startingHP: 100
@@ -1895,7 +1895,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337c7e484fcd80842ba6f2a8075b9e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentsToDisable:
+  - {fileID: 114607288547450106}
+  - {fileID: 114076085194373736}
+  - {fileID: 114986269402174856}
   helloMoto: {fileID: 114607288547450106}
+  myStats: {fileID: 114076085194373736}
 --- !u!136 &136555707858586912
 CapsuleCollider:
   m_ObjectHideFlags: 1

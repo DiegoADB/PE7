@@ -154,9 +154,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     Vector3 CrashCheck()
     {
         Vector3 myVelocity = transform.forward * currentSpeed * myStats.speed;
-        float distanceToGround = 1.0f;
-        Vector3 origin = transform.position + new Vector3(0, 1.0f, 0);
-        Vector3 direction = activeModel.forward;
+        //float distanceToGround = 1.0f;
+        //Vector3 origin = transform.position + new Vector3(0, 1.0f, 0);
+        //Vector3 direction = activeModel.forward;
 
         //RaycastHit hit;
         //if (Physics.Raycast(origin, direction, out hit, distanceToGround) && currentSpeed > 10)
