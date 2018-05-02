@@ -7,7 +7,6 @@ public class SCR_PlayerItems : MonoBehaviour {
     SCR_ItemManager itemManager;
     [SerializeField]
     SCR_ItemManager.ItemIndex myItem;
-    GameObject currentItem;
     public int numItems = 0;
     // Use this for initialization
     void Start()

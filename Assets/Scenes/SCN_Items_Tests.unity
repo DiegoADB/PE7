@@ -191,6 +191,11 @@ Prefab:
       propertyPath: handling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114922011801599962, guid: 35bae118d263cbc4bb2af1251c14597d,
+        type: 2}
+      propertyPath: playerHP
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
   m_IsPrefabParent: 0

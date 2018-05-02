@@ -8,6 +8,7 @@ public class SCR_Switcheroo : MonoBehaviour {
     GameObject myGo;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
+    public float timeBeforeChange = 1.5f;
 	// Use this for initialization
 	void Start () {
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
@@ -30,8 +31,12 @@ public class SCR_Switcheroo : MonoBehaviour {
     IEnumerator IESwitcheroo(GameObject _target)
     {
         Vector3 otherPos = _target.transform.position;
-        yield return new WaitForSeconds(1.5f);
+        Quaternion otherRot = _target.transform.rotation;
+        yield return new WaitForSeconds(timeBeforeChange);
         _target.transform.position = myGo.transform.position;
+        //Could be removed
+        _target.transform.rotation = myGo.transform.rotation;
+        myGo.transform.rotation = otherRot;
         myGo.transform.position = otherPos;
         Destroy(gameObject);
     }
