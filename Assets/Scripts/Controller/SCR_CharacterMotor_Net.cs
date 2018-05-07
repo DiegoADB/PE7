@@ -9,6 +9,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public Behaviour[] componentsToDisable;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats myStats;
+    public Transform RespawnPoint;
+    bool isAlive = true;
     private void Start()
     {
      if(!isLocalPlayer)
@@ -25,12 +27,14 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
     private void Update()
     {
-        helloMoto.MyUpdate();
+        if(isAlive)
+            helloMoto.MyUpdate();
     }
 
     private void FixedUpdate()
     {
-        helloMoto.MyFixedUpdate();
+        if(isAlive)
+            helloMoto.MyFixedUpdate();
     }
 
     [ServerCallback]
@@ -39,29 +43,58 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
-            if(myStats.playerHP <= 0)
+            if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();
+            }
+            else if (myStats.playerHP <= 0)
+            {
+                MayhemState();
             }
             else
             {
                 Rpc_DamagePlayer();
 
             }
+
+            
         }
+    }
+
+
+    void MayhemState()
+    {
+        helloMoto.mayhemState = true;
+        Invoke("Rpc_DeathPlayer", 5.0f);
     }
 
     [ClientRpc]
     void Rpc_DeathPlayer()
     {
         //Debug.Log("morido");
-        enabled = false;
-        gameObject.SetActive(false);
+        isAlive = false;
+        Invoke("Rpc_Respawn", 3.0f);
+        transform.GetChild(0).gameObject.SetActive(false);
+      //  gameObject.SetActive(false);
     }
 
     [ClientRpc]
     void Rpc_DamagePlayer()
     {
         helloMoto.currentSpeed *= -0.5f;
+    }
+
+    [ClientRpc]
+    void Rpc_Respawn()
+    {
+        helloMoto.mayhemState = false;
+        isAlive = true;
+        myStats.strength = myStats.startingStr;
+        myStats.playerHP = myStats.startingHP;
+        myStats.speed = myStats.startingSpd;
+        myStats.handling = myStats.startingHandling;
+        transform.GetChild(0).gameObject.SetActive(true);
+        this.transform.position = RespawnPoint.position;
+
     }
 }
