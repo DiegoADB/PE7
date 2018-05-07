@@ -1788,6 +1788,9 @@ MonoBehaviour:
   speed: 1
   handling: 1
   startingHP: 100
+  startingStr: 1
+  startingSpd: 1
+  startingHandling: 1
 --- !u!114 &114196286646123000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1833,6 +1836,7 @@ MonoBehaviour:
   walkingSpeed: 1.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
+  mayhemState: 0
 --- !u!114 &114650468067917846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1901,6 +1905,8 @@ MonoBehaviour:
   - {fileID: 114986269402174856}
   helloMoto: {fileID: 114607288547450106}
   myStats: {fileID: 114076085194373736}
+  RespawnPoint: {fileID: 4919046828657274, guid: 81e956bf8e32e074d968b5640fdfe567,
+    type: 2}
 --- !u!136 &136555707858586912
 CapsuleCollider:
   m_ObjectHideFlags: 1

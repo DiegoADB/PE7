@@ -54,6 +54,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float walkingSpeed = 1.5f;   //Velocidad del pinguino cuando esta caminando 
     public Vector3 steerVector;    //Direccion a la que se mueve el volante, se puede invertir
     public float cameraDirection = 1;   //Direccion en la que se pone la camara, 1 para atras del jugador y -1 para adelante
+    public bool mayhemState = false;
 
     //Inicializamos a nuestro jugador
     public void MyStart()
@@ -106,10 +107,10 @@ public class SCR_CharacterMotor : MonoBehaviour
         //Checamos si estamos derrapando
         DriftingBehaviour();
         //Acelerar
-        if (aButton)
+        if (aButton && mayhemState == false)
             currentSpeed += _delta * acceleration;
         //Frenar e ir en reversa
-        if (bButton)
+        if (bButton && mayhemState == false)
             currentSpeed -= _delta * acceleration * 2;
 
         //Nos detenemos si dejamos de movernos
@@ -130,6 +131,18 @@ public class SCR_CharacterMotor : MonoBehaviour
         activeModel.rotation = Quaternion.Slerp(activeModel.rotation, activeModelRotation, _delta * 10);
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
+        if(mayhemState)
+        {
+            if(currentSpeed > 0)
+            {
+                currentSpeed -= 2 * Time.deltaTime;
+                myStats.handling = 0.5f;
+            }
+            else
+            {
+                currentSpeed = 0;
+            }
+        }
        
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
         if (currentSpeed <= 0.1f && currentSpeed >= -0.1f)
