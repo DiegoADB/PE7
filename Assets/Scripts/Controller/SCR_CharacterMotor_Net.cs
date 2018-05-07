@@ -51,11 +51,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             {
                 MayhemState();
             }
-            else
-            {
-                Rpc_DamagePlayer();
 
-            }
 
             
         }
