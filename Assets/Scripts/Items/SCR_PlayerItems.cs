@@ -5,9 +5,10 @@ using UnityEngine;
 public class SCR_PlayerItems : MonoBehaviour {
 
     SCR_ItemManager itemManager;
-    [SerializeField]
-    SCR_ItemManager.ItemIndex myItem;
-    public int numItems = 0;
+    [HideInInspector]
+    public SCR_ItemManager.ItemIndex myItem;
+    [HideInInspector]
+    public int numItems = 2;
     // Use this for initialization
     void Start()
     {
@@ -48,6 +49,14 @@ public class SCR_PlayerItems : MonoBehaviour {
                     myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("ItemBirth"))
+        {
+            Debug.Log("Hewwo");
+            other.GetComponent<SCR_ItemGiver>().GiveItem(gameObject);
         }
     }
 }
