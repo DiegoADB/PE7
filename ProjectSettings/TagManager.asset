@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - ItemManager
   - ItemBirth
+  - DeathCheck
   layers:
   - Default
   - TransparentFX

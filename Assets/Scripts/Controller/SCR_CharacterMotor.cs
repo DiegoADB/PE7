@@ -20,7 +20,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     private SCR_CharacterStats myStats; //Referencia de los stats del jugador para determinar que tipo de pinguino es
     private Quaternion activeModelRotation; //Rotacion del modelo
     //Bool para checar en que momento esta tocando el suelo el jugador
-    private bool isGrounded;
+    public bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
     private float boostTimer = 0;
     private Animator activeModelAnim;

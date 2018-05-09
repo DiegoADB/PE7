@@ -1803,8 +1803,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.04761905
-  m_SyncRotationAxis: 4
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
   m_RotationSyncCompression: 2
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
@@ -1880,8 +1880,8 @@ MonoBehaviour:
   m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 95920935289472084}
-  m_ParameterSendBits: 3
+  m_Animator: {fileID: 95480025343998116}
+  m_ParameterSendBits: 7
   param0: 
   param1: 
   param2: 
@@ -1906,6 +1906,8 @@ MonoBehaviour:
   helloMoto: {fileID: 114607288547450106}
   myStats: {fileID: 114076085194373736}
   RespawnPoint: {fileID: 4919046828657274, guid: 81e956bf8e32e074d968b5640fdfe567,
+    type: 2}
+  myExplosion: {fileID: 1036962378537886, guid: 5a7bd484b38fd574daf1934324cc4d40,
     type: 2}
 --- !u!136 &136555707858586912
 CapsuleCollider:
