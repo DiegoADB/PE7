@@ -13,7 +13,7 @@ public class SCR_PlayerItems : MonoBehaviour {
     void Start()
     {
         itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager>();
-        myItem = SCR_ItemManager.ItemIndex.REDSHELL;
+        myItem = SCR_ItemManager.ItemIndex.NONE;
     }
 
     // Update is called once per frame
@@ -57,6 +57,7 @@ public class SCR_PlayerItems : MonoBehaviour {
         {
             Debug.Log("Hewwo");
             other.GetComponent<SCR_ItemGiver>().GiveItem(gameObject);
+            Debug.Log(myItem.ToString());
         }
     }
 }
