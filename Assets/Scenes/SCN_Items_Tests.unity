@@ -226,6 +226,16 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 316844284}
+    - target: {fileID: 114922011801599962, guid: 35bae118d263cbc4bb2af1251c14597d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54435755732099006, guid: 35bae118d263cbc4bb2af1251c14597d,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35bae118d263cbc4bb2af1251c14597d, type: 2}
   m_IsPrefabParent: 0
@@ -1537,6 +1547,7 @@ MonoBehaviour:
   itemsList:
   - {fileID: 1159330865026886, guid: 45ec1f7fcc8f5534f8e48791aed99f63, type: 2}
   - {fileID: 1922579925311040, guid: 621b1aad24fc308419daf8e19544aa43, type: 2}
+  - {fileID: 1049799292969446, guid: a45cc95839e9dab44a15dc3ed3e3cebc, type: 2}
 --- !u!4 &1483002175
 Transform:
   m_ObjectHideFlags: 0

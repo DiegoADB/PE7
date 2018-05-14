@@ -10,7 +10,8 @@ public class SCR_ItemManager : MonoBehaviour {
     {
         NONE=-1,
         SWITCHEROO,
-        REDSHELL
+        REDSHELL,
+        ORCA
     }
 
 

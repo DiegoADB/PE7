@@ -8,12 +8,12 @@ public class SCR_PlayerItems : MonoBehaviour {
     [HideInInspector]
     public SCR_ItemManager.ItemIndex myItem;
     [HideInInspector]
-    public int numItems = 2;
+    public int numItems = 3;
     // Use this for initialization
     void Start()
     {
         itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager>();
-        myItem = SCR_ItemManager.ItemIndex.NONE;
+        myItem = SCR_ItemManager.ItemIndex.ORCA;
     }
 
     // Update is called once per frame
@@ -45,7 +45,13 @@ public class SCR_PlayerItems : MonoBehaviour {
                 break;
             case SCR_ItemManager.ItemIndex.REDSHELL:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem]).GetComponent<SCR_RedShell>().SetInstancer(gameObject);
+                    Instantiate(itemManager.itemsList[(int)myItem],transform.position,transform.rotation).GetComponent<SCR_RedShell>().SetInstancer(gameObject);
+                    myItem = SCR_ItemManager.ItemIndex.NONE;
+                }
+                break;
+            case SCR_ItemManager.ItemIndex.ORCA:
+                {
+                    Instantiate(itemManager.itemsList[(int)myItem],transform.position,transform.rotation).GetComponent<SCR_OrcaBill>().SetInstancer(gameObject);
                     myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;
@@ -56,8 +62,13 @@ public class SCR_PlayerItems : MonoBehaviour {
         if(other.CompareTag("ItemBirth"))
         {
             Debug.Log("Hewwo");
-            other.GetComponent<SCR_ItemGiver>().GiveItem(gameObject);
-            Debug.Log(myItem.ToString());
+            if(myItem==SCR_ItemManager.ItemIndex.NONE)
+            {
+                other.GetComponent<SCR_ItemGiver>().GiveItem(gameObject);
+                Debug.Log(myItem.ToString());
+            }
+            Debug.Log("Im Full");
+
         }
     }
 }
