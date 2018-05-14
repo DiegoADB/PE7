@@ -104,6 +104,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         myStats.speed = myStats.startingSpd;
         myStats.handling = myStats.startingHandling;
         transform.GetChild(0).gameObject.SetActive(true);
+        transform.rotation = Quaternion.identity;
+        helloMoto.GetMyRB().velocity = Vector3.zero;
         this.transform.position = RespawnPoint.position;
 
     }

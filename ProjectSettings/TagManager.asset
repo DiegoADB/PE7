@@ -10,6 +10,7 @@ TagManager:
   - ItemManager
   - ItemBirth
   - DeathCheck
+  - Lyf
   layers:
   - Default
   - TransparentFX

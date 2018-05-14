@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class SCR_CharacterStats : NetworkBehaviour 
 {
-
+    [SerializeField]
     private Image playerHPBar;
 
     [Header("Class Stats")]
@@ -28,7 +28,6 @@ public class SCR_CharacterStats : NetworkBehaviour
         strength = startingStr;
         speed = startingSpd;
         handling = startingHandling;
-        playerHPBar = transform.Find("Lyf").GetComponent<Image>();
     }
 
     private void Update()

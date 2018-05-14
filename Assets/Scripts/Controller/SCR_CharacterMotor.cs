@@ -19,6 +19,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     private Rigidbody myRB;
     private SCR_CharacterStats myStats; //Referencia de los stats del jugador para determinar que tipo de pinguino es
     private Quaternion activeModelRotation; //Rotacion del modelo
+    private bool collidedWithObstacle;
     //Bool para checar en que momento esta tocando el suelo el jugador
     public bool isGrounded;
     private Vector3 normalVector;    //El vector normal a la superficie
@@ -76,6 +77,22 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
             isGrounded = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Obstacle") && !collidedWithObstacle && currentSpeed > 5)
+        {
+            currentSpeed = 0;
+            myRB.velocity = Vector3.zero;
+            transform.rotation = Quaternion.LookRotation(Vector3.zero);
+            collidedWithObstacle = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("Obstacle") && collidedWithObstacle)
+            collidedWithObstacle = false;
     }
 
     //Update en el que registramos los inputs y efectos externos

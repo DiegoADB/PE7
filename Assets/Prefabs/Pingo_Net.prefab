@@ -2122,6 +2122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc851818f79209478cad918de72a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHPBar: {fileID: 114216790089045134}
   playerHP: 100
   strength: 1
   speed: 1
@@ -2329,6 +2330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ead6ad560b57b14bb24362276a3c078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
   playerPrefix: P1_
   activeModel: {fileID: 4892837595510182}
   maxDefaultSpeed: 20

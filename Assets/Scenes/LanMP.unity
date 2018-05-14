@@ -290,7 +290,7 @@ Transform:
   m_LocalScale: {x: 988.4125, y: 62.614433, z: 1863.1171}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &533039487
 GameObject:
@@ -376,7 +376,7 @@ Transform:
   m_LocalScale: {x: 160.8524, y: 15.981305, z: 107.033295}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &755384828
 GameObject:
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 1095702576}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,8 +595,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1095702574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.1, y: 0, z: 1.143}
-  m_LocalScale: {x: 0.9999997, y: 18.662884, z: 3.2863636}
+  m_LocalPosition: {x: -16.37, y: -0, z: 1.48}
+  m_LocalScale: {x: 2.851224, y: 18.662884, z: 3.2863636}
   m_Children: []
   m_Father: {fileID: 1430908219}
   m_RootOrder: 0
@@ -672,7 +672,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4919046828657274, guid: 81e956bf8e32e074d968b5640fdfe567, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 157.25
+      value: 159
       objectReference: {fileID: 0}
     - target: {fileID: 4919046828657274, guid: 81e956bf8e32e074d968b5640fdfe567, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1068,7 +1068,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1760538056
 GameObject:
