@@ -159,6 +159,9 @@ GameObject:
   - component: {fileID: 135298926632993042}
   - component: {fileID: 65392763984666334}
   - component: {fileID: 114922011801599962}
+  - component: {fileID: 114640733518148772}
+  - component: {fileID: 114914326432208218}
+  - component: {fileID: 114483313028917786}
   m_Layer: 0
   m_Name: Pingo
   m_TagString: Untagged
@@ -806,14 +809,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 67.24807, y: 152.09, z: -55.6}
+  m_LocalRotation: {x: -0, y: 0.055377807, z: -0, w: 0.9984655}
+  m_LocalPosition: {x: 5.56, y: -0.0000042915344, z: 183.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.3490005, z: 0}
 --- !u!4 &4922220644461636
 Transform:
   m_ObjectHideFlags: 1
@@ -1774,6 +1777,60 @@ MonoBehaviour:
   walkingSpeed: 1.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
+--- !u!114 &114483313028917786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc838e14cd6c864fa5a0554d6c44efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114640733518148772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f79235c4ee8972408c38c24993bd597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPlace: 0
+  myScore: 0
+  distanceToNext: 0
+  myCheckpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nextTarget: {fileID: 0}
+  pastTarget: {fileID: 0}
+--- !u!114 &114914326432208218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ca5aebafb0164f9f135b39c0c3593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myItem: 1
+  numItems: 2
 --- !u!114 &114922011801599962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1785,10 +1842,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc851818f79209478cad918de72a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 0
+  playerHP: 100
   strength: 0
-  speed: 0
-  handling: 0
+  speed: 1
+  handling: 1
   startingHP: 100
 --- !u!135 &135298926632993042
 SphereCollider:
