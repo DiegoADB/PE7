@@ -10,6 +10,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats myStats;
     public Transform RespawnPoint;
+    public GameObject myExplosion;
     bool isAlive = true;
     private void Start()
     {
@@ -40,7 +41,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ServerCallback]
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && isAlive)
         {
             myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
             if (helloMoto.mayhemState)
@@ -51,16 +52,20 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             {
                 MayhemState();
             }
-            else
-            {
-                Rpc_DamagePlayer();
 
-            }
 
             
         }
     }
 
+    [ServerCallback]
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.CompareTag("DeathCheck") && isAlive)
+        {          
+          Rpc_DeathPlayer();           
+        }
+    }
 
     void MayhemState()
     {
@@ -72,6 +77,10 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void Rpc_DeathPlayer()
     {
         //Debug.Log("morido");
+        GameObject tempexplosion;
+        tempexplosion = Instantiate(myExplosion);
+        tempexplosion.transform.position = this.transform.position;
+        NetworkServer.Spawn(tempexplosion);
         isAlive = false;
         Invoke("Rpc_Respawn", 3.0f);
         transform.GetChild(0).gameObject.SetActive(false);
@@ -88,6 +97,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void Rpc_Respawn()
     {
         helloMoto.mayhemState = false;
+        helloMoto.currentSpeed = 0;
         isAlive = true;
         myStats.strength = myStats.startingStr;
         myStats.playerHP = myStats.startingHP;

@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class SCR_CharacterStats : MonoBehaviour 
+public class SCR_CharacterStats : NetworkBehaviour 
 {
 
+    private Image playerHPBar;
+
     [Header("Class Stats")]
+    [SyncVar]
     public float playerHP;
     public float strength;
     public float speed;
@@ -23,5 +28,11 @@ public class SCR_CharacterStats : MonoBehaviour
         strength = startingStr;
         speed = startingSpd;
         handling = startingHandling;
+        playerHPBar = transform.Find("Lyf").GetComponent<Image>();
+    }
+
+    private void Update()
+    {
+        playerHPBar.fillAmount = playerHP / 100.0f;
     }
 }

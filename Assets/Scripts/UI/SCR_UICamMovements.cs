@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SCR_UICamMovements : MonoBehaviour {
 
     public Transform mainTransform;
     public Transform optionsTransform;
+
+    public enum ItemList
+    {
+        Switcheroo = 0,
+        RedShell
+    }
 
     private void Start()
     {
@@ -13,15 +20,8 @@ public class SCR_UICamMovements : MonoBehaviour {
         transform.rotation = mainTransform.rotation;
     }
 
-    private void Update()
-    {
-        Debug.Log("camera: " + transform.localRotation);
-        Debug.Log("mainT: " + mainTransform.localRotation);
-    }
-
     public void OnOptionsClicked()
     {
-        //StartCoroutine(MoveCamera(optionsTransform));
         MoveCameraTween(optionsTransform);
     }
 
@@ -33,17 +33,18 @@ public class SCR_UICamMovements : MonoBehaviour {
 
     public void OnBackToMainClicked()
     {
-        MoveCameraTween(mainTransform); 
-        //StartCoroutine(MoveCamera(mainTransform));
+        MoveCameraTween(mainTransform);
     }
 
-    IEnumerator MoveCamera(Transform _endPos)
+    public void OnSinglePlayerClicked()
     {
-        transform.position = Vector3.Lerp(transform.position, _endPos.position, 5.0f * Time.deltaTime);
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, _endPos.localRotation, 5.0f * Time.deltaTime);
-        Debug.Log(_endPos.localEulerAngles);
-        yield return new WaitForEndOfFrame();
-
-        StartCoroutine(MoveCamera(_endPos));
+        SceneManager.LoadSceneAsync("SinglePlayerScene.wut");
     }
+
+    public void OnMultiPlayerClicked()
+    {
+        SceneManager.LoadSceneAsync("MultiPlayerScene.wut");
+    }
+
+    //Slider changes on volume options
 }
