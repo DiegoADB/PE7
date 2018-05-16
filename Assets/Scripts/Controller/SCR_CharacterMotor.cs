@@ -61,7 +61,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     public void MyStart()
     {
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
-        activeModelAnim = activeModel.GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
+        activeModelAnim = GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
         myStats = GetComponent<SCR_CharacterStats>();   //Referencia de las stats del jugador. Varia en las clases de los pinguinos
     }
 
@@ -84,7 +84,6 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             currentSpeed = 0;
             myRB.velocity = Vector3.zero;
-            transform.rotation = Quaternion.LookRotation(Vector3.zero);
             collidedWithObstacle = true;
         }
     }

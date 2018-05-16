@@ -2332,7 +2332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   playerPrefix: P1_
-  activeModel: {fileID: 4892837595510182}
+  activeModel: {fileID: 4224373033851026}
   maxDefaultSpeed: 20
   maxBoostAmount: 30
   mainCamera: {fileID: 0}
