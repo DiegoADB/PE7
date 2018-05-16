@@ -1003,9 +1003,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 667779972}
+  - component: {fileID: 667779973}
   m_Layer: 0
   m_Name: RankingTriggers
-  m_TagString: Untagged
+  m_TagString: RankingTriggers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1036,6 +1037,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667779973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 667779971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dad1eee75516bd47943eb3144e7da71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggers:
+  - {fileID: 1995996203}
+  - {fileID: 623230196}
+  - {fileID: 1732167581}
+  - {fileID: 421487157}
+  - {fileID: 1563937644}
+  - {fileID: 480633297}
+  - {fileID: 271449895}
+  - {fileID: 182044337}
+  - {fileID: 1791320787}
+  - {fileID: 847757419}
+  - {fileID: 1788743195}
+  - {fileID: 506562592}
+  - {fileID: 419074855}
 --- !u!1 &847757419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,20 +1246,7 @@ MonoBehaviour:
   myPlace: 0
   myScore: 0
   distanceToNext: 0
-  myCheckpoints:
-  - {fileID: 1995996203}
-  - {fileID: 623230196}
-  - {fileID: 1732167581}
-  - {fileID: 421487157}
-  - {fileID: 1563937644}
-  - {fileID: 480633297}
-  - {fileID: 271449895}
-  - {fileID: 182044337}
-  - {fileID: 1791320787}
-  - {fileID: 847757419}
-  - {fileID: 1788743195}
-  - {fileID: 506562592}
-  - {fileID: 419074855}
+  myCheckpoints: []
   nextTarget: {fileID: 0}
   pastTarget: {fileID: 0}
 --- !u!54 &904327172
@@ -1680,20 +1693,7 @@ MonoBehaviour:
   myPlace: 0
   myScore: 0
   distanceToNext: 0
-  myCheckpoints:
-  - {fileID: 1995996203}
-  - {fileID: 623230196}
-  - {fileID: 1732167581}
-  - {fileID: 421487157}
-  - {fileID: 1563937644}
-  - {fileID: 480633297}
-  - {fileID: 271449895}
-  - {fileID: 182044337}
-  - {fileID: 1791320787}
-  - {fileID: 847757419}
-  - {fileID: 1788743195}
-  - {fileID: 506562592}
-  - {fileID: 419074855}
+  myCheckpoints: []
   nextTarget: {fileID: 0}
   pastTarget: {fileID: 0}
 --- !u!23 &1580992029

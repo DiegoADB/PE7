@@ -8,6 +8,7 @@ public class SCR_PlayerTempStats : MonoBehaviour {
     public int myScore = 0;
     int tempScore;
     public float distanceToNext;
+    [HideInInspector]
     public GameObject[] myCheckpoints;
     public GameObject nextTarget;
     [HideInInspector]
@@ -15,6 +16,7 @@ public class SCR_PlayerTempStats : MonoBehaviour {
 
     private void Start()
     {
+        myCheckpoints = GameObject.FindGameObjectWithTag("RankingTriggers").GetComponent<SCR_RankingTriggers>().triggers;
         nextTarget = myCheckpoints[0];
     }
 

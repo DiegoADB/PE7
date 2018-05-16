@@ -8,7 +8,7 @@ public class SCR_Checkpoint : MonoBehaviour {
     {
         if(other.GetComponent<SCR_PlayerTempStats>().nextTarget==gameObject)
         {
-            //AddnextTaret?
+            //AddnextTarget?
             other.GetComponent<SCR_PlayerTempStats>().myScore++;
 
         }
