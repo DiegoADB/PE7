@@ -22,9 +22,11 @@ public class SCR_CharacterMotor : MonoBehaviour
     private bool collidedWithObstacle;
     //Bool para checar en que momento esta tocando el suelo el jugador
     public bool isGrounded;
+    public Vector3 savedPosition;
     private Vector3 normalVector;    //El vector normal a la superficie
     private float boostTimer = 0;
     private Animator activeModelAnim;
+    private float timerPosition;
 
     //Input del jugador
     private float verticalInput;
@@ -32,6 +34,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     private bool aButton;
     private bool bButton;
     private bool drifting;
+    
 
     //Controlador
     [Header("Controller")]
@@ -60,9 +63,11 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Inicializamos a nuestro jugador
     public void MyStart()
     {
+        timerPosition = 0.0f;
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
         activeModelAnim = GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
         myStats = GetComponent<SCR_CharacterStats>();   //Referencia de las stats del jugador. Varia en las clases de los pinguinos
+        savedPosition = this.transform.position;
     }
 
     //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
@@ -120,6 +125,15 @@ public class SCR_CharacterMotor : MonoBehaviour
             activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
         }
+
+        timerPosition += Time.fixedDeltaTime;
+        if(timerPosition>= 2.5f)
+        {
+            savedPosition = this.transform.position;
+            timerPosition = 0;
+        }
+
+
         //Checamos si estamos derrapando
         DriftingBehaviour();
         //Acelerar
