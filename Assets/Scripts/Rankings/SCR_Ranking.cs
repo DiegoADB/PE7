@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SCR_Ranking : MonoBehaviour {
 
-    public GameObject[] players;
+    public List<GameObject> players;
     SCR_PlayerTempStats[] myStats;
     [HideInInspector]
     public List<SCR_PlayerTempStats> mySortingList;
