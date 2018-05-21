@@ -11,7 +11,19 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public SCR_CharacterStats myStats;
    // public Transform RespawnPoint;
     public GameObject myExplosion;
+    public GameObject CameraPrefab;
     bool isAlive = true;
+
+    public override void OnStartClient()
+    {
+        SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
+        temp.players.Add(this.gameObject);
+        temp.playerNum++;
+        temp.AddPlayerList();
+        //temp.StopCoroutine(temp.CheckPositions());
+        //temp.StartCoroutine(temp.CheckPositions());
+
+    }
     private void Start()
     {
      if(!isLocalPlayer)
@@ -23,7 +35,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         }   
 
         helloMoto.MyStart();
-        helloMoto.mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
+        helloMoto.mainCamera = Instantiate(CameraPrefab).transform;
         helloMoto.mainCamera.position = transform.position;
     }
 
@@ -110,6 +123,5 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         helloMoto.GetMyRB().velocity = Vector3.zero;
         this.transform.position = helloMoto.savedPosition;
         helloMoto.mainCamera.position = helloMoto.transform.position;
-
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class SCR_Ranking : MonoBehaviour {
 
     public List<GameObject> players;
-    SCR_PlayerTempStats[] myStats;
+    //SCR_PlayerTempStats[] myStats;
+    List<SCR_PlayerTempStats> myStats;
     [HideInInspector]
     public List<SCR_PlayerTempStats> mySortingList;
     public int playerNum;
@@ -13,13 +14,14 @@ public class SCR_Ranking : MonoBehaviour {
 
     void Start()
     {
-        myStats = new SCR_PlayerTempStats[playerNum];
+        //myStats = new SCR_PlayerTempStats[playerNum];
+        myStats = new List<SCR_PlayerTempStats>();
         mySortingList = new List<SCR_PlayerTempStats>();
 
         for (int i = 0; i < playerNum; i++)
         {
-            Debug.Log("Im in");
-            myStats[i] = players[i].GetComponent<SCR_PlayerTempStats>();
+            Debug.Log(players.Count);
+            myStats.Add(players[i].GetComponent<SCR_PlayerTempStats>());
             mySortingList.Add(myStats[i]);
 
         }
@@ -27,7 +29,14 @@ public class SCR_Ranking : MonoBehaviour {
 
     }
 
-    IEnumerator CheckPositions()
+    public void AddPlayerList()
+    {
+        myStats.Add(players[playerNum-1].GetComponent<SCR_PlayerTempStats>());
+        mySortingList.Add(myStats[playerNum-1]);
+    }
+
+    WaitForSeconds waitTime = new WaitForSeconds(0.25f);
+    public IEnumerator CheckPositions()
     {
         for(int i =0; i<playerNum;i++)
         {
@@ -42,7 +51,7 @@ public class SCR_Ranking : MonoBehaviour {
             mySortingList[i].myPlace = i+1;
         }
 
-        yield return new WaitForSeconds(0.25f);
+        yield return waitTime;
 
         StartCoroutine(CheckPositions());
     }

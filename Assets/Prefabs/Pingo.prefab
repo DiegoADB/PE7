@@ -1764,11 +1764,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ead6ad560b57b14bb24362276a3c078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
+  savedPosition: {x: 0, y: 0, z: 0}
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
   maxDefaultSpeed: 15
   maxBoostAmount: 30
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 4757343126140724, guid: 92c13d82e4f925347b31173736a858a4, type: 2}
   maxForwardSpeed: 15
   maxReverseSpeed: -10
   currentSpeed: 0
@@ -1777,6 +1779,7 @@ MonoBehaviour:
   walkingSpeed: 1.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
+  mayhemState: 0
 --- !u!114 &114483313028917786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1842,11 +1845,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc851818f79209478cad918de72a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHPBar: {fileID: 0}
   playerHP: 100
   strength: 0
   speed: 1
   handling: 1
   startingHP: 100
+  startingStr: 1
+  startingSpd: 1
+  startingHandling: 1
 --- !u!135 &135298926632993042
 SphereCollider:
   m_ObjectHideFlags: 1
