@@ -271,7 +271,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         mainCamera.position = Vector3.Lerp(mainCamera.transform.position, desiredPosition, Time.fixedDeltaTime * 5);
         mainCamera.LookAt(transform.position);
         //Acomodamos la camara segun la direccion en la que estemos moviendonos
-        if (currentSpeed < 0)
+        if (Input.GetKey(KeyCode.Q))
             cameraDirection = -1;
         else
             cameraDirection = 1;
