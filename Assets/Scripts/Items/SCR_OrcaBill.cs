@@ -20,7 +20,7 @@ public class SCR_OrcaBill : MonoBehaviour {
         next_dest = instancer.GetComponent<SCR_PlayerTempStats>();
         pingo.SetParent(transform);
         instancer.transform.GetChild(0).gameObject.SetActive(false);
-        instancer.GetComponent<SCR_PlayerController>().enabled = false;
+        instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
         instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX  | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
     }
@@ -37,7 +37,7 @@ public class SCR_OrcaBill : MonoBehaviour {
         {
             //_navAgnt.Warp(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z));
             instancer.transform.GetChild(0).gameObject.SetActive(true);
-            instancer.GetComponent<SCR_PlayerController>().enabled = true;
+            instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
             instancer.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             
 

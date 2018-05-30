@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SCR_PlayerItems : MonoBehaviour {
 
+    
     SCR_ItemManager itemManager;
-    [HideInInspector]
+    [SerializeField]
     public SCR_ItemManager.ItemIndex myItem;
     [HideInInspector]
     public int numItems = 3;
@@ -13,7 +14,8 @@ public class SCR_PlayerItems : MonoBehaviour {
     void Start()
     {
         itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager>();
-        myItem = SCR_ItemManager.ItemIndex.ORCA;
+        myItem = SCR_ItemManager.ItemIndex.NONE;
+
     }
 
     // Update is called once per frame
@@ -65,9 +67,13 @@ public class SCR_PlayerItems : MonoBehaviour {
             if(myItem==SCR_ItemManager.ItemIndex.NONE)
             {
                 other.GetComponent<SCR_ItemGiver>().GiveItem(gameObject);
-                Debug.Log(myItem.ToString());
+                Debug.Log("Item: "+myItem.ToString());
             }
-            Debug.Log("Im Full");
+            else
+            {
+                Debug.Log("Im Full");
+
+            }
 
         }
     }
