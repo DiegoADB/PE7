@@ -1,5 +1,4 @@
-﻿//Made by Diego Diaz
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class SCR_CharacterMotor : MonoBehaviour
@@ -27,6 +26,8 @@ public class SCR_CharacterMotor : MonoBehaviour
     private float boostTimer = 0;
     private Animator activeModelAnim;
     private float timerPosition;
+    private bool cameraRotateAroundPlayer = true;
+    private bool breaking = false;
 
     //Input del jugador
     private float verticalInput;
@@ -122,6 +123,8 @@ public class SCR_CharacterMotor : MonoBehaviour
             if (myRB.velocity == Vector3.zero)
                 myRB.velocity = transform.forward;
             Quaternion myRotation = Quaternion.LookRotation(myRB.velocity);
+            if (currentSpeed < 0)
+                myRotation = Quaternion.LookRotation(transform.forward);
             activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
         }
@@ -142,6 +145,14 @@ public class SCR_CharacterMotor : MonoBehaviour
         //Frenar e ir en reversa
         if (bButton && mayhemState == false)
             currentSpeed -= _delta * acceleration * 2;
+
+        //Break
+        if (bButton && currentSpeed > 0)
+            breaking = true;
+        else
+            breaking = false;
+
+        activeModelAnim.SetBool("Break", breaking);
 
         //Nos detenemos si dejamos de movernos
         if (!aButton && !bButton)
@@ -177,7 +188,9 @@ public class SCR_CharacterMotor : MonoBehaviour
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
         if (currentSpeed <= 0.1f && currentSpeed >= -0.1f)
         {
-            verticalInput = Input.GetAxisRaw(playerPrefix + "Vertical");
+            verticalInput = Input.GetAxis(playerPrefix + "Vertical");
+            if (verticalInput < 0)
+                verticalInput = 0;
             Vector3 myVelocity = steerVector * verticalInput * walkingSpeed;
             myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);    //Asignamos la velocidad a nuestro RB
             Quaternion pingoRotation = Quaternion.LookRotation(steerVector);
@@ -224,11 +237,13 @@ public class SCR_CharacterMotor : MonoBehaviour
         activeModelAnim.SetBool("Grounded", isGrounded);
         activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
         activeModelAnim.SetFloat("Horizontal", horizontalInput);
+        activeModelAnim.SetFloat("Vertical", Input.GetAxis(playerPrefix + "Vertical"));
     }
     //Funcion que detecta cuando el jugador esta derrapando
     void DriftingBehaviour()
     {
-        if (drifting)
+        activeModelAnim.SetBool("Drifting", drifting);
+        if (drifting && currentSpeed > 5)
         {
             float driftDirection = Mathf.Sign(horizontalInput);
             horizontalInput = driftDirection * 10 * myStats.handling;
@@ -250,7 +265,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Se captura el input del jugador
     void GetInput(string _playerPrefix)
     {
-        verticalInput = Mathf.Abs(Input.GetAxisRaw(_playerPrefix + "Vertical"));
+        verticalInput = Mathf.Abs(Input.GetAxis(_playerPrefix + "Vertical"));
         verticalInput = Mathf.Clamp(verticalInput, 0.5f, 1.0f);
         if (!drifting)
             horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
@@ -264,17 +279,42 @@ public class SCR_CharacterMotor : MonoBehaviour
             drifting = false;
     }
 
+
+    void SetNewCameraPos(int _newSpeed)
+    {
+        if (_newSpeed != cameraDirection)
+            cameraRotateAroundPlayer = true;
+
+        cameraDirection = _newSpeed;
+    }
+
     //Manejamos la posicion de la camara
     void CameraPlacement()
     {
+        float speed = 1.5f;
         Vector3 desiredPosition = (-cameraDirection * (transform.forward * 4) + (transform.up * 2)) + transform.position;
-        mainCamera.position = Vector3.Lerp(mainCamera.transform.position, desiredPosition, Time.fixedDeltaTime * 5);
-        mainCamera.LookAt(transform.position);
-        //Acomodamos la camara segun la direccion en la que estemos moviendonos
-        if (Input.GetKey(KeyCode.Q))
-            cameraDirection = -1;
+        if (currentSpeed < 0)
+            SetNewCameraPos(-1);
         else
-            cameraDirection = 1;
+            SetNewCameraPos(1);
+
+        if (currentSpeed > 15)
+            speed = 5;
+        else
+            speed = 1.5f;
+        if (cameraRotateAroundPlayer)
+        {
+            desiredPosition = ((transform.right * 10) + (transform.up * 2)) + transform.position;
+            if ((desiredPosition - mainCamera.position).magnitude < 5)
+                cameraRotateAroundPlayer = false;
+        }
+        else
+        {
+            desiredPosition = (-cameraDirection * (transform.forward * 4) + (transform.up * 2)) + transform.position;
+        }
+
+        mainCamera.LookAt(transform.position);
+        mainCamera.position = Vector3.Slerp(mainCamera.transform.position, desiredPosition, Time.fixedDeltaTime * speed);
     }
 
     //Lanzamos un raycast hacia abajo para determinar si estamos en el suelo
