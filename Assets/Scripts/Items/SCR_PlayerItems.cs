@@ -63,7 +63,6 @@ public class SCR_PlayerItems : MonoBehaviour {
     {
         if(other.CompareTag("ItemBirth"))
         {
-            Debug.Log("Hewwo");
             if(myItem==SCR_ItemManager.ItemIndex.NONE)
             {
                 other.GetComponent<SCR_ItemGiver>().GiveItem(gameObject);
