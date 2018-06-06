@@ -35,11 +35,15 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         }   
 
         helloMoto.MyStart();
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
-        helloMoto.mainCamera = Instantiate(CameraPrefab).transform;
-        helloMoto.mainCamera.position = transform.position;
-    }
+        if (isLocalPlayer)
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
+            helloMoto.mainCamera = Instantiate(CameraPrefab, this.transform.position, Quaternion.identity).transform;
 
+        }
+       // helloMoto.mainCamera.position = this.transform.position;
+    }
     private void Update()
     {
         if(isAlive)
@@ -48,7 +52,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if(isAlive)
+        //if(isAlive)
             helloMoto.MyFixedUpdate();
     }
 
@@ -58,6 +62,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         if (collision.transform.CompareTag("Player") && isAlive)
         {
             myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
+            Vector3 laFuerza = collision.impulse;
+            Vector3 laDireccion = collision.contacts[0].normal;
             if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();
