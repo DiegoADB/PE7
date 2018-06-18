@@ -15,17 +15,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     bool isAlive = true;
 
     
-
-    public override void OnStartClient()
-    {
-        SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
-        temp.players.Add(this.gameObject);
-        temp.playerNum++;
-        temp.AddPlayerList();
-        //temp.StopCoroutine(temp.CheckPositions());
-        //temp.StartCoroutine(temp.CheckPositions());
-
-    }
     private void Start()
     {
      if(!isLocalPlayer)
@@ -34,8 +23,12 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             {
                 componentsToDisable[i].enabled = false;
             }
-        }   
+        }
 
+        SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
+        temp.players.Add(this.gameObject);
+        temp.playerNum++;
+        temp.AddPlayerList();
         helloMoto.MyStart();
         if (isLocalPlayer)
         {

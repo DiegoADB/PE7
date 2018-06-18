@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Lobby/Menu.unity
     guid: e55de80dcb3770f4dab6f21b3927a88f
   - enabled: 1
-    path: Assets/Scenes/SCN_Net.unity
-    guid: af2926478b5751947903bdcf5c506394
+    path: Assets/Scenes/TempLevel/hgfjgfhgf.unity
+    guid: cf3c54bfe18b1a84c95781286be2cd93
   - enabled: 1
     path: Assets/Lobby/Inicio.unity
     guid: 406da3b9b8b4cdf4b9c5b867abccb5a3

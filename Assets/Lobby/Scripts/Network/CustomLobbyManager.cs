@@ -92,17 +92,9 @@ public class CustomLobbyManager : NetworkLobbyManager
 
     public void IniciarPartida()
     {
-        base.ServerChangeScene("Game");
+		base.ServerChangeScene("hgfjgfhgf");
     }
 
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space) && NetworkServer.active)
-        {
-            print("Iniciamos partida");
-            IniciarPartida();
-        }
-    }
 
     //Se llama cuando se genera el lobby player (SOLO EN SERVIDOR)
     public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
@@ -114,7 +106,6 @@ public class CustomLobbyManager : NetworkLobbyManager
     {
         print("OnLobbyServerCreateGamePlayer");
         GameObject obj = Instantiate(gamePlayerPrefab) as GameObject;
-
         return obj;
     }
 
@@ -124,7 +115,9 @@ public class CustomLobbyManager : NetworkLobbyManager
 
         NetworkConnection conn = lobbyPlayer.GetComponent<CustomLobbyPlayer>().connectionToClient;
 
-        gamePlayer.transform.position = Vector3.zero;
+        GameObject[] penguins = GameObject.FindGameObjectsWithTag("Player");
+
+        gamePlayer.transform.position = GameObject.Find("Start Position " + (penguins.Length - 1)).transform.position;
 
         return base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
     }
