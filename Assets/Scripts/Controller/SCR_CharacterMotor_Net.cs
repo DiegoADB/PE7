@@ -14,6 +14,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public GameObject CameraPrefab;
     bool isAlive = true;
 
+    
+
     public override void OnStartClient()
     {
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
@@ -62,8 +64,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         if (collision.transform.CompareTag("Player") && isAlive)
         {
             myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
-            Vector3 laFuerza = collision.impulse;
-            Vector3 laDireccion = collision.contacts[0].normal;
+            helloMoto.laFuerza = collision.impulse;
+            helloMoto.laDireccion = collision.contacts[0].normal;
             if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();

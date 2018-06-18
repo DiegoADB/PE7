@@ -60,6 +60,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     public Vector3 steerVector;    //Direccion a la que se mueve el volante, se puede invertir
     public float cameraDirection = 1;   //Direccion en la que se pone la camara, 1 para atras del jugador y -1 para adelante
     public bool mayhemState = false;
+    public Vector3 laFuerza;
+    public Vector3 laDireccion;
+
 
     //Inicializamos a nuestro jugador
     public void MyStart()
