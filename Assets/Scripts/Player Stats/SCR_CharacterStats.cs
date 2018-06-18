@@ -32,6 +32,6 @@ public class SCR_CharacterStats : NetworkBehaviour
 
     private void Update()
     {
-        playerHPBar.fillAmount = playerHP / 100.0f;
+        //playerHPBar.fillAmount = playerHP / 100.0f;
     }
 }
