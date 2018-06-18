@@ -5,15 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Player Controller.unity
-    guid: 0771bca2b4069e14181cb00b29e5d3d9
-  - enabled: 0
-    path: Assets/Scenes/LanMP.unity
-    guid: 9908f80a72b4c434981911e454b202a1
-  - enabled: 0
-    path: Assets/Scenes/SCN_Items_Tests.unity
-    guid: 3632a7285a4c35a41befdef133384ec5
+  - enabled: 1
+    path: Assets/Lobby/Menu.unity
+    guid: e55de80dcb3770f4dab6f21b3927a88f
   - enabled: 1
     path: Assets/Scenes/SCN_Net.unity
     guid: af2926478b5751947903bdcf5c506394
+  - enabled: 1
+    path: Assets/Lobby/Inicio.unity
+    guid: 406da3b9b8b4cdf4b9c5b867abccb5a3
