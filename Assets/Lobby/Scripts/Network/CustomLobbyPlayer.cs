@@ -9,20 +9,17 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
     public Toggle tgl_ready;
     public Text txt_Jugador;
 
-    private void Awake()
-    {
-    }
-
     public override void OnClientEnterLobby()
     {
         print("OnClientEnterLobby");
         transform.SetParent(GameObject.Find("PlayerLobby").transform, false);
-
         //agregamos listner al UI
         tgl_ready.onValueChanged.AddListener(CambioReady);
         //actualizamos nombre de jugador
         txt_Jugador.text = "Player " + (base.slot + 1).ToString();
         OnClientReady(false);
+        if (NetworkServer.connections.Count == 0)
+            GameObject.Find("Start Game").SetActive(false);
     }
 
     public override void OnClientExitLobby()
@@ -37,6 +34,11 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
         tgl_ready.isOn = readyState;
         if(readyState)
         {
+            Text container = Instantiate(txt_Jugador, GameObject.Find("PlayerLobby").transform);
+            container.text = "";
+            Toggle temp = Instantiate(tgl_ready, container.transform);
+            temp.interactable = false;
+            Text tempText = Instantiate(txt_Jugador, container.transform);
             transform.SetParent(null);
             DontDestroyOnLoad(gameObject);
         }

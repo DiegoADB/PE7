@@ -36,14 +36,26 @@ public class CustomLobbyManager : NetworkLobbyManager
             print("Numero de salas: " + _matchList.Count);
             if (_matchList.Count > 0)
             {
-                print("Hay salas disponibles ");
-                print("Nombre de la sala: " + _matchList[0].name + " y su ID: " + _matchList[0].networkId);
-                CUnirSala(_matchList[0]); //Tratamos unirnos a la primera sala
+                bool createNewRoom = true;
+                for (int i = 0; i < _matchList.Count; i++)
+                {
+                    if (_matchList[i].currentSize < 8)
+                    {
+                        CUnirSala(_matchList[i]);
+                        createNewRoom = false;
+                        break;
+                    }
+                }
+                if(createNewRoom)
+                    CCrearSala("Explosive Lobby " + _matchList.Count + 1);
+                //print("Hay salas disponibles ");
+                //print("Nombre de la sala: " + _matchList[0].name + " y su ID: " + _matchList[0].networkId);
+                //CUnirSala(_matchList[0]); //Tratamos unirnos a la primera sala
             }
             else
             {
                 //No hay salas creadas
-                CCrearSala(); //Intentamos creamos sala
+                CCrearSala("Explosive Lobby 1"); //Intentamos creamos sala
             }
         }
         else
@@ -58,10 +70,10 @@ public class CustomLobbyManager : NetworkLobbyManager
         base.matchMaker.JoinMatch(_sala.networkId, "", "", "", 0, 0, OnMatchJoined);
     }
 
-    void CCrearSala()
+    void CCrearSala(string _roomName)
     {
         print("Crear sala");   //NombreSala, Jugadores, EsPublica, contraseña
-        base.matchMaker.CreateMatch("PinguinosExplosivos7", 12, true, "", "", "", 0, 0, OnMatchCreate);
+        base.matchMaker.CreateMatch(_roomName, 8, true, "", "", "", 0, 0, OnMatchCreate);
     }    
 
     public override void OnMatchJoined(bool _sucess, string _extendInfo, UnityEngine.Networking.Match.MatchInfo _matchInfo)
@@ -78,7 +90,6 @@ public class CustomLobbyManager : NetworkLobbyManager
         {
             print("Error al unir: " + _extendInfo);
         }
-
     }
 
     public override void OnLobbyServerPlayersReady()
