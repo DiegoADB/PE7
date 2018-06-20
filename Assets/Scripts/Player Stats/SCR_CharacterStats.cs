@@ -11,10 +11,12 @@ public class SCR_CharacterStats : NetworkBehaviour
 
     [Header("Class Stats")]
     [SyncVar]
-    public float playerHP;
     public float strength;
     public float speed;
     public float handling;
+    [SyncVar]
+    public float playerHP;
+
 
     [Header("Stat Defaults")]
     public float startingHP = 100.0f;
