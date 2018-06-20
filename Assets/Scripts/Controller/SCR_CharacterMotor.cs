@@ -194,6 +194,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             verticalInput = Input.GetAxis(playerPrefix + "Vertical");
             if (verticalInput < 0)
                 verticalInput = 0;
+            
             Vector3 myVelocity = steerVector * verticalInput * walkingSpeed;
             myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);    //Asignamos la velocidad a nuestro RB
             Quaternion pingoRotation = Quaternion.LookRotation(steerVector);
