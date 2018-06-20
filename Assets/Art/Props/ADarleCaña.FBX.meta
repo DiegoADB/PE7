@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: d32a5c06c902f784490983076cc03a7d
+timeCreated: 1529356340
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CATRigHub001
+    100004: CATRigTail1
+    100006: CATRigTail10
+    100008: CATRigTail11
+    100010: CATRigTail12
+    100012: CATRigTail13
+    100014: CATRigTail14
+    100016: CATRigTail15
+    100018: CATRigTail16
+    100020: CATRigTail17
+    100022: CATRigTail18
+    100024: CATRigTail19
+    100026: CATRigTail2
+    100028: CATRigTail20
+    100030: CATRigTail3
+    100032: CATRigTail4
+    100034: CATRigTail5
+    100036: CATRigTail6
+    100038: CATRigTail7
+    100040: CATRigTail8
+    100042: CATRigTail9
+    100044: Character001
+    100046: MSH_Cania de pescar
+    400000: //RootNode
+    400002: CATRigHub001
+    400004: CATRigTail1
+    400006: CATRigTail10
+    400008: CATRigTail11
+    400010: CATRigTail12
+    400012: CATRigTail13
+    400014: CATRigTail14
+    400016: CATRigTail15
+    400018: CATRigTail16
+    400020: CATRigTail17
+    400022: CATRigTail18
+    400024: CATRigTail19
+    400026: CATRigTail2
+    400028: CATRigTail20
+    400030: CATRigTail3
+    400032: CATRigTail4
+    400034: CATRigTail5
+    400036: CATRigTail6
+    400038: CATRigTail7
+    400040: CATRigTail8
+    400042: CATRigTail9
+    400044: Character001
+    400046: MSH_Cania de pescar
+    2100000: No Name
+    2300000: CATRigHub001
+    2300002: CATRigTail1
+    2300004: CATRigTail10
+    2300006: CATRigTail11
+    2300008: CATRigTail12
+    2300010: CATRigTail13
+    2300012: CATRigTail14
+    2300014: CATRigTail15
+    2300016: CATRigTail16
+    2300018: CATRigTail17
+    2300020: CATRigTail18
+    2300022: CATRigTail19
+    2300024: CATRigTail2
+    2300026: CATRigTail20
+    2300028: CATRigTail3
+    2300030: CATRigTail4
+    2300032: CATRigTail5
+    2300034: CATRigTail6
+    2300036: CATRigTail7
+    2300038: CATRigTail8
+    2300040: CATRigTail9
+    3300000: CATRigHub001
+    3300002: CATRigTail1
+    3300004: CATRigTail10
+    3300006: CATRigTail11
+    3300008: CATRigTail12
+    3300010: CATRigTail13
+    3300012: CATRigTail14
+    3300014: CATRigTail15
+    3300016: CATRigTail16
+    3300018: CATRigTail17
+    3300020: CATRigTail18
+    3300022: CATRigTail19
+    3300024: CATRigTail2
+    3300026: CATRigTail20
+    3300028: CATRigTail3
+    3300030: CATRigTail4
+    3300032: CATRigTail5
+    3300034: CATRigTail6
+    3300036: CATRigTail7
+    3300038: CATRigTail8
+    3300040: CATRigTail9
+    4300000: MSH_Cania de pescar
+    4300002: CATRigHub001
+    4300004: CATRigTail1
+    4300006: CATRigTail2
+    4300008: CATRigTail3
+    4300010: CATRigTail4
+    4300012: CATRigTail5
+    4300014: CATRigTail6
+    4300016: CATRigTail7
+    4300018: CATRigTail8
+    4300020: CATRigTail9
+    4300022: CATRigTail10
+    4300024: CATRigTail11
+    4300026: CATRigTail12
+    4300028: CATRigTail13
+    4300030: CATRigTail14
+    4300032: CATRigTail15
+    4300034: CATRigTail16
+    4300036: CATRigTail17
+    4300038: CATRigTail18
+    4300040: CATRigTail19
+    4300042: CATRigTail20
+    7400000: "Ca\xF1aAnim"
+    9500000: //RootNode
+    13700000: MSH_Cania de pescar
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: "Ca\xF1aAnim"
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 71
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
