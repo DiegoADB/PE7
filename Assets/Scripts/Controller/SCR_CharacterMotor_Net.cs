@@ -85,7 +85,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void MayhemState()
     {
         helloMoto.mayhemState = true;
-        Invoke("Rpc_DeathPlayer", 5.0f);
+        //Invoke("Rpc_DeathPlayer", 5.0f);
     }
 
     [ClientRpc]
@@ -95,7 +95,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
         tempexplosion.transform.position = this.transform.position;
-        NetworkServer.Spawn(tempexplosion);
+        //NetworkServer.Spawn(tempexplosion);
         isAlive = false;
         Invoke("Rpc_Respawn", 3.0f);
         transform.GetChild(0).gameObject.SetActive(false);
@@ -123,6 +123,9 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         //transform.LookAt((new Vector3(0, destination.y, 0)));
         helloMoto.GetMyRB().velocity = Vector3.zero;
         this.transform.position = helloMoto.savedPosition;
-        helloMoto.mainCamera.position = helloMoto.transform.position;
+        if(helloMoto.mainCamera != null)
+        {
+            helloMoto.mainCamera.position = helloMoto.transform.position;
+        }
     }
 }
