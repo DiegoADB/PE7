@@ -13,7 +13,6 @@ public class SCR_CustomLobbiesLobby : NetworkLobbyManager
     {
         base.StartMatchMaker();
         LoadLobbyRooms();
-        transform.SetParent(GameObject.Find("Main Camera").transform);
     }
 
     public void LoadLobbyRooms()
