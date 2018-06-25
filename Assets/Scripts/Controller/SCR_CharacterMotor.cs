@@ -15,7 +15,8 @@ public class SCR_CharacterMotor : MonoBehaviour
     /// </summary>
 
     //Referencia del rigidbody
-    private Rigidbody myRB;
+    [HideInInspector]
+    public  Rigidbody myRB;
     private SCR_CharacterStats myStats; //Referencia de los stats del jugador para determinar que tipo de pinguino es
     private Quaternion activeModelRotation; //Rotacion del modelo
     private bool collidedWithObstacle;
@@ -35,6 +36,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     private bool aButton;
     private bool bButton;
     private bool drifting;
+
+    [HideInInspector]
+    public bool chocado = false;
     
 
     //Controlador
@@ -189,7 +193,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         }
        
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
-        if (currentSpeed <= 0.1f && currentSpeed >= -0.1f)
+        if (currentSpeed <= 0.1f && currentSpeed >= -0.1f && chocado == false)
         {
             verticalInput = Input.GetAxis(playerPrefix + "Vertical");
             if (verticalInput < 0)
@@ -206,7 +210,8 @@ public class SCR_CharacterMotor : MonoBehaviour
             Vector3 myVelocity = CrashCheck();
             if (myRB.velocity.magnitude <= 0.01f)
                 currentSpeed = 0;
-            myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
+            if(!chocado)
+                myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
         }
 
     }
