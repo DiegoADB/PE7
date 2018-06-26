@@ -128,9 +128,9 @@ public class CustomLobbyManager : NetworkLobbyManager
         NetworkConnection conn = lobbyPlayer.GetComponent<CustomLobbyPlayer>().connectionToClient;
 
         GameObject[] penguins = GameObject.FindGameObjectsWithTag("Player");
-
-        gamePlayer.transform.position = GameObject.Find("Start Position " + (penguins.Length - 1)).transform.position;
-
+        GameObject tempPosition = GameObject.Find("Start Position " + (penguins.Length - 1));
+        gamePlayer.transform.position = tempPosition.transform.position;
+        gamePlayer.transform.rotation = tempPosition.transform.rotation;
         return base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
     }
 
