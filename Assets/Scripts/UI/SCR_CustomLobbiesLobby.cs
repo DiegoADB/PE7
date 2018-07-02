@@ -8,6 +8,7 @@ public class SCR_CustomLobbiesLobby : NetworkLobbyManager
 {
     public Transform container;
     public GameObject lobbyRoomPrefab;
+    [SerializeField] NetworkManager theNetworkManager;
 
     private void Start()
     {
@@ -42,6 +43,13 @@ public class SCR_CustomLobbiesLobby : NetworkLobbyManager
                 }
             }
         }
+    }
+
+    public void ShutDownNetworkManager(int _scene)
+    {
+        base.StopHost();
+        base.StopMatchMaker();
+        SceneManager.LoadScene(_scene);
     }
 
     public override void OnMatchJoined(bool _sucess, string _extendInfo, UnityEngine.Networking.Match.MatchInfo _matchInfo)

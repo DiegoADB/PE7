@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 //https://docs.unity3d.com/Manual/UNetLobby.html
 public class CustomLobbyManager : NetworkLobbyManager
 {
+    [SerializeField] NetworkManager theNetworkManager;
 	void Start ()
     {
         CStart();
@@ -25,7 +26,6 @@ public class CustomLobbyManager : NetworkLobbyManager
                                  //0 - 10, SIN FILTROS, Funcion que se llama al solicitar las salas
         base.matchMaker.ListMatches(0, 10, "", true, 0, 0, OnMatchList);
     }
-
 
     public override void OnMatchList(bool _sucess, string _extendInfo, List<UnityEngine.Networking.Match.MatchInfoSnapshot> _matchList)
     {
@@ -100,7 +100,12 @@ public class CustomLobbyManager : NetworkLobbyManager
         Invoke("IniciarPartida", 1.0f);
     }
 
-    
+    public void ShutDownNetworkManager(int _scene)
+    {
+        base.StopHost();
+        base.StopMatchMaker();
+        SceneManager.LoadScene(_scene);
+    }
 
     public void IniciarPartida()
     {
