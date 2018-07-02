@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 87fead50a4d3caa43bf4421d27f45043
+timeCreated: 1530567496
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Catrih_Piraha
+    100002: Catrih_PirahaAletha_Derecha
+    100004: Catrih_PirahaAletha_izkierda
+    100006: Catrih_PirahaBoca_Superior
+    100008: Catrih_PirahaBocados
+    100010: Catrih_PirahaHub001
+    100012: Catrih_PirahaTail1
+    100014: Catrih_PirahaTail2
+    100016: Catrih_PirahaTail3
+    100018: Catrih_PirahaTail4
+    100020: Piramja_Aletaizkierda
+    100022: piranha_Aletaderecha
+    100024: Piranha_bcainferior
+    100026: //RootNode
+    100028: Piraniah_MSH
+    400000: Catrih_Piraha
+    400002: Catrih_PirahaAletha_Derecha
+    400004: Catrih_PirahaAletha_izkierda
+    400006: Catrih_PirahaBoca_Superior
+    400008: Catrih_PirahaBocados
+    400010: Catrih_PirahaHub001
+    400012: Catrih_PirahaTail1
+    400014: Catrih_PirahaTail2
+    400016: Catrih_PirahaTail3
+    400018: Catrih_PirahaTail4
+    400020: Piramja_Aletaizkierda
+    400022: piranha_Aletaderecha
+    400024: Piranha_bcainferior
+    400026: //RootNode
+    400028: Piraniah_MSH
+    2100000: No Name
+    2300000: Catrih_PirahaAletha_Derecha
+    2300002: Catrih_PirahaAletha_izkierda
+    2300004: Catrih_PirahaBoca_Superior
+    2300006: Catrih_PirahaBocados
+    2300008: Catrih_PirahaHub001
+    2300010: Catrih_PirahaTail1
+    2300012: Catrih_PirahaTail2
+    2300014: Catrih_PirahaTail3
+    2300016: Catrih_PirahaTail4
+    3300000: Catrih_PirahaAletha_Derecha
+    3300002: Catrih_PirahaAletha_izkierda
+    3300004: Catrih_PirahaBoca_Superior
+    3300006: Catrih_PirahaBocados
+    3300008: Catrih_PirahaHub001
+    3300010: Catrih_PirahaTail1
+    3300012: Catrih_PirahaTail2
+    3300014: Catrih_PirahaTail3
+    3300016: Catrih_PirahaTail4
+    4300000: Piraniah_MSH
+    4300002: Catrih_PirahaHub001
+    4300004: Catrih_PirahaTail1
+    4300006: Catrih_PirahaTail2
+    4300008: Catrih_PirahaTail3
+    4300010: Catrih_PirahaTail4
+    4300012: Catrih_PirahaAletha_izkierda
+    4300014: Catrih_PirahaAletha_Derecha
+    4300016: Catrih_PirahaBoca_Superior
+    4300018: Catrih_PirahaBocados
+    4300020: Piranha_bcainferior
+    4300022: piranha_Aletaderecha
+    4300024: Piramja_Aletaizkierda
+    7400000: Nado
+    9500000: //RootNode
+    13700000: Piramja_Aletaizkierda
+    13700002: piranha_Aletaderecha
+    13700004: Piranha_bcainferior
+    13700006: Piraniah_MSH
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Nado
+      takeName: Take 001
+      firstFrame: 5
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

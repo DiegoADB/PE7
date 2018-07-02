@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: 1eee52fdebf06bf4a89046bfe5517d38
+timeCreated: 1530564173
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: CATRig3Bone001
+    100002: CATRig5Bone001
+    100004: CATRig5Bone002
+    100006: CATRigHub001
+    100008: CATRigHub001Bone001
+    100010: CATRigHub001Bone002
+    100012: CATRigHub001Bone003
+    100014: CATRigHub002
+    100016: CATRigLArm1
+    100018: CATRigLArmCollarbone
+    100020: CATRigLArmPalm
+    100022: CATRigRArm1
+    100024: CATRigRArmCollarbone
+    100026: CATRigRArmPalm
+    100028: CATRigSpine
+    100030: CATRigTail1
+    100032: CATRigTail1 1
+    100034: CATRigTail2
+    100036: CATRigTail3
+    100038: CATRigTail4
+    100040: CATRigTail5
+    100042: Character001
+    100044: //RootNode
+    100046: MSH_OrcaLow
+    400000: CATRig3Bone001
+    400002: CATRig5Bone001
+    400004: CATRig5Bone002
+    400006: CATRigHub001
+    400008: CATRigHub001Bone001
+    400010: CATRigHub001Bone002
+    400012: CATRigHub001Bone003
+    400014: CATRigHub002
+    400016: CATRigLArm1
+    400018: CATRigLArmCollarbone
+    400020: CATRigLArmPalm
+    400022: CATRigRArm1
+    400024: CATRigRArmCollarbone
+    400026: CATRigRArmPalm
+    400028: CATRigSpine
+    400030: CATRigTail1
+    400032: CATRigTail1 1
+    400034: CATRigTail2
+    400036: CATRigTail3
+    400038: CATRigTail4
+    400040: CATRigTail5
+    400042: Character001
+    400044: //RootNode
+    400046: MSH_OrcaLow
+    2100000: No Name
+    2300000: CATRig3Bone001
+    2300002: CATRig5Bone001
+    2300004: CATRig5Bone002
+    2300006: CATRigHub001
+    2300008: CATRigHub001Bone001
+    2300010: CATRigHub001Bone002
+    2300012: CATRigHub001Bone003
+    2300014: CATRigHub002
+    2300016: CATRigLArm1
+    2300018: CATRigLArmCollarbone
+    2300020: CATRigLArmPalm
+    2300022: CATRigRArm1
+    2300024: CATRigRArmCollarbone
+    2300026: CATRigRArmPalm
+    2300028: CATRigSpine
+    2300030: CATRigTail1
+    2300032: CATRigTail1 1
+    2300034: CATRigTail2
+    2300036: CATRigTail3
+    2300038: CATRigTail4
+    2300040: CATRigTail5
+    3300000: CATRig3Bone001
+    3300002: CATRig5Bone001
+    3300004: CATRig5Bone002
+    3300006: CATRigHub001
+    3300008: CATRigHub001Bone001
+    3300010: CATRigHub001Bone002
+    3300012: CATRigHub001Bone003
+    3300014: CATRigHub002
+    3300016: CATRigLArm1
+    3300018: CATRigLArmCollarbone
+    3300020: CATRigLArmPalm
+    3300022: CATRigRArm1
+    3300024: CATRigRArmCollarbone
+    3300026: CATRigRArmPalm
+    3300028: CATRigSpine
+    3300030: CATRigTail1
+    3300032: CATRigTail1 1
+    3300034: CATRigTail2
+    3300036: CATRigTail3
+    3300038: CATRigTail4
+    3300040: CATRigTail5
+    4300000: MSH_OrcaLow
+    4300002: CATRigHub001
+    4300004: CATRigHub001Bone001
+    4300006: CATRigHub001Bone002
+    4300008: CATRigSpine
+    4300010: CATRigHub002
+    4300012: CATRigTail1
+    4300014: CATRigTail2
+    4300016: CATRigTail3
+    4300018: CATRig3Bone001
+    4300020: CATRigTail4
+    4300022: CATRigTail5
+    4300024: CATRig5Bone001
+    4300026: CATRig5Bone002
+    4300028: CATRigHub001Bone003
+    4300030: CATRigLArmCollarbone
+    4300032: CATRigLArm1
+    4300034: CATRigLArmPalm
+    4300036: CATRigRArmCollarbone
+    4300038: CATRigRArm1
+    4300040: CATRigRArmPalm
+    4300042: CATRigTail1
+    7400000: Orca
+    9500000: //RootNode
+    13700000: MSH_OrcaLow
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Orca
+      takeName: Take 001
+      firstFrame: 4
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
