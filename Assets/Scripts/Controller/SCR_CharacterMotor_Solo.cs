@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
-
-public class SCR_CharacterMotor_Solo : NetworkBehaviour
+public class SCR_CharacterMotor_Solo : MonoBehaviour
 {
-    public Behaviour[] componentsToDisable;
+    //public Behaviour[] componentsToDisable;
     public SCR_CharacterMotor helloMoto;
-    public SCR_CharacterStats myStats;
-   // public Transform RespawnPoint;
+    public SCR_CharacterStats_Solo myStats;
+    //public Transform RespawnPoint;
     public GameObject myExplosion;
     public GameObject CameraPrefab;
     bool isAlive = true;
@@ -16,26 +14,16 @@ public class SCR_CharacterMotor_Solo : NetworkBehaviour
     
     private void Start()
     {
-     if(!isLocalPlayer)
-        {
-            for(int i = 0; i< componentsToDisable.Length ; i++)
-            {
-                componentsToDisable[i].enabled = false;
-            }
-        }
 
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
         temp.playerNum++;
         temp.AddPlayerList();
         helloMoto.MyStart();
-        
-        GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
-        //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
-        helloMoto.mainCamera = Instantiate(CameraPrefab, this.transform.position, Quaternion.identity).transform;
 
-    
-       // helloMoto.mainCamera.position = this.transform.position;
+        GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
+        helloMoto.mainCamera = Instantiate(CameraPrefab, this.transform.position, Quaternion.identity).transform;
+        Debug.Log(helloMoto.mainCamera.name);
     }
     private void Update()
     {
@@ -102,11 +90,9 @@ public class SCR_CharacterMotor_Solo : NetworkBehaviour
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
         tempexplosion.transform.position = this.transform.position;
-        //NetworkServer.Spawn(tempexplosion);
         isAlive = false;
         Invoke("Rpc_Respawn", 3.0f);
         transform.GetChild(0).gameObject.SetActive(false);
-      //  gameObject.SetActive(false);
     }
 
     void Rpc_DamagePlayer()
