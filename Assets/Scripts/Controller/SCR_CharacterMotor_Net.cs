@@ -9,11 +9,25 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public Behaviour[] componentsToDisable;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats myStats;
-   // public Transform RespawnPoint;
+
+    AudioSource SFX_player;
+    public AudioClip[] SFX_clip;
+    /*
+     0 deslizar
+     1 explosion 1
+     2 explosion 2
+     3 freno 1
+     4 freno 2
+     5 pasos 1
+     6 pasos 2
+     7 pasos 3
+     8 idle
+    */
+    // public Transform RespawnPoint;
     public GameObject myExplosion;
     public GameObject CameraPrefab;
     bool isAlive = true;
-
+    
     
     private void Start()
     {
@@ -25,6 +39,10 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             }
         }
 
+
+       SFX_player.GetComponent<AudioSource>();
+
+        
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
         temp.playerNum++;
@@ -43,6 +61,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         if(isAlive)
             helloMoto.MyUpdate();
+        
     }
 
     private void FixedUpdate()
@@ -104,6 +123,9 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void Rpc_DeathPlayer()
     {
         //Debug.Log("morido");
+
+        SFX_player.clip = SFX_clip[Random.Range(1, 2)];
+
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
         tempexplosion.transform.position = this.transform.position;

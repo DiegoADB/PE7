@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 114076085194373736}
   - component: {fileID: 114841142303287718}
   - component: {fileID: 114653771368208196}
+  - component: {fileID: 82248248573793604}
   m_Layer: 0
   m_Name: Pingo_Net
   m_TagString: Player
@@ -2019,6 +2020,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2, z: 0.92341536}
   m_Center: {x: 0, y: 0.5, z: 0.011707693}
+--- !u!82 &82248248573793604
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95480025343998116
 Animator:
   serializedVersion: 3
@@ -2125,10 +2206,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHPBar: {fileID: 114216790089045134}
-  playerHP: 100
   strength: 1
   speed: 1
   handling: 1
+  playerHP: 100
   startingHP: 100
   startingStr: 1
   startingSpd: 1
@@ -2332,8 +2413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ead6ad560b57b14bb24362276a3c078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRB: {fileID: 0}
   isGrounded: 0
   savedPosition: {x: 0, y: 0, z: 0}
+  chocado: 0
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
   maxDefaultSpeed: 20
@@ -2348,6 +2431,8 @@ MonoBehaviour:
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
   mayhemState: 0
+  laFuerza: {x: 0, y: 0, z: 0}
+  laDireccion: {x: 0, y: 0, z: 0}
 --- !u!114 &114650468067917846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2593,6 +2678,16 @@ MonoBehaviour:
   - {fileID: 114986269402174856}
   helloMoto: {fileID: 114607288547450106}
   myStats: {fileID: 114076085194373736}
+  SFX_clip:
+  - {fileID: 8300000, guid: ed6050484d89ed548b0bdd50e7a83b17, type: 3}
+  - {fileID: 8300000, guid: 8a5d92eea9776fb48ab60e80255096b2, type: 3}
+  - {fileID: 8300000, guid: 39ef42a5227774e48b67723698d77359, type: 3}
+  - {fileID: 8300000, guid: 691edbd7be1f8774086898de0aebdac0, type: 3}
+  - {fileID: 8300000, guid: 1c527b25f9f45f8499652cf5df936d6c, type: 3}
+  - {fileID: 8300000, guid: 3c1e25f05ec24b64f9e4fdc828444a66, type: 3}
+  - {fileID: 8300000, guid: 3f652e2e252a58a45bf1f9bf48872d49, type: 3}
+  - {fileID: 8300000, guid: 9433d43746d6bd940aa280ed194d8476, type: 3}
+  - {fileID: 8300000, guid: 2e13a89c294622f498e99d0c611578da, type: 3}
   myExplosion: {fileID: 1036962378537886, guid: 5a7bd484b38fd574daf1934324cc4d40,
     type: 2}
   CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
