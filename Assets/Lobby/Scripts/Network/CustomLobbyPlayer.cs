@@ -8,6 +8,7 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
 {
     public Toggle tgl_ready;
     public Text txt_Jugador;
+    public Image background;
 
     public override void OnClientEnterLobby()
     {
@@ -36,6 +37,7 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
         {
             Text container = Instantiate(txt_Jugador, GameObject.Find("PlayerLobby").transform);
             container.text = "";
+            Image tempBg = Instantiate(background, container.transform);
             Toggle temp = Instantiate(tgl_ready, container.transform);
             temp.interactable = false;
             Text tempText = Instantiate(txt_Jugador, container.transform);
