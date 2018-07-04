@@ -37,7 +37,7 @@ public class SCR_CustomLobbiesLobby : NetworkLobbyManager
                 for (int i = 0; i < _matchList.Count; i++)
                 {
                     GameObject tempLobby = Instantiate(lobbyRoomPrefab, container);
-                    tempLobby.GetComponent<SCR_LobbyRoom>().SetUp("#" +(i).ToString(), _matchList[i].name, _matchList[i].currentSize.ToString() + "/8");
+                    tempLobby.GetComponent<SCR_LobbyRoom>().SetUp("#" +(i).ToString(), _matchList[i].name, _matchList[i].currentSize.ToString() + "l8");
                     tempLobby.GetComponent<SCR_LobbyRoom>().room = i;
                     tempLobby.GetComponent<SCR_LobbyRoom>().join.onClick.AddListener(() => CUnirSala(_matchList[tempLobby.GetComponent<SCR_LobbyRoom>().room]));
                 }

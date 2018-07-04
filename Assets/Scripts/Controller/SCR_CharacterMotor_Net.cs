@@ -25,6 +25,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     */
     // public Transform RespawnPoint;
     public GameObject myExplosion;
+    public GameObject burnOutState;
     public GameObject CameraPrefab;
     bool isAlive = true;
     
@@ -40,7 +41,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         }
 
 
-       SFX_player.GetComponent<AudioSource>();
+       //SFX_player.GetComponent<AudioSource>();
 
         
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
@@ -124,13 +125,14 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         //Debug.Log("morido");
 
-        SFX_player.clip = SFX_clip[Random.Range(1, 2)];
+        //SFX_player.clip = SFX_clip[Random.Range(1, 2)];
 
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
         tempexplosion.transform.position = this.transform.position;
         //NetworkServer.Spawn(tempexplosion);
         isAlive = false;
+        burnOutState.SetActive(true);
         Invoke("Rpc_Respawn", 3.0f);
         transform.GetChild(0).gameObject.SetActive(false);
       //  gameObject.SetActive(false);
@@ -148,6 +150,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         helloMoto.mayhemState = false;
         helloMoto.currentSpeed = 0;
         isAlive = true;
+        burnOutState.SetActive(false);
         myStats.strength = myStats.startingStr;
         myStats.playerHP = myStats.startingHP;
         myStats.speed = myStats.startingSpd;
