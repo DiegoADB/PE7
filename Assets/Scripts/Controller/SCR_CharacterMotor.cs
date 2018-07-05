@@ -112,12 +112,34 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         GetInput(playerPrefix); //Captura de movimiento
         BoostTimerManager();    //Manejo del boost
+        SaveLastPosition();     //Guarda la ultima posicion en la que estuvo el jugador antes de caer
     }
     //Fixed Update para calcular fisica y movimiento de camara
     public void MyFixedUpdate()
     {
         CharacterMovement(Time.fixedDeltaTime); //Motor del jugador
         CameraPlacement();  //Comportamiento de la camara
+    }
+
+    void SaveLastPosition()
+    {
+        float distanceToGround = 1.2f;
+        Vector3 origin = transform.position + new Vector3(0, 0.1f, 0);
+        Vector3 direction = -transform.up;
+
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, distanceToGround))
+        {
+            timerPosition += Time.deltaTime;
+            if (timerPosition >= 2.0f)
+            {
+                savedPosition = hit.point;
+                timerPosition = 0;
+            }
+        }
+        else
+            timerPosition = 0;
+        Debug.DrawRay(origin, direction * distanceToGround, Color.blue);
     }
 
     //Funcion que se encarga de manejar el movimiento del jugador
@@ -134,13 +156,6 @@ public class SCR_CharacterMotor : MonoBehaviour
                 myRotation = Quaternion.LookRotation(transform.forward);
             activeModel.rotation = Quaternion.Slerp(activeModel.rotation, myRotation, _delta * 10);
             return;
-        }
-
-        timerPosition += Time.fixedDeltaTime;
-        if(timerPosition>= 2.5f)
-        {
-            savedPosition = this.transform.position;
-            timerPosition = 0;
         }
 
 
@@ -196,8 +211,8 @@ public class SCR_CharacterMotor : MonoBehaviour
         if (currentSpeed <= 0.1f && currentSpeed >= -0.1f && chocado == false)
         {
             verticalInput = Input.GetAxis(playerPrefix + "Vertical");
-            if (verticalInput < 0)
-                verticalInput = 0;
+            //if (verticalInput < 0)
+            //    verticalInput = 0;
             
             Vector3 myVelocity = steerVector * verticalInput * walkingSpeed;
             myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);    //Asignamos la velocidad a nuestro RB

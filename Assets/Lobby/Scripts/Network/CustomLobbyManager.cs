@@ -109,7 +109,7 @@ public class CustomLobbyManager : NetworkLobbyManager
 
     public void IniciarPartida()
     {
-		base.ServerChangeScene("hgfjgfhgf");
+		base.ServerChangeScene(playScene);
     }
 
 
