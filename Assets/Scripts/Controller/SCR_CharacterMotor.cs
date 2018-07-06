@@ -67,6 +67,10 @@ public class SCR_CharacterMotor : MonoBehaviour
     public Vector3 laFuerza;
     public Vector3 laDireccion;
 
+    [Header("Particles")]
+    public GameObject sparks;
+    public GameObject yaw;
+
 
     //Inicializamos a nuestro jugador
     public void MyStart()
@@ -267,6 +271,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     void DriftingBehaviour()
     {
         activeModelAnim.SetBool("Drifting", drifting);
+        sparks.SetActive(drifting);
         if (drifting && currentSpeed > 5)
         {
             float driftDirection = Mathf.Sign(horizontalInput);
@@ -383,6 +388,10 @@ public class SCR_CharacterMotor : MonoBehaviour
                 maxForwardSpeed = maxDefaultSpeed;
             boostTimer = 0;
         }
+        if (maxForwardSpeed > maxDefaultSpeed)
+            yaw.SetActive(true);
+        else
+            yaw.SetActive(false);
     }
 
     //Getter de RigidBody

@@ -537,9 +537,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: CurrentSpeed
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: Grounded
     m_EventTreshold: 0

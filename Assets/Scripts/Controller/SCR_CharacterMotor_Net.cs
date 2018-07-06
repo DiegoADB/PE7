@@ -24,8 +24,11 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
      8 idle
     */
     // public Transform RespawnPoint;
+    [Header("Particles")]
     public GameObject myExplosion;
     public GameObject burnOutState;
+
+    [Header("Camera")]
     public GameObject CameraPrefab;
     bool isAlive = true;
     
