@@ -65,6 +65,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         if(isAlive)
             helloMoto.MyUpdate();
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SCR_Disconnect.DisconnectFromMatch();
         
     }
 
