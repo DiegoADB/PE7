@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SCR_PlayerItem_Net : MonoBehaviour
+public class SCR_PlayerItem_Net : NetworkBehaviour
 {
 
 
@@ -14,9 +15,9 @@ public class SCR_PlayerItem_Net : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        enabled = base.isLocalPlayer;
         itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager_Net>();
         myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
-
     }
 
     // Update is called once per frame
@@ -24,13 +25,12 @@ public class SCR_PlayerItem_Net : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            SpawnCurrentItem();
+            Cmd_SpawnCurrentItem();
         }
-
-
     }
 
-    public void SpawnCurrentItem()
+    [Command]
+    public void Cmd_SpawnCurrentItem()
     {
         switch (myItem)
         {
@@ -42,19 +42,26 @@ public class SCR_PlayerItem_Net : MonoBehaviour
                 break;
             case SCR_ItemManager_Net.ItemIndex_Net.SWITCHEROO:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem]).GetComponent<SCR_Switcheroo>().SetInstancer(gameObject);
+                    Debug.Log(gameObject.name);
+                    GameObject item = Instantiate(itemManager.itemsList[(int)myItem]);
+                    item.GetComponent<SCR_Switcheroo>().Cmd_SetInstancer(gameObject);
+                    NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
                 break;
             case SCR_ItemManager_Net.ItemIndex_Net.REDSHELL:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation).GetComponent<SCR_RedShell_Net>().SetInstancer(gameObject);
+                    GameObject item = Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation);
+                    item.GetComponent<SCR_RedShell_Net>().Rpc_SetInstancer(gameObject);
+                    NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
                 break;
             case SCR_ItemManager_Net.ItemIndex_Net.ORCA:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation).GetComponent<SCR_OrcaBill>().SetInstancer(gameObject);
+                    GameObject item = Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation);
+                    item.GetComponent<SCR_OrcaBill>().Rpc_SetInstancer(gameObject);
+                    NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
                 break;

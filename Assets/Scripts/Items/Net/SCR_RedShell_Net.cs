@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class SCR_RedShell_Net : MonoBehaviour {
+using UnityEngine.Networking;
+public class SCR_RedShell_Net : NetworkBehaviour {
 
 
     [SerializeField]
@@ -43,7 +43,8 @@ public class SCR_RedShell_Net : MonoBehaviour {
     }
 
 
-    public void SetInstancer(GameObject _go)
+    [ClientRpc]
+    public void Rpc_SetInstancer(GameObject _go)
     {
         myGo = _go;
     }

@@ -886,7 +886,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 626480615}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.5421708
+  m_Size: 0.5420808
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1001,8 +1001,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2133140826}
   m_HandleRect: {fileID: 2133140825}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.99983406
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1172,7 +1172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -837.44995, y: 155.70001}
+  m_AnchoredPosition: {x: -837.45, y: 156.20328}
   m_SizeDelta: {x: 1148.9, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1821745294
@@ -1435,7 +1435,10 @@ MonoBehaviour:
   m_PlayerSpawnMethod: 1
   m_OfflineScene: Inicio
   m_OnlineScene: 
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1407876790009664, guid: ca285c743fa01bc48be28f15d8084188, type: 2}
+  - {fileID: 1922579925311040, guid: 041ff0043cc90264a937b551a566a218, type: 2}
+  - {fileID: 1159330865026886, guid: 99e7df75b32c6464fa51194276a66efe, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

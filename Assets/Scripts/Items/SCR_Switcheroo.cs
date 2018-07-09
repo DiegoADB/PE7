@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SCR_Switcheroo : MonoBehaviour {
+using UnityEngine.Networking;
+public class SCR_Switcheroo : NetworkBehaviour {
 
     [SerializeField]
     GameObject myGo;
@@ -40,8 +40,8 @@ public class SCR_Switcheroo : MonoBehaviour {
         myGo.transform.position = otherPos;
         Destroy(gameObject);
     }
-
-    public void SetInstancer(GameObject _go)
+    [Command]
+    public void Cmd_SetInstancer(GameObject _go)
     {
         myGo = _go;
     }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SCR_OrcaBill : MonoBehaviour {
+public class SCR_OrcaBill : NetworkBehaviour {
     private NavMeshAgent _navAgnt;
     Transform pingo;
     int myScore = -1;
-    GameObject instancer;
+    [SerializeField]GameObject instancer;
 
     SCR_PlayerTempStats next_dest;
     public int totalchk;
@@ -55,9 +56,10 @@ public class SCR_OrcaBill : MonoBehaviour {
         }
         _navAgnt.destination = next_dest.nextTarget.transform.position;
     }
-
-    public  void SetInstancer(GameObject _instancer)
+    [ClientRpc]
+    public void Rpc_SetInstancer(GameObject _instancer)
     {
+        Debug.Log("");
         instancer = _instancer;
     }
 }

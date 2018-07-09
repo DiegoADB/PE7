@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SCR_PlayerTempStats : MonoBehaviour {
+using UnityEngine.Networking;
+public class SCR_PlayerTempStats : NetworkBehaviour {
 
     public int myPlace = 0;
     public int myScore = 0;
@@ -16,6 +16,7 @@ public class SCR_PlayerTempStats : MonoBehaviour {
 
     private void Start()
     {
+        enabled = base.isLocalPlayer;
         myCheckpoints = GameObject.FindGameObjectWithTag("RankingTriggers").GetComponent<SCR_RankingTriggers>().triggers;
         nextTarget = myCheckpoints[0];
     }

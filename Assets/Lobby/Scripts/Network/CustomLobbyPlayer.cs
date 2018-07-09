@@ -20,7 +20,12 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
         txt_Jugador.text = "Player " + (base.slot + 1).ToString();
         OnClientReady(false);
         if (NetworkServer.connections.Count == 0)
-            GameObject.Find("Start Game").SetActive(false);
+        {
+            GameObject temp = GameObject.Find("Start Game");
+            if(temp!=null)
+                temp.SetActive(false);
+        }
+            
     }
 
     public override void OnClientExitLobby()
