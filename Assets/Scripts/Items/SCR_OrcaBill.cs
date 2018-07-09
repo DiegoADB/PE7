@@ -8,12 +8,12 @@ public class SCR_OrcaBill : NetworkBehaviour {
     private NavMeshAgent _navAgnt;
     Transform pingo;
     int myScore = -1;
-    [SerializeField]GameObject instancer;
+    public GameObject instancer;
 
     SCR_PlayerTempStats next_dest;
     public int totalchk;
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         
         _navAgnt = gameObject.GetComponent<NavMeshAgent>();
@@ -29,6 +29,8 @@ public class SCR_OrcaBill : NetworkBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (!instancer)
+            return;
         if (_navAgnt.enabled == true)
         {
             nav_mech();
@@ -56,10 +58,17 @@ public class SCR_OrcaBill : NetworkBehaviour {
         }
         _navAgnt.destination = next_dest.nextTarget.transform.position;
     }
-    [ClientRpc]
-    public void Rpc_SetInstancer(GameObject _instancer)
+
+    public void SetInstancer()
     {
-        Debug.Log("");
-        instancer = _instancer;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                instancer = players[i];
+                break;
+            }
+        }
     }
 }

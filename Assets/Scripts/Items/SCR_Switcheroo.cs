@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class SCR_Switcheroo : NetworkBehaviour {
 
-    [SerializeField]
-    GameObject myGo;
+    public GameObject myGo;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     public float timeBeforeChange = 1.5f;
 	// Use this for initialization
-	void Start () {
+	public void Start () {
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         for (int i = 0; i < myRanks.playerNum; i++)
@@ -40,9 +39,16 @@ public class SCR_Switcheroo : NetworkBehaviour {
         myGo.transform.position = otherPos;
         Destroy(gameObject);
     }
-    [Command]
-    public void Cmd_SetInstancer(GameObject _go)
+    public void SetInstancer()
     {
-        myGo = _go;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                myGo = players[i];
+                break;
+            }
+        }
     }
 }

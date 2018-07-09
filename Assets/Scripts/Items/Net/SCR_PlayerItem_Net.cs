@@ -9,7 +9,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
 
     SCR_ItemManager_Net itemManager;
     [SerializeField]
-    public SCR_ItemManager_Net.ItemIndex_Net myItem;
+    [SyncVar]public SCR_ItemManager_Net.ItemIndex_Net myItem;
     [HideInInspector]
     public int numItems = 3;
     // Use this for initialization
@@ -25,6 +25,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("ENTER THE DRAGN");
             Cmd_SpawnCurrentItem();
         }
     }
@@ -42,9 +43,8 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
                 break;
             case SCR_ItemManager_Net.ItemIndex_Net.SWITCHEROO:
                 {
-                    Debug.Log(gameObject.name);
                     GameObject item = Instantiate(itemManager.itemsList[(int)myItem]);
-                    item.GetComponent<SCR_Switcheroo>().Cmd_SetInstancer(gameObject);
+                    item.GetComponent<SCR_Switcheroo>().SetInstancer();
                     NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
@@ -52,7 +52,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             case SCR_ItemManager_Net.ItemIndex_Net.REDSHELL:
                 {
                     GameObject item = Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation);
-                    item.GetComponent<SCR_RedShell_Net>().Rpc_SetInstancer(gameObject);
+                    item.GetComponent<SCR_RedShell_Net>().SetInstancer();
                     NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
@@ -60,7 +60,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             case SCR_ItemManager_Net.ItemIndex_Net.ORCA:
                 {
                     GameObject item = Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation);
-                    item.GetComponent<SCR_OrcaBill>().Rpc_SetInstancer(gameObject);
+                    item.GetComponent<SCR_OrcaBill>().SetInstancer();
                     NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }

@@ -6,13 +6,12 @@ using UnityEngine.Networking;
 public class SCR_RedShell_Net : NetworkBehaviour {
 
 
-    [SerializeField]
-    GameObject myGo;
+    public GameObject myGo;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     NavMeshAgent navAgent;
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
@@ -43,10 +42,26 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     }
 
 
-    [ClientRpc]
-    public void Rpc_SetInstancer(GameObject _go)
+    public void SetInstancer()
     {
-        myGo = _go;
+        //List<GameObject> players = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>().players;
+        //for (int i = 0; i < players.Count; i++)
+        //{
+        //    if (players[i].GetComponent<SCR_CharacterMotor_Net>().isLocalPlayer)
+        //    {
+        //        myGo = players[i];
+        //        break;
+        //    }
+        //}
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                myGo = players[i];
+                break;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
