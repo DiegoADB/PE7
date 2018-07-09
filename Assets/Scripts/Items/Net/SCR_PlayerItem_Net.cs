@@ -6,7 +6,7 @@ public class SCR_PlayerItem_Net : MonoBehaviour
 {
 
 
-    SCR_ItemManager itemManager;
+    SCR_ItemManager_Net itemManager;
     [SerializeField]
     public SCR_ItemManager_Net.ItemIndex_Net myItem;
     [HideInInspector]
@@ -14,7 +14,7 @@ public class SCR_PlayerItem_Net : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager>();
+        itemManager = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<SCR_ItemManager_Net>();
         myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
 
     }
