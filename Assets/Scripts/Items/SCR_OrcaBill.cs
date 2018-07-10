@@ -15,7 +15,7 @@ public class SCR_OrcaBill : NetworkBehaviour {
     // Use this for initialization
     public void Start()
     {
-        
+        SetInstancer();
         _navAgnt = gameObject.GetComponent<NavMeshAgent>();
         pingo = instancer.GetComponent<Transform>();
         next_dest = instancer.GetComponent<SCR_PlayerTempStats>();

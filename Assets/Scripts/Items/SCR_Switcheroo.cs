@@ -10,6 +10,7 @@ public class SCR_Switcheroo : NetworkBehaviour {
     public float timeBeforeChange = 1.5f;
 	// Use this for initialization
 	public void Start () {
+        SetInstancer();
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         for (int i = 0; i < myRanks.playerNum; i++)
