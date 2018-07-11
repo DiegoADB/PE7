@@ -8,8 +8,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
 
 
     SCR_ItemManager_Net itemManager;
-    [SerializeField]
-    [SyncVar]public SCR_ItemManager_Net.ItemIndex_Net myItem;
+    public SCR_ItemManager_Net.ItemIndex_Net myItem;
     [HideInInspector]
     public int numItems = 3;
     // Use this for initialization
@@ -25,7 +24,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("ENTER THE DRAGN");
+            Debug.Log("Item Value "+(int)myItem);
             Cmd_SpawnCurrentItem();
         }
     }
@@ -33,6 +32,8 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     [Command]
     public void Cmd_SpawnCurrentItem()
     {
+        Debug.Log("Item Value " + (int)myItem);
+
         switch (myItem)
         {
 
@@ -72,11 +73,11 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             if (myItem == SCR_ItemManager_Net.ItemIndex_Net.NONE)
             {
                 other.GetComponent<SCR_ItemGiver_Net>().GiveItem(gameObject);
-                Debug.Log("Item: " + myItem.ToString());
+                Debug.Log("Item: " + (int)myItem + myItem.ToString());
             }
             else
             {
-                Debug.Log("Im Full");
+                Debug.Log("Im Full "+ (int)myItem + myItem.ToString());
 
             }
 

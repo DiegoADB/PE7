@@ -10,6 +10,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     NavMeshAgent navAgent;
+    float timer = 20f;
     // Use this for initialization
     public void Start()
     {
@@ -65,7 +66,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
