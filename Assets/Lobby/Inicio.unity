@@ -703,9 +703,13 @@ MonoBehaviour:
   m_OfflineScene: Inicio
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1407876790009664, guid: ca285c743fa01bc48be28f15d8084188, type: 2}
-  - {fileID: 1922579925311040, guid: 041ff0043cc90264a937b551a566a218, type: 2}
   - {fileID: 1159330865026886, guid: 99e7df75b32c6464fa51194276a66efe, type: 2}
+  - {fileID: 1922579925311040, guid: 041ff0043cc90264a937b551a566a218, type: 2}
+  - {fileID: 1407876790009664, guid: ca285c743fa01bc48be28f15d8084188, type: 2}
+  - {fileID: 1385597347808846, guid: db63a81e1141bf34dba85195f8d1f1ae, type: 2}
+  - {fileID: 1385597347808846, guid: cd70cc424faa05445a0250805df561c0, type: 2}
+  - {fileID: 1385597347808846, guid: 93759d8ddfb918e41924354e2320a7a9, type: 2}
+  - {fileID: 1385597347808846, guid: 70289cf7331b1a24c82e5769f66af8d5, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -773,7 +777,6 @@ MonoBehaviour:
   m_PlayScene: Level01
   lobbySlots: []
   theNetworkManager: {fileID: 1588026496}
-  pingo: Swift
 --- !u!4 &1588026497
 Transform:
   m_ObjectHideFlags: 0

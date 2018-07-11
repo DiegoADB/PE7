@@ -11,6 +11,8 @@ public class SCR_Switcheroo : NetworkBehaviour {
 	// Use this for initialization
 	public void Start () {
         SetInstancer();
+        transform.parent = myGo.transform;
+        transform.localPosition = new Vector3(0, 0.5f, 0);
         myStats = myGo.GetComponent<SCR_PlayerTempStats>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         for (int i = 0; i < myRanks.playerNum; i++)

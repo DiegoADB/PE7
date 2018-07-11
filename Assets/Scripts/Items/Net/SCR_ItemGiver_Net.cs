@@ -8,6 +8,7 @@ public class SCR_ItemGiver_Net : MonoBehaviour {
     {
         SCR_PlayerItem_Net playerItems = _player.GetComponent<SCR_PlayerItem_Net>();
         playerItems.myItem = (SCR_ItemManager_Net.ItemIndex_Net)Random.Range(0, playerItems.numItems);
+        Debug.Log("Item Giver "+ playerItems.myItem);
         //Destroy(gameObject);
         gameObject.GetComponent<SphereCollider>().enabled = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
