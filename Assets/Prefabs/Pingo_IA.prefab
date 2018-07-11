@@ -2606,7 +2606,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3115,6 +3115,7 @@ MonoBehaviour:
   myCheckpoints: []
   nextTarget: {fileID: 0}
   pastTarget: {fileID: 0}
+  resultText: {fileID: 0}
 --- !u!114 &114884156256100782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3199,6 +3200,7 @@ MonoBehaviour:
   - {fileID: 114986269402174856}
   helloMoto: {fileID: 114607288547450106}
   myStats: {fileID: 114076085194373736}
+  orca: 0
   SFX_clip:
   - {fileID: 8300000, guid: ed6050484d89ed548b0bdd50e7a83b17, type: 3}
   - {fileID: 8300000, guid: 8a5d92eea9776fb48ab60e80255096b2, type: 3}

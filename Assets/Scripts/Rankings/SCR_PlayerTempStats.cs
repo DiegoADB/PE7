@@ -28,6 +28,11 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            TestChangeText();
+        }
+
         if (!SCR_Ranking.b_raceFinished)
             return;
 
@@ -40,6 +45,7 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
         {
             myScore++;
             tempScore++;
+            Debug.Log("Checkpoint Reached!: " + tempScore);
             pastTarget = nextTarget;
             Debug.Log(tempScore);
             if (tempScore > myCheckpoints.Length - 1)
@@ -61,12 +67,17 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
     {
         if(netId.ToString() == SCR_Ranking.winnerNetID)
         {
-            //Change text to winner text
+            resultText.text = "A winner is you";
         }
         else
         {
-            //Change text to loser text
+            resultText.text = "Loser loser chicken... loser";
         }
+    }
+
+    public void TestChangeText()
+    {
+        resultText.text = "OGH";
     }
 
 }
