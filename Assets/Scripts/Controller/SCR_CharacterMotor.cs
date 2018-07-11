@@ -233,7 +233,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             //Asignamos la velocidad a nuestro RB
             Vector3 myVelocity = CrashCheck();
-            if (myRB.velocity.magnitude <= 0.01f)
+            if (myRB.velocity.magnitude <= 0.005f)
                 currentSpeed = 0;
             if(!chocado)
                 myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
