@@ -11,6 +11,10 @@ public class SCR_Ranking : MonoBehaviour {
     public List<SCR_PlayerTempStats> mySortingList;
     public int playerNum;
 
+    public static string winnerNetID;
+    public static int numberOfLaps = 3;
+    public static bool b_raceFinished = false;
+
 
     void Start()
     {
@@ -50,7 +54,7 @@ public class SCR_Ranking : MonoBehaviour {
             
             mySortingList[i].myPlace = i+1;
         }
-
+        CheckEndOfRace();
         yield return waitTime;
 
         StartCoroutine(CheckPositions());
@@ -74,5 +78,14 @@ public class SCR_Ranking : MonoBehaviour {
         return a.myScore.CompareTo(b.myScore);
     }
 
+
+    public void CheckEndOfRace()
+    {
+        if(b_raceFinished)
+        {
+
+        }
+            
+    }
 
 }
