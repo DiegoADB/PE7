@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CustomLobbyManager : NetworkLobbyManager
 {
     [SerializeField] NetworkManager theNetworkManager;
+    public static string pingo;
 	void Start ()
     {
         CStart();
@@ -132,6 +133,9 @@ public class CustomLobbyManager : NetworkLobbyManager
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
     {
         print("OnLobbyServerCreateGamePlayer");
+        if (pingo == "")
+            pingo = "Swfit";
+        gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Pingo_Net_" + pingo);
         GameObject obj = Instantiate(gamePlayerPrefab) as GameObject;
         return obj;
     }

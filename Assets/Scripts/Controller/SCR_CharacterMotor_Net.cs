@@ -82,7 +82,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         if (collision.transform.CompareTag("Player") && isAlive && !orca)
         {
-            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
+            myStats.playerHP -= 25 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
             helloMoto.chocado = true;
 
             SCR_CharacterMotor temp = collision.transform.GetComponent<SCR_CharacterMotor>();

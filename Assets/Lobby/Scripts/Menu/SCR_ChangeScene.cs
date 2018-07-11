@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SCR_ChangeScene : MonoBehaviour
@@ -28,5 +29,12 @@ public class SCR_ChangeScene : MonoBehaviour
         }
 
         SceneManager.LoadScene(_sceneIndex);
+    }
+    public void ChangeModel()
+    {
+        CustomLobbyManager.pingo = FindObjectOfType<InputField>().text;
+        if (CustomLobbyManager.pingo == "")
+            CustomLobbyManager.pingo = "Swfit";
+        Debug.Log(CustomLobbyManager.pingo);
     }
 }

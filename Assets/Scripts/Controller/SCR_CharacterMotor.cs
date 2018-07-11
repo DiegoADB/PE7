@@ -333,7 +333,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         else
             SetNewCameraPos(1);
 
-        if (currentSpeed > 15)
+        if (currentSpeed > 5)
             speed = 5;
         else
             speed = 1.5f;
@@ -394,7 +394,7 @@ public class SCR_CharacterMotor : MonoBehaviour
                 maxForwardSpeed = maxDefaultSpeed;
             boostTimer = 0;
         }
-        if (maxForwardSpeed > maxDefaultSpeed)
+        if (currentSpeed > maxDefaultSpeed)
             yaw.SetActive(true);
         else
             yaw.SetActive(false);
