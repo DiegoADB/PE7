@@ -9,6 +9,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public Behaviour[] componentsToDisable;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats myStats;
+    public bool orca;
 
     AudioSource SFX_player;
     public AudioClip[] SFX_clip;
@@ -63,7 +64,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     }
     private void Update()
     {
-        if(isAlive)
+        if(isAlive && !orca)
             helloMoto.MyUpdate();
         if (Input.GetKeyDown(KeyCode.Alpha0))
             SCR_Disconnect.DisconnectFromMatch();
@@ -79,7 +80,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ServerCallback]
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player") && isAlive)
+        if (collision.transform.CompareTag("Player") && isAlive && !orca)
         {
             myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
             helloMoto.chocado = true;
@@ -113,7 +114,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ServerCallback]
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.transform.CompareTag("DeathCheck") && isAlive)
+        if (collision.transform.CompareTag("DeathCheck") && isAlive && !orca)
         {          
           Rpc_DeathPlayer();           
         }

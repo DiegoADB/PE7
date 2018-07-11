@@ -101,6 +101,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             currentSpeed = 0;
             myRB.velocity = Vector3.zero;
+            Debug.Log("Collide");
             collidedWithObstacle = true;
         }
     }
@@ -134,12 +135,17 @@ public class SCR_CharacterMotor : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(origin, direction, out hit, distanceToGround))
         {
-            timerPosition += Time.deltaTime;
-            if (timerPosition >= 2.0f)
+            if (hit.transform.CompareTag("Ground"))
             {
-                savedPosition = hit.point;
-                timerPosition = 0;
+                timerPosition += Time.deltaTime;
+                if (timerPosition >= 2.0f)
+                {
+                    savedPosition = hit.point;
+                    timerPosition = 0;
+                }
             }
+            else
+                timerPosition = 0;
         }
         else
             timerPosition = 0;

@@ -21,7 +21,7 @@ public class SCR_OrcaBill : NetworkBehaviour {
         next_dest = instancer.GetComponent<SCR_PlayerTempStats>();
         pingo.SetParent(transform);
         instancer.transform.GetChild(0).gameObject.SetActive(false);
-        instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
+        instancer.GetComponent<SCR_CharacterMotor_Net>().orca = true;
         instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX  | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
     }
@@ -46,6 +46,7 @@ public class SCR_OrcaBill : NetworkBehaviour {
 
             _navAgnt.isStopped = true;
             pingo.parent = null;
+            instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
             Destroy(this.gameObject);   
         }
     }

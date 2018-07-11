@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -109,7 +108,18 @@ public class CustomLobbyManager : NetworkLobbyManager
 
     public void IniciarPartida()
     {
-		base.ServerChangeScene(playScene);
+        bool start = true;
+        NetworkLobbyPlayer[] players = FindObjectsOfType<NetworkLobbyPlayer>();
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (!players[i].readyToBegin)
+            {
+                start = false;
+                break;
+            }
+        }
+        if(start)
+            base.ServerChangeScene(playScene);
     }
 
 
