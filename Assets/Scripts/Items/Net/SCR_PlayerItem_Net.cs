@@ -8,6 +8,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
 
 
     SCR_ItemManager_Net itemManager;
+    [SyncVar]
     public SCR_ItemManager_Net.ItemIndex_Net myItem;
     [HideInInspector]
     public int numItems = 3;
@@ -32,7 +33,6 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     [Command]
     public void Cmd_SpawnCurrentItem()
     {
-        Debug.Log("Item Value " + (int)myItem);
 
         switch (myItem)
         {
@@ -64,15 +64,17 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
                 }
                 break;
         }
+        Debug.Log("Item Value " + (int)myItem);
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("ItemBirth"))
         {
-            Debug.Log("Hewwo");
             if (myItem == SCR_ItemManager_Net.ItemIndex_Net.NONE)
             {
-                other.GetComponent<SCR_ItemGiver_Net>().GiveItem(gameObject);
+                //other.GetComponent<SCR_ItemGiver_Net>().Rpc_GiveItem(gameObject);
+                Cmd_GiveItem();
                 Debug.Log("Item: " + (int)myItem + myItem.ToString());
             }
             else
@@ -82,5 +84,12 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             }
 
         }
+    }
+    [Command]
+    void Cmd_GiveItem()
+    {
+            myItem = (SCR_ItemManager_Net.ItemIndex_Net)Random.Range(0, numItems);
+            Debug.Log("Item Giver " + myItem);
+            //Destroy(gameObject);
     }
 }

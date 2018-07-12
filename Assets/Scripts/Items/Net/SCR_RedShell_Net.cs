@@ -5,8 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Networking;
 public class SCR_RedShell_Net : NetworkBehaviour {
 
-
-    public GameObject myGo;
+    public GameObject instancer;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     NavMeshAgent navAgent;
@@ -15,10 +14,10 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     public void Start()
     {
         SetInstancer();
-        myStats = myGo.GetComponent<SCR_PlayerTempStats>();
+        myStats = instancer.GetComponent<SCR_PlayerTempStats>();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
-        navAgent.Warp(new Vector3(myGo.transform.position.x, myGo.transform.position.y, myGo.transform.position.z) + gameObject.transform.forward);
+        navAgent.Warp(new Vector3(instancer.transform.position.x, instancer.transform.position.y, instancer.transform.position.z) + gameObject.transform.forward);
         for (int i = 0; i < myRanks.playerNum; i++)
         {
             if (myRanks.mySortingList[i].myPlace == myStats.myPlace - 1)
@@ -28,9 +27,9 @@ public class SCR_RedShell_Net : NetworkBehaviour {
             }
             else if (myStats.myPlace == 1)
             {
-                //StartCoroutine(IERedShell(myRanks.mySortingList[7].gameObject));
+                StartCoroutine(IERedShell(myRanks.mySortingList[myRanks.mySortingList.Count].gameObject));
 
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
 
@@ -46,6 +45,18 @@ public class SCR_RedShell_Net : NetworkBehaviour {
 
     public void SetInstancer()
     {
+        if (base.isServer)
+        {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+                {
+                    instancer = players[i];
+                    break;
+                }
+            }
+        }
         //List<GameObject> players = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>().players;
         //for (int i = 0; i < players.Count; i++)
         //{
@@ -55,28 +66,21 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         //        break;
         //    }
         //}
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < players.Length; i++)
-        {
-            if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
-            {
-                myGo = players[i];
-                break;
-            }
-        }
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine(IEDestroy());
+            StartCoroutine(IEAttack(collision.gameObject));
         }
     }
 
-    IEnumerator IEDestroy()
+    IEnumerator IEAttack(GameObject myGo)
     {
         yield return new WaitForSeconds(0.1f);
-        Destroy(gameObject);
+        myGo.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        //Destroy(gameObject);
     }
 }

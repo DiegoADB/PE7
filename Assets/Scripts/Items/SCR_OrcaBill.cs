@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class SCR_OrcaBill : NetworkBehaviour {
+
     private NavMeshAgent _navAgnt;
     Transform pingo;
     int myScore = -1;
@@ -62,13 +63,16 @@ public class SCR_OrcaBill : NetworkBehaviour {
 
     public void SetInstancer()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < players.Length; i++)
+        if (base.isServer)
         {
-            if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < players.Length; i++)
             {
-                instancer = players[i];
-                break;
+                if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+                {
+                    instancer = players[i];
+                    break;
+                }
             }
         }
     }

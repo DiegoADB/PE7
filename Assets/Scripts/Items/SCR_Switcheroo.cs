@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class SCR_Switcheroo : NetworkBehaviour {
 
-    public GameObject myGo;
+    public GameObject instancer;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     public float timeBeforeChange = 1.5f;
 	// Use this for initialization
 	public void Start () {
         SetInstancer();
-        transform.parent = myGo.transform;
+        transform.parent = instancer.transform;
         transform.localPosition = new Vector3(0, 0.5f, 0);
-        myStats = myGo.GetComponent<SCR_PlayerTempStats>();
+        myStats = instancer.GetComponent<SCR_PlayerTempStats>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         for (int i = 0; i < myRanks.playerNum; i++)
         {
@@ -35,22 +35,25 @@ public class SCR_Switcheroo : NetworkBehaviour {
         Vector3 otherPos = _target.transform.position;
         Quaternion otherRot = _target.transform.rotation;
         yield return new WaitForSeconds(timeBeforeChange);
-        _target.transform.position = myGo.transform.position;
+        _target.transform.position = instancer.transform.position;
         //Could be removed
-        _target.transform.rotation = myGo.transform.rotation;
-        myGo.transform.rotation = otherRot;
-        myGo.transform.position = otherPos;
+        _target.transform.rotation = instancer.transform.rotation;
+        instancer.transform.rotation = otherRot;
+        instancer.transform.position = otherPos;
         Destroy(gameObject);
     }
     public void SetInstancer()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < players.Length; i++)
+        if (base.isServer)
         {
-            if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < players.Length; i++)
             {
-                myGo = players[i];
-                break;
+                if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+                {
+                    instancer = players[i];
+                    break;
+                }
             }
         }
     }

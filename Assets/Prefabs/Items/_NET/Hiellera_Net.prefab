@@ -70,6 +70,8 @@ GameObject:
   - component: {fileID: 4611601843613898}
   - component: {fileID: 135199823110167340}
   - component: {fileID: 114932854034812660}
+  - component: {fileID: 114268148362928120}
+  - component: {fileID: 114731035892416034}
   m_Layer: 0
   m_Name: Hiellera_Net
   m_TagString: ItemBirth
@@ -214,6 +216,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1501579995907828}
   m_Mesh: {fileID: 4300000, guid: b7fff0b202698f440830c0286e4d05b9, type: 3}
+--- !u!114 &114268148362928120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1770414920135624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 58
+    i1: 142
+    i2: 252
+    i3: 157
+    i4: 166
+    i5: 251
+    i6: 3
+    i7: 148
+    i8: 232
+    i9: 225
+    i10: 236
+    i11: 16
+    i12: 118
+    i13: 121
+    i14: 207
+    i15: 128
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114731035892416034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1770414920135624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114932854034812660
 MonoBehaviour:
   m_ObjectHideFlags: 1
