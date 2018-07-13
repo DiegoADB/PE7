@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 137877990597024342}
   - component: {fileID: 183884188902333112}
   - component: {fileID: 114302733626424812}
+  - component: {fileID: 64216931521782310}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -49,6 +50,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979401547540322}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &64216931521782310
+MeshCollider:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979401547540322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114302733626424812
 MonoBehaviour:
@@ -78,7 +93,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 02f7b985d8d97ad41923b6509e640a7b, type: 2}
   m_StaticBatchInfo:
