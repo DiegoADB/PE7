@@ -153,6 +153,12 @@ public class CustomLobbyManager : NetworkLobbyManager
         return base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
     }
 
+    public override void OnDropConnection(bool success, string extendedInfo)
+    {
+        SceneManager.LoadScene(0);
+        base.OnDropConnection(success, extendedInfo);
+    }
+
     /*public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
         print("OnServerAddPlayer--------------------------------2");
