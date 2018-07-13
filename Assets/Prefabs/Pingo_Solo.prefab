@@ -248,7 +248,8 @@ GameObject:
   - component: {fileID: 114841142303287718}
   - component: {fileID: 114653771368208196}
   - component: {fileID: 114540548145156544}
-  - component: {fileID: 114127840221469470}
+  - component: {fileID: 114797043720972522}
+  - component: {fileID: 114036881218442034}
   m_Layer: 0
   m_Name: Pingo_Solo
   m_TagString: Player
@@ -1047,7 +1048,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -61.24724, y: 22.51, z: 150.02138}
+  m_LocalPosition: {x: 112.03879, y: -13.492836, z: 36.526165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
@@ -2050,6 +2051,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114036881218442034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc851818f79209478cad918de72a644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHPBar: {fileID: 114216790089045134, guid: 5d5fb981087879f41bf4a8510cefd12a,
+    type: 2}
+  strength: 1
+  speed: 1
+  handling: 1
+  playerHP: 100
+  startingHP: 100
+  startingStr: 1
+  startingSpd: 1
+  startingHandling: 1
 --- !u!114 &114042114274079350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2110,26 +2132,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114127840221469470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1385597347808846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ad1cd88a37f3744a074f79306dd3a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHPBar: {fileID: 114216790089045134}
-  strength: 1
-  speed: 1
-  handling: 1
-  playerHP: 100
-  startingHP: 100
-  startingStr: 1
-  startingSpd: 1
-  startingHandling: 1
 --- !u!114 &114162978783929084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2308,8 +2310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edd9c0ba7ece8840b93cc0bc0f69545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xdsdas: {fileID: 114841142303287718}
   helloMoto: {fileID: 114607288547450106}
-  myStats: {fileID: 114127840221469470}
+  myStats: {fileID: 0}
   myExplosion: {fileID: 1036962378537886, guid: 0b94edaacd8348146b85b865686a0bbe,
     type: 2}
   CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
@@ -2345,6 +2348,8 @@ MonoBehaviour:
   mayhemState: 0
   laFuerza: {x: 0, y: 0, z: 0}
   laDireccion: {x: 0, y: 0, z: 0}
+  sparks: {fileID: 1128427247322450, guid: 56c6c0e69da280845a4562d5c663a3c5, type: 2}
+  yaw: {fileID: 1578772903820436, guid: c165b0cd77dd9cb4fb84dae4cb1cf31a, type: 2}
 --- !u!114 &114653771368208196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2457,6 +2462,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Vueltas
+--- !u!114 &114797043720972522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 85
+    i1: 141
+    i2: 41
+    i3: 158
+    i4: 25
+    i5: 158
+    i6: 42
+    i7: 228
+    i8: 232
+    i9: 225
+    i10: 136
+    i11: 149
+    i12: 245
+    i13: 2
+    i14: 181
+    i15: 45
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114841142303287718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2474,6 +2511,7 @@ MonoBehaviour:
   myCheckpoints: []
   nextTarget: {fileID: 0}
   pastTarget: {fileID: 0}
+  resultText: {fileID: 0}
 --- !u!114 &114884156256100782
 MonoBehaviour:
   m_ObjectHideFlags: 1

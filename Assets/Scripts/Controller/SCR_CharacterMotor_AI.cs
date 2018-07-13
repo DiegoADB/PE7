@@ -5,7 +5,6 @@ using System.Collections;
 
 public class SCR_CharacterMotor_AI : MonoBehaviour
 {
-    public Behaviour[] componentsToDisable;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats myStats;
     public bool orca;

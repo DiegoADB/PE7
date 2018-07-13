@@ -328,7 +328,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 30320708}
   m_LocalRotation: {x: -0, y: -0.3214923, z: -0, w: 0.94691217}
-  m_LocalPosition: {x: 107.18, y: -9.59, z: 41.510002}
+  m_LocalPosition: {x: 107.35, y: -9.59, z: 45.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4157,7 +4157,7 @@ MonoBehaviour:
   - {fileID: 1519670458}
   - {fileID: 677251330}
   cage: {fileID: 1952352912}
-  myPlayer: {fileID: 1385597347808846, guid: 5d5fb981087879f41bf4a8510cefd12a, type: 2}
+  myPlayer: {fileID: 1385597347808846, guid: 558d299e199e2ae4e8e18895f502b52d, type: 2}
   theEnemy: {fileID: 1385597347808846, guid: d68761814a072fa4d8518d07c4433325, type: 2}
 --- !u!4 &719654889
 Transform:
@@ -7416,7 +7416,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1335182881}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1335182883
 Behaviour:
   m_ObjectHideFlags: 0
@@ -7448,7 +7448,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294966783
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

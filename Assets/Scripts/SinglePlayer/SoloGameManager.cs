@@ -12,18 +12,19 @@ public class SoloGameManager : MonoBehaviour {
     GameObject thePlayer;
     private void Start()
     {
-        Invoke("Despabila", cage.waitTime);
+        
+        //Invoke("Despabila", cage.waitTime);
         for(int i = 0; i< StartPos.Length;i++)
         {
             if (i == 0)
             {
                 thePlayer = Instantiate(myPlayer, StartPos[i].transform.position, Quaternion.identity);
-                thePlayer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
-                thePlayer.SetActive(true);
+                //thePlayer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
+                //thePlayer.SetActive(true);
             }
             else
             {
-                Instantiate(theEnemy, StartPos[i].transform.position, Quaternion.identity).SetActive(true);
+                Instantiate(theEnemy, StartPos[i].transform.position, Quaternion.identity);
             }
         }
     }

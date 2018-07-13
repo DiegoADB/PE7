@@ -73,11 +73,21 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
         {
             resultText.text = "Loser loser chicken... loser";
         }
+        StartCoroutine(KickPlayers());
     }
 
     public void TestChangeText()
     {
         resultText.text = "OGH";
+    }
+
+    IEnumerator KickPlayers()
+    {
+        yield return new WaitForSeconds(7.0f);
+        //NetworkManager.singleton.StopHost();
+        SCR_Disconnect.DisconnectFromMatch();
+
+        //Return them to main menu
     }
 
 }

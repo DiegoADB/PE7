@@ -4,6 +4,7 @@ using System.Collections;
 public class SCR_CharacterMotor_Solo : MonoBehaviour
 {
     //public Behaviour[] componentsToDisable;
+    public SCR_PlayerTempStats xdsdas;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats_Solo myStats;
     //public Transform RespawnPoint;
@@ -14,15 +15,14 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     
     private void Start()
     {
-
+        xdsdas.enabled = true;
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
         temp.playerNum++;
         temp.AddPlayerList();
         helloMoto.MyStart();
-
-        GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
-        helloMoto.mainCamera = Instantiate(CameraPrefab, this.transform.position, Quaternion.identity).transform;
+        
+        helloMoto.mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         Debug.Log(helloMoto.mainCamera.name);
     }
     private void Update()

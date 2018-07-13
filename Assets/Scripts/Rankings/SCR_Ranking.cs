@@ -54,7 +54,6 @@ public class SCR_Ranking : MonoBehaviour {
             
             mySortingList[i].myPlace = i+1;
         }
-        CheckEndOfRace();
         yield return waitTime;
 
         StartCoroutine(CheckPositions());
@@ -76,16 +75,6 @@ public class SCR_Ranking : MonoBehaviour {
     {
 
         return a.myScore.CompareTo(b.myScore);
-    }
-
-
-    public void CheckEndOfRace()
-    {
-        if(b_raceFinished)
-        {
-
-        }
-            
     }
 
 }
