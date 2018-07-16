@@ -13,7 +13,6 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     // Use this for initialization
     public void Start()
     {
-        SetInstancer();
         myStats = instancer.GetComponent<SCR_PlayerTempStats>();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
