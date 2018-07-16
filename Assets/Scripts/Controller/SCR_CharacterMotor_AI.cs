@@ -37,6 +37,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     {
         helloMoto.playerPrefix = "P2_";
         helloMoto.MyStart();
+        helloMoto.isIA = true;
     }
     private void Update()
     {
