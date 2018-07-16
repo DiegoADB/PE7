@@ -67,13 +67,16 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
         Debug.Log("Item Value " + (int)myItem);
 
     }
+
+    [ServerCallback]
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("ItemBirth"))
         {
             if (myItem == SCR_ItemManager_Net.ItemIndex_Net.NONE)
             {
-                //other.GetComponent<SCR_ItemGiver_Net>().Rpc_GiveItem(gameObject);
+                other.GetComponent<SCR_ItemGiver_Net>().Rpc_Deactivate();
+
                 Cmd_GiveItem();
                 Debug.Log("Item: " + (int)myItem + myItem.ToString());
             }

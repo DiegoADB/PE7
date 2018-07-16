@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class SCR_ItemGiver_Net : NetworkBehaviour {
 
-    [Command]
-    public void Cmd_GiveItem(GameObject _player)
+    [ClientRpc]
+    public void Rpc_Deactivate()
     {
         
         gameObject.GetComponent<SphereCollider>().enabled = false;
