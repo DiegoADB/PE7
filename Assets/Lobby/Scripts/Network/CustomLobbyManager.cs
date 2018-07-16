@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 //https://docs.unity3d.com/Manual/UNetLobby.html
 public class CustomLobbyManager : NetworkLobbyManager
 {
+    private Dictionary<int, int> thePlayersChoiceAwards;
     [SerializeField] NetworkManager theNetworkManager;
-    public static string pingo;
 	void Start ()
     {
+        thePlayersChoiceAwards = new Dictionary<int, int>();
         CStart();
         CListaSalas();
 	}
@@ -127,17 +128,26 @@ public class CustomLobbyManager : NetworkLobbyManager
     //Se llama cuando se genera el lobby player (SOLO EN SERVIDOR)
     public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
     {
+        if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
+            thePlayersChoiceAwards.Add(conn.connectionId, 0);
+
         return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
+    }
+
+    public void SetPlayerTypeLobby(NetworkConnection conn, int _type)
+    {
+        if (thePlayersChoiceAwards.ContainsKey(conn.connectionId))
+            thePlayersChoiceAwards[conn.connectionId] = _type;
     }
 
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
     {
-        print("OnLobbyServerCreateGamePlayer");
-        if (pingo == "")
-            pingo = "Swfit";
-        gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Pingo_Net_" + pingo);
-        GameObject obj = Instantiate(gamePlayerPrefab) as GameObject;
-        return obj;
+        GameObject player = Resources.Load<GameObject>("Pingos/"+thePlayersChoiceAwards[conn.connectionId]);
+        GameObject temp = (GameObject)GameObject.Instantiate(player,
+            startPositions[conn.connectionId].position,
+            Quaternion.identity);
+
+        return temp;
     }
 
     public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
@@ -159,13 +169,11 @@ public class CustomLobbyManager : NetworkLobbyManager
         base.OnDropConnection(success, extendedInfo);
     }
 
-    /*public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
-    {
-        print("OnServerAddPlayer--------------------------------2");
-        print("playerPrefab :" + playerPrefab);
-        var player = (GameObject)GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-        NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
-    }*/
+    //public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+    //{
+    //    //var player = (GameObject)GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+    //    NetworkServer.AddPlayerForConnection(conn, gamePlayerPrefab, playerControllerId);
+    //}
 
 
 

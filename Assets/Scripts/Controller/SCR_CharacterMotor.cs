@@ -304,7 +304,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         verticalInput = Mathf.Clamp(verticalInput, 0.5f, 1.0f);
         if (!drifting)
         {
-            Debug.Log(myStats);
+            //Debug.Log(myStats);
             horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
         }
   

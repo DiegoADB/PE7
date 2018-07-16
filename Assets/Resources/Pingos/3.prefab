@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 82248248573793604}
   - component: {fileID: 81829634865830412}
   m_Layer: 0
-  m_Name: Pingo_Net_Swift
+  m_Name: 3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1571,7 +1571,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385597347808846}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -81.38283, y: 214.18567, z: 341.86725}
+  m_LocalPosition: {x: 12.818112, y: 8.499713, z: 16.780228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224373033851026}
@@ -3301,7 +3301,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 501c9bc5bb468ec4d9e28912cbb89a81, type: 3}
+  - {fileID: 2100000, guid: b1e08647522a9e948832b3945695ebf2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
