@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4224373033851026}
   - component: {fileID: 95920935289472084}
   m_Layer: 0
-  m_Name: RobertPaulson
+  m_Name: Lucky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2993,6 +2993,7 @@ MonoBehaviour:
   myRB: {fileID: 0}
   isGrounded: 0
   savedPosition: {x: 0, y: 0, z: 0}
+  isIA: 0
   chocado: 0
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
