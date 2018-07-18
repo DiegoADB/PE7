@@ -33,8 +33,10 @@ public class SCR_CharacterMotor : MonoBehaviour
     public bool isIA = false;
 
     //Input del jugador
-    private float verticalInput;
-    private float horizontalInput;
+    [HideInInspector]
+    public float verticalInput;
+    [HideInInspector]
+    public float horizontalInput;
     private bool aButton;
     private bool bButton;
     private bool drifting;
@@ -125,7 +127,10 @@ public class SCR_CharacterMotor : MonoBehaviour
     public void MyFixedUpdate()
     {
         CharacterMovement(Time.fixedDeltaTime); //Motor del jugador
-        CameraPlacement();  //Comportamiento de la camara
+        if(!isIA)
+        {
+            CameraPlacement();  //Comportamiento de la camara
+        }
     }
 
     void SaveLastPosition()

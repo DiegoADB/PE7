@@ -12,6 +12,7 @@ TagManager:
   - DeathCheck
   - Lyf
   - RankingTriggers
+  - littleranks
   layers:
   - Default
   - TransparentFX
