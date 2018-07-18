@@ -20,9 +20,9 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
 
     private void Start()
     {
-        numberOfCheckpoints = myCheckpoints.Length;
         enabled = base.isLocalPlayer;
         myCheckpoints = GameObject.FindGameObjectWithTag("RankingTriggers").GetComponent<SCR_RankingTriggers>().triggers;
+        numberOfCheckpoints = myCheckpoints.Length;
         nextTarget = myCheckpoints[0];
     }
 
