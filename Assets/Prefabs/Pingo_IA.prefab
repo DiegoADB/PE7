@@ -2912,6 +2912,9 @@ MonoBehaviour:
   myRB: {fileID: 0}
   isGrounded: 0
   savedPosition: {x: 0, y: 0, z: 0}
+  isIA: 0
+  verticalInput: 0
+  horizontalInput: 0
   chocado: 0
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
@@ -3086,15 +3089,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03341d6e3dd162a4c81b8a9e3af25ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentsToDisable: []
-  helloMoto: {fileID: 0}
-  myStats: {fileID: 0}
+  helloMoto: {fileID: 114607288547450106}
+  myStats: {fileID: 114076085194373736}
   orca: 0
-  rankings: []
+  rankings:
+  - {fileID: 1352301263570366, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1026259388016906, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1897873196915216, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1100804008035278, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1099492888357876, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1888487961547468, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1116595165408416, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1068775996503204, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1082055889774384, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1674697156203712, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1544684969299228, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1949408985129772, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1914760000844858, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1932583890404062, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1005389771018938, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1059027295168986, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1024141797109590, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1536800351511470, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1890819049455836, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1298632213398288, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1595346959591224, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
   SFX_clip: []
-  myExplosion: {fileID: 0}
-  burnOutState: {fileID: 0}
-  CameraPrefab: {fileID: 0}
+  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+    type: 2}
+  burnOutState: {fileID: 1332401479341868}
 --- !u!114 &114841142303287718
 MonoBehaviour:
   m_ObjectHideFlags: 1

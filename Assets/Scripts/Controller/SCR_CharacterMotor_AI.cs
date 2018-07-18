@@ -10,6 +10,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     public bool orca;
     public GameObject[] rankings;
 
+    int count = 0;
     AudioSource SFX_player;
     public AudioClip[] SFX_clip;
     /*
@@ -27,9 +28,6 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     [Header("Particles")]
     public GameObject myExplosion;
     public GameObject burnOutState;
-
-    [Header("Camera")]
-    public GameObject CameraPrefab;
     bool isAlive = true;
     
     
@@ -51,6 +49,11 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     private void FixedUpdate()
     {
         //if(isAlive)
+        //dot1 = Vector3.Dot(this.transform.position, rankings[count].transform.position);
+        //dot2 = Vector3.Dot(this.transform.right, rankings[count].transform.position);
+        this.transform.LookAt(rankings[count].transform.position);
+        helloMoto.horizontalInput = 0.0f;
+        helloMoto.verticalInput = 1.0f;
             helloMoto.MyFixedUpdate();
     }
 
@@ -86,13 +89,19 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
 
             
         }
+        
     }
- 
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.CompareTag("DeathCheck") && isAlive && !orca)
-        {          
-          Rpc_DeathPlayer();           
+        {
+            Rpc_DeathPlayer();
+        }
+
+        if (collision.transform.CompareTag("littleranks") && isAlive)
+        {
+            count++;
         }
     }
 
