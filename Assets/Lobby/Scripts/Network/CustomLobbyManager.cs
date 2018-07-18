@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CustomLobbyManager : NetworkLobbyManager
 {
     private Dictionary<int, int> thePlayersChoiceAwards;
+    NetworkConnection connection;
     [SerializeField] NetworkManager theNetworkManager;
 	void Start ()
     {
@@ -14,7 +15,20 @@ public class CustomLobbyManager : NetworkLobbyManager
         CStart();
         CListaSalas();
 	}
-	
+    /// The hardest of codes
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetPlayerTypeLobby(connection, 0);
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SetPlayerTypeLobby(connection, 1);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            SetPlayerTypeLobby(connection, 2);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            SetPlayerTypeLobby(connection, 3);
+    }
+    /// The hardest of codes
+    
     void CStart()
     {
         print("Se inicio");
@@ -131,6 +145,7 @@ public class CustomLobbyManager : NetworkLobbyManager
         if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
             thePlayersChoiceAwards.Add(conn.connectionId, 0);
 
+        connection = conn;
         return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
     }
 
