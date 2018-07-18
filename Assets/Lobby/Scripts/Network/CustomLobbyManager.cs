@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class CustomLobbyManager : NetworkLobbyManager
 {
     private Dictionary<int, int> thePlayersChoiceAwards;
-    NetworkConnection connection;
     [SerializeField] NetworkManager theNetworkManager;
 	void Start ()
     {
@@ -15,19 +14,6 @@ public class CustomLobbyManager : NetworkLobbyManager
         CStart();
         CListaSalas();
 	}
-    /// The hardest of codes
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            SetPlayerTypeLobby(connection, 0);
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            SetPlayerTypeLobby(connection, 1);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            SetPlayerTypeLobby(connection, 2);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            SetPlayerTypeLobby(connection, 3);
-    }
-    /// The hardest of codes
     
     void CStart()
     {
@@ -144,15 +130,27 @@ public class CustomLobbyManager : NetworkLobbyManager
     {
         if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
             thePlayersChoiceAwards.Add(conn.connectionId, 0);
+        //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        //Debug.Log("AYYYYYYYYYY: " + players.Length);
+        //int index = 0;
+        //for (int i = 0; i < players.Length; i++)
+        //{
+        //    if (players[i].GetComponent<PlayerChoice>().connectionToServer.connectionId == conn.connectionId)
+        //    {
+        //        Debug.Log("Ayyyyyyyyy");
+        //        index = players[i].GetComponent<PlayerChoice>().choice;
+        //        SetPlayerTypeLobby(conn.connectionId, index);
+        //        break;
+        //    }
+        //}
 
-        connection = conn;
         return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
     }
 
-    public void SetPlayerTypeLobby(NetworkConnection conn, int _type)
+    public void SetPlayerTypeLobby(int conn, int _type)
     {
-        if (thePlayersChoiceAwards.ContainsKey(conn.connectionId))
-            thePlayersChoiceAwards[conn.connectionId] = _type;
+        if (thePlayersChoiceAwards.ContainsKey(conn))
+            thePlayersChoiceAwards[conn] = _type;
     }
 
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
