@@ -9,6 +9,7 @@ public class SoloGameManager : MonoBehaviour {
     public GameObject myPlayer;
     public GameObject theEnemy;
 
+
     GameObject thePlayer;
     private void Start()
     {
@@ -24,7 +25,7 @@ public class SoloGameManager : MonoBehaviour {
             }
             else
             {
-                Instantiate(theEnemy, StartPos[i].transform.position, Quaternion.identity);
+                Instantiate(theEnemy, StartPos[i].transform.position, Quaternion.identity).transform.name = "Pinguino_IA_" + i ;
             }
         }
     }

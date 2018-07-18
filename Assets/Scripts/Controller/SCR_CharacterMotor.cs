@@ -37,7 +37,8 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float verticalInput;
     [HideInInspector]
     public float horizontalInput;
-    private bool aButton;
+    [HideInInspector]
+    public bool aButton;
     private bool bButton;
     private bool drifting;
 

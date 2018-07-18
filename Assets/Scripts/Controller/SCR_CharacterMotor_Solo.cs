@@ -41,7 +41,7 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") && isAlive)
         {
-            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
+            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.strength;
             helloMoto.chocado = true;
 
             SCR_CharacterMotor temp = collision.transform.GetComponent<SCR_CharacterMotor>();
@@ -50,12 +50,12 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
                 helloMoto.laFuerza = collision.impulse;
                 Debug.Log(helloMoto.laFuerza + " fuerza");
                 helloMoto.laDireccion = collision.contacts[0].normal;
-                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength);
+                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.strength);
                 helloMoto.currentSpeed = 0.0f;
                 temp.currentSpeed = 0.0f;
             }
 
-            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.handling);
+            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.handling);
             if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();
