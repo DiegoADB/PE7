@@ -73,9 +73,27 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            Cmd_ChangePlayer();
         //if(isAlive)
             helloMoto.MyFixedUpdate();
     }
+
+    [Command]
+    void Cmd_ChangePlayer()
+    {
+        Rpc_SpawnPlayer();
+    }
+    [ClientRpc]
+    void Rpc_SpawnPlayer()
+    {
+        var conn = GetComponent<NetworkIdentity>().connectionToClient;
+        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/3"), transform.position, transform.rotation);
+        Destroy(GetComponent<NetworkIdentity>().gameObject);
+        NetworkServer.ReplacePlayerForConnection(conn, newPlayer, 0);
+    }
+
+
 
     [ServerCallback]
     private void OnCollisionEnter(Collision collision)
