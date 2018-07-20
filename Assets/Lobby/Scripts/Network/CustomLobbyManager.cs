@@ -129,7 +129,7 @@ public class CustomLobbyManager : NetworkLobbyManager
     public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
     {
         if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
-            thePlayersChoiceAwards.Add(conn.connectionId, 0);
+            thePlayersChoiceAwards.Add(conn.connectionId, 2);
         //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         //Debug.Log("AYYYYYYYYYY: " + players.Length);
         //int index = 0;
