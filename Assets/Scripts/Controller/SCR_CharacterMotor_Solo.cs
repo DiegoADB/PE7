@@ -4,6 +4,7 @@ using System.Collections;
 public class SCR_CharacterMotor_Solo : MonoBehaviour
 {
     //public Behaviour[] componentsToDisable;
+    public SCR_PlayerTempStats xdsdas;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats_Solo myStats;
     //public Transform RespawnPoint;
@@ -14,15 +15,14 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     
     private void Start()
     {
-
+        xdsdas.enabled = true;
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
         temp.playerNum++;
         temp.AddPlayerList();
         helloMoto.MyStart();
-
-        GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
-        helloMoto.mainCamera = Instantiate(CameraPrefab, this.transform.position, Quaternion.identity).transform;
+        
+        helloMoto.mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         Debug.Log(helloMoto.mainCamera.name);
     }
     private void Update()
@@ -41,7 +41,7 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") && isAlive)
         {
-            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
+            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.strength;
             helloMoto.chocado = true;
 
             SCR_CharacterMotor temp = collision.transform.GetComponent<SCR_CharacterMotor>();
@@ -50,12 +50,12 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
                 helloMoto.laFuerza = collision.impulse;
                 Debug.Log(helloMoto.laFuerza + " fuerza");
                 helloMoto.laDireccion = collision.contacts[0].normal;
-                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength);
+                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.strength);
                 helloMoto.currentSpeed = 0.0f;
                 temp.currentSpeed = 0.0f;
             }
 
-            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.handling);
+            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.handling);
             if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();

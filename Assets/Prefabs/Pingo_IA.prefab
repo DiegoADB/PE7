@@ -338,17 +338,15 @@ GameObject:
   - component: {fileID: 4892837595510182}
   - component: {fileID: 54435755732099006}
   - component: {fileID: 136555707858586912}
-  - component: {fileID: 114986269402174856}
   - component: {fileID: 114650468067917846}
-  - component: {fileID: 114196286646123000}
   - component: {fileID: 65329279059133044}
   - component: {fileID: 95480025343998116}
-  - component: {fileID: 114967129114241406}
   - component: {fileID: 114607288547450106}
   - component: {fileID: 114076085194373736}
   - component: {fileID: 114841142303287718}
   - component: {fileID: 114661094775799800}
   - component: {fileID: 82248248573793604}
+  - component: {fileID: 114767184813532722}
   m_Layer: 0
   m_Name: Pingo_IA
   m_TagString: Player
@@ -2760,27 +2758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa211c76e23bda4586187904486901a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114196286646123000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1385597347808846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 2
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 15
-  m_InterpolateMovement: 1
 --- !u!114 &114216790089045134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2935,6 +2912,9 @@ MonoBehaviour:
   myRB: {fileID: 0}
   isGrounded: 0
   savedPosition: {x: 0, y: 0, z: 0}
+  isIA: 0
+  verticalInput: 0
+  horizontalInput: 0
   chocado: 0
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
@@ -3098,6 +3078,46 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Vueltas
+--- !u!114 &114767184813532722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385597347808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03341d6e3dd162a4c81b8a9e3af25ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helloMoto: {fileID: 114607288547450106}
+  myStats: {fileID: 114076085194373736}
+  orca: 0
+  rankings:
+  - {fileID: 1352301263570366, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1026259388016906, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1897873196915216, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1100804008035278, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1099492888357876, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1888487961547468, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1116595165408416, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1068775996503204, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1082055889774384, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1674697156203712, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1544684969299228, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1949408985129772, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1914760000844858, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1932583890404062, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1005389771018938, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1059027295168986, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1024141797109590, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1536800351511470, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1890819049455836, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1298632213398288, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1595346959591224, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  SFX_clip: []
+  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+    type: 2}
+  burnOutState: {fileID: 1332401479341868}
 --- !u!114 &114841142303287718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3164,58 +3184,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114967129114241406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1385597347808846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 95480025343998116}
-  m_ParameterSendBits: 63
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
---- !u!114 &114986269402174856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1385597347808846}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 337c7e484fcd80842ba6f2a8075b9e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentsToDisable:
-  - {fileID: 114607288547450106}
-  - {fileID: 114076085194373736}
-  - {fileID: 114986269402174856}
-  helloMoto: {fileID: 114607288547450106}
-  myStats: {fileID: 114076085194373736}
-  orca: 0
-  SFX_clip:
-  - {fileID: 8300000, guid: ed6050484d89ed548b0bdd50e7a83b17, type: 3}
-  - {fileID: 8300000, guid: 8a5d92eea9776fb48ab60e80255096b2, type: 3}
-  - {fileID: 8300000, guid: 39ef42a5227774e48b67723698d77359, type: 3}
-  - {fileID: 8300000, guid: 691edbd7be1f8774086898de0aebdac0, type: 3}
-  - {fileID: 8300000, guid: 1c527b25f9f45f8499652cf5df936d6c, type: 3}
-  - {fileID: 8300000, guid: 3c1e25f05ec24b64f9e4fdc828444a66, type: 3}
-  - {fileID: 8300000, guid: 3f652e2e252a58a45bf1f9bf48872d49, type: 3}
-  - {fileID: 8300000, guid: 9433d43746d6bd940aa280ed194d8476, type: 3}
-  - {fileID: 8300000, guid: 2e13a89c294622f498e99d0c611578da, type: 3}
-  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
-    type: 2}
-  burnOutState: {fileID: 1332401479341868}
-  CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
-    type: 2}
 --- !u!136 &136555707858586912
 CapsuleCollider:
   m_ObjectHideFlags: 1

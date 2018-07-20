@@ -29,11 +29,16 @@ public class SCR_CharacterMotor : MonoBehaviour
     private float timerPosition;
     private bool cameraRotateAroundPlayer = true;
     private bool breaking = false;
+    [HideInInspector]
+    public bool isIA = false;
 
     //Input del jugador
-    private float verticalInput;
-    private float horizontalInput;
-    private bool aButton;
+    [HideInInspector]
+    public float verticalInput;
+    [HideInInspector]
+    public float horizontalInput;
+    [HideInInspector]
+    public bool aButton;
     private bool bButton;
     private bool drifting;
 
@@ -123,7 +128,10 @@ public class SCR_CharacterMotor : MonoBehaviour
     public void MyFixedUpdate()
     {
         CharacterMovement(Time.fixedDeltaTime); //Motor del jugador
-        CameraPlacement();  //Comportamiento de la camara
+        if(!isIA)
+        {
+            CameraPlacement();  //Comportamiento de la camara
+        }
     }
 
     void SaveLastPosition()
@@ -216,14 +224,17 @@ public class SCR_CharacterMotor : MonoBehaviour
                 currentSpeed = 0;
             }
         }
-       
+
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
         if (currentSpeed <= 0.1f && currentSpeed >= -0.1f && chocado == false)
         {
-            verticalInput = Input.GetAxis(playerPrefix + "Vertical");
+            if (isIA == false)
+            {
+                verticalInput = Input.GetAxis(playerPrefix + "Vertical");
+            }
             //if (verticalInput < 0)
             //    verticalInput = 0;
-            
+
             Vector3 myVelocity = steerVector * verticalInput * walkingSpeed;
             myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);    //Asignamos la velocidad a nuestro RB
             Quaternion pingoRotation = Quaternion.LookRotation(steerVector);
@@ -300,10 +311,20 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Se captura el input del jugador
     void GetInput(string _playerPrefix)
     {
-        verticalInput = Mathf.Abs(Input.GetAxis(_playerPrefix + "Vertical"));
+        if (isIA == false)
+        {
+            verticalInput = Mathf.Abs(Input.GetAxis(_playerPrefix + "Vertical"));
+        }
         verticalInput = Mathf.Clamp(verticalInput, 0.5f, 1.0f);
         if (!drifting)
-            horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
+        {
+            //Debug.Log(myStats);
+            if (isIA == false)
+            {
+                horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
+            }
+        }
+  
         aButton = Input.GetButton(_playerPrefix + "A");
         bButton = Input.GetButton(_playerPrefix + "B");
 

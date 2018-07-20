@@ -13,7 +13,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     // Use this for initialization
     public void Start()
     {
-        SetInstancer();
+        //SetInstancer();
         myStats = instancer.GetComponent<SCR_PlayerTempStats>();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
@@ -43,8 +43,10 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     }
 
 
-    public void SetInstancer()
+    public void SetInstancer(NetworkInstanceId _netId)
     {
+        Cmd_SetInstancer(_netId);
+        /*
         if (base.isServer)
         {
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -57,6 +59,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
                 }
             }
         }
+        */
         //List<GameObject> players = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>().players;
         //for (int i = 0; i < players.Count; i++)
         //{
@@ -66,6 +69,12 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         //        break;
         //    }
         //}
+    }
+    [Command]
+    void Cmd_SetInstancer(NetworkInstanceId _netId)
+    {
+        //
+        instancer = NetworkServer.FindLocalObject(_netId);
     }
 
     private void OnTriggerEnter(Collider collision)

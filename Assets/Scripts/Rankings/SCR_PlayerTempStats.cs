@@ -20,9 +20,9 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
 
     private void Start()
     {
-        numberOfCheckpoints = myCheckpoints.Length;
         enabled = base.isLocalPlayer;
         myCheckpoints = GameObject.FindGameObjectWithTag("RankingTriggers").GetComponent<SCR_RankingTriggers>().triggers;
+        numberOfCheckpoints = myCheckpoints.Length;
         nextTarget = myCheckpoints[0];
     }
 
@@ -54,7 +54,7 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
             }
             nextTarget = myCheckpoints[tempScore];
 
-            if (tempScore == numberOfCheckpoints * SCR_Ranking.numberOfLaps)
+            if (tempScore == (numberOfCheckpoints * SCR_Ranking.numberOfLaps) + 1)
             {
                 SCR_Ranking.winnerNetID = netId.ToString();
                 SCR_Ranking.b_raceFinished = true;
@@ -73,11 +73,21 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
         {
             resultText.text = "Loser loser chicken... loser";
         }
+        StartCoroutine(KickPlayers());
     }
 
     public void TestChangeText()
     {
         resultText.text = "OGH";
+    }
+
+    IEnumerator KickPlayers()
+    {
+        yield return new WaitForSeconds(7.0f);
+        //NetworkManager.singleton.StopHost();
+        SCR_Disconnect.DisconnectFromMatch();
+
+        //Return them to main menu
     }
 
 }
