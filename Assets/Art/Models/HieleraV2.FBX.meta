@@ -12,10 +12,13 @@ ModelImporter:
     400002: //RootNode
     400004: Tapa_Hielera
     2100000: No Name
+    2100002: 'Material #25'
     2300000: Cuerpo_hielera
     2300002: Tapa_Hielera
+    2300004: //RootNode
     3300000: Cuerpo_hielera
     3300002: Tapa_Hielera
+    3300004: //RootNode
     4300000: Cuerpo_hielera
     4300002: Tapa_Hielera
   externalObjects: {}
