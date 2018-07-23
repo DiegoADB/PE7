@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: 063a1dcf83a36c8489d175c64d674d19
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: CATRig3Bone001
+    100002: CATRig3Bone001Bone001
+    100004: CATRigHub001
+    100006: CATRigLLeg1
+    100008: CATRigLLeg2
+    100010: CATRigLLegAnkle
+    100012: CATRigLLegPlatform
+    100014: CATRigno agregar1
+    100016: CATRigno agregarCollarbone
+    100018: CATRigNOAGREGAR
+    100020: CATRigNoagregar1
+    100022: CATRigNoagregarCollarbone
+    100024: CATRigRLeg1
+    100026: CATRigRLeg2
+    100028: CATRigRLegAnkle
+    100030: CATRigRLegPlatform
+    100032: CATRigSpine1
+    100034: CATRigSpine2
+    100036: CATRigSpine3
+    100038: CATRigTail1
+    100040: CATRigTail2
+    100042: CATRigTail_Cuello1
+    100044: CATRigTail_cuello3
+    100046: CATRigTail_cuello_2
+    100048: Character001
+    100050: Cocos_Hawaiianos
+    100052: Collar_Maya
+    100054: CuernosCarnero
+    100056: Falda
+    100058: Fez
+    100060: Gorro_Fiesta
+    100062: MexicoSombrero
+    100064: MexicoWey
+    100066: Msh_Sportacus
+    100068: Pecera
+    100070: Penguin_Mesh
+    100072: Punk
+    100074: Sombrero_Maya
+    100076: //RootNode
+    400000: CATRig3Bone001
+    400002: CATRig3Bone001Bone001
+    400004: CATRigHub001
+    400006: CATRigLLeg1
+    400008: CATRigLLeg2
+    400010: CATRigLLegAnkle
+    400012: CATRigLLegPlatform
+    400014: CATRigno agregar1
+    400016: CATRigno agregarCollarbone
+    400018: CATRigNOAGREGAR
+    400020: CATRigNoagregar1
+    400022: CATRigNoagregarCollarbone
+    400024: CATRigRLeg1
+    400026: CATRigRLeg2
+    400028: CATRigRLegAnkle
+    400030: CATRigRLegPlatform
+    400032: CATRigSpine1
+    400034: CATRigSpine2
+    400036: CATRigSpine3
+    400038: CATRigTail1
+    400040: CATRigTail2
+    400042: CATRigTail_Cuello1
+    400044: CATRigTail_cuello3
+    400046: CATRigTail_cuello_2
+    400048: Character001
+    400050: Cocos_Hawaiianos
+    400052: Collar_Maya
+    400054: CuernosCarnero
+    400056: Falda
+    400058: Fez
+    400060: Gorro_Fiesta
+    400062: MexicoSombrero
+    400064: MexicoWey
+    400066: Msh_Sportacus
+    400068: Pecera
+    400070: Penguin_Mesh
+    400072: Punk
+    400074: Sombrero_Maya
+    400076: //RootNode
+    2100000: Penguin Retopo_Default
+    2100002: No Name
+    2100004: 'Material #3'
+    2100006: 'Material #28'
+    2100008: 'Material #25'
+    2100010: 'Material #30'
+    2100012: 'Material #26'
+    2100014: 'Material #34'
+    2100016: 'Material #45'
+    2100018: 'Material #57'
+    2100020: 'Material #81'
+    2100022: CuernosCarnero_Low_default
+    4300000: Penguin_Mesh
+    4300002: Cocos_Hawaiianos
+    4300004: Fez
+    4300006: Gorro_Fiesta
+    4300008: Pecera
+    4300010: Punk
+    4300012: Msh_Sportacus
+    4300014: Sombrero_Maya
+    4300016: MexicoWey
+    4300018: MexicoSombrero
+    4300020: Collar_Maya
+    4300022: Falda
+    4300024: CuernosCarnero
+    9500000: //RootNode
+    13700000: Cocos_Hawaiianos
+    13700002: Collar_Maya
+    13700004: CuernosCarnero
+    13700006: Falda
+    13700008: Fez
+    13700010: Gorro_Fiesta
+    13700012: MexicoSombrero
+    13700014: MexicoWey
+    13700016: Msh_Sportacus
+    13700018: Pecera
+    13700020: Penguin_Mesh
+    13700022: Punk
+    13700024: Sombrero_Maya
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

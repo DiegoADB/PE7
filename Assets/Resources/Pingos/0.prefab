@@ -2961,6 +2961,20 @@ MonoBehaviour:
   isGrounded: 0
   savedPosition: {x: 0, y: 0, z: 0}
   isIA: 0
+  clips:
+  - {fileID: 8300000, guid: b6743f2b4b458d341bedc0d20a16653c, type: 3}
+  - {fileID: 8300000, guid: 8a1b000843adef145bb9e39cb9cfa7da, type: 3}
+  - {fileID: 8300000, guid: 8f989b5390cb36147b14098ba27f2665, type: 3}
+  - {fileID: 8300000, guid: 320b59de135be0b418a7d6230d215de0, type: 3}
+  - {fileID: 8300000, guid: 7f05a5fc13576c343880a911d56afeae, type: 3}
+  - {fileID: 8300000, guid: a9937374603143f46a6bfab696bff789, type: 3}
+  - {fileID: 8300000, guid: c560b98819bcf0d4eaeb054e7be8b144, type: 3}
+  - {fileID: 8300000, guid: 62467e8e79305b842b378b7707ad0c17, type: 3}
+  - {fileID: 8300000, guid: a91601ff4c0e9724797aeaec377e10f9, type: 3}
+  audioSource: {fileID: 0}
+  verticalInput: 0
+  horizontalInput: 0
+  aButton: 0
   chocado: 0
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
@@ -2978,8 +2992,8 @@ MonoBehaviour:
   mayhemState: 0
   laFuerza: {x: 0, y: 0, z: 0}
   laDireccion: {x: 0, y: 0, z: 0}
-  sparks: {fileID: 1172440018572162}
-  yaw: {fileID: 1345724968127050}
+  sparks: {fileID: 1172440018572162, guid: 93759d8ddfb918e41924354e2320a7a9, type: 2}
+  yaw: {fileID: 1345724968127050, guid: 93759d8ddfb918e41924354e2320a7a9, type: 2}
 --- !u!114 &114650468067917846
 MonoBehaviour:
   m_ObjectHideFlags: 1

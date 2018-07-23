@@ -1,6 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum AUDIOSOUNDS
+{
+    CHOQUE,
+    DERROTA,
+    DESLIZAR,
+    FRENAR,
+    GIRO,
+    IDLE,
+    PASOS,
+    PASOSREVERSA,
+    VICTORIA
+}
+
 public class SCR_CharacterMotor : MonoBehaviour
 {
     /// <summary>
@@ -32,6 +45,10 @@ public class SCR_CharacterMotor : MonoBehaviour
     [HideInInspector]
     public bool isIA = false;
 
+    [Header("Audio")]
+    public AudioClip[] clips;
+    public AudioSource audioSource;
+
     //Input del jugador
     [HideInInspector]
     public float verticalInput;
@@ -44,7 +61,6 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     [HideInInspector]
     public bool chocado = false;
-    
 
     //Controlador
     [Header("Controller")]
