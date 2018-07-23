@@ -2913,8 +2913,11 @@ MonoBehaviour:
   isGrounded: 0
   savedPosition: {x: 0, y: 0, z: 0}
   isIA: 0
+  clips: []
+  audioSource: {fileID: 0}
   verticalInput: 0
   horizontalInput: 0
+  aButton: 0
   chocado: 0
   playerPrefix: P1_
   activeModel: {fileID: 4224373033851026}
@@ -3098,6 +3101,7 @@ MonoBehaviour:
   - {fileID: 1897873196915216, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
   - {fileID: 1100804008035278, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
   - {fileID: 1099492888357876, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
+  - {fileID: 1980718378667184, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
   - {fileID: 1888487961547468, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
   - {fileID: 1116595165408416, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}
   - {fileID: 1068775996503204, guid: dc9a3c8fe0acd0e4facda5815fe47da2, type: 2}

@@ -150,13 +150,20 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     {
         if (collision.transform.CompareTag("DeathCheck") && isAlive && !orca)
         {
+            Debug.Log("### MUERTE: " + collision.transform.name);
             Rpc_DeathPlayer();
         }
 
         if (collision.transform.name == rankings[count].transform.name && isAlive)
-        {            
-            count++;
-            nextTargets = rankings[count];
+        {
+           
+           count++;
+           nextTargets = rankings[count];
+           
+            if (count >= rankings.Length)
+            {
+                count = 0;
+            }
             //Debug.Log("Pinguino " + this.transform.name + " va a " + count);
         }
     }
@@ -206,7 +213,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         //Vector3 destination = GetComponent<SCR_PlayerTempStats>().nextTarget.transform.position - transform.position;
         //transform.LookAt((new Vector3(0, destination.y, 0)));
         helloMoto.GetMyRB().velocity = Vector3.zero;
-        this.transform.position = helloMoto.savedPosition;
+        this.transform.position = new Vector3(rankings[count].transform.position.x, rankings[count].transform.position.y +10, rankings[count].transform.position.z);
         if(helloMoto.mainCamera != null)
         {
             helloMoto.mainCamera.position = helloMoto.transform.position;

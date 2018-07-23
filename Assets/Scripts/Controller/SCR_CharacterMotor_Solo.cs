@@ -73,7 +73,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.CompareTag("DeathCheck") && isAlive)
-        {          
+        {
+            
           Rpc_DeathPlayer();           
         }
     }
