@@ -296,9 +296,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     void MovementAnimations()
     {
         activeModelAnim.SetBool("Grounded", isGrounded);
-        activeModelAnim.SetFloat("CurrentSpeed", currentSpeed);
-        activeModelAnim.SetFloat("Horizontal", horizontalInput);
-        activeModelAnim.SetFloat("Vertical", Input.GetAxis(playerPrefix + "Vertical"));
+        activeModelAnim.SetFloat("CurrentSpeed", currentSpeed, 0.05f, Time.deltaTime);
+        activeModelAnim.SetFloat("Horizontal", horizontalInput, 0.05f, Time.deltaTime);
+        activeModelAnim.SetFloat("Vertical", Input.GetAxis(playerPrefix + "Vertical"), 0.05f, Time.deltaTime);
     }
     //Funcion que detecta cuando el jugador esta derrapando
     void DriftingBehaviour()

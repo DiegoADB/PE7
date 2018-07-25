@@ -66,17 +66,17 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         if(isAlive && !orca)
             helloMoto.MyUpdate();
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            SCR_Disconnect.DisconnectFromMatch();
-        
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            Cmd_ChangePlayer();
         //if(isAlive)
             helloMoto.MyFixedUpdate();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SCR_Disconnect.DisconnectFromMatch();
     }
 
     [Command]

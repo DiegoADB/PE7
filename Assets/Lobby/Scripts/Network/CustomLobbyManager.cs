@@ -128,21 +128,8 @@ public class CustomLobbyManager : NetworkLobbyManager
     //Se llama cuando se genera el lobby player (SOLO EN SERVIDOR)
     public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
     {
-        if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
-            thePlayersChoiceAwards.Add(conn.connectionId, 1);
-        //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        //Debug.Log("AYYYYYYYYYY: " + players.Length);
-        //int index = 0;
-        //for (int i = 0; i < players.Length; i++)
-        //{
-        //    if (players[i].GetComponent<PlayerChoice>().connectionToServer.connectionId == conn.connectionId)
-        //    {
-        //        Debug.Log("Ayyyyyyyyy");
-        //        index = players[i].GetComponent<PlayerChoice>().choice;
-        //        SetPlayerTypeLobby(conn.connectionId, index);
-        //        break;
-        //    }
-        //}
+        //if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
+        //    thePlayersChoiceAwards.Add(conn.connectionId, 1);
 
         return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
     }
@@ -155,7 +142,7 @@ public class CustomLobbyManager : NetworkLobbyManager
 
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
     {
-        GameObject player = Resources.Load<GameObject>("Pingos/"+thePlayersChoiceAwards[conn.connectionId]);
+        GameObject player = gamePlayerPrefab;/* Resources.Load<GameObject>("Pingos/"+thePlayersChoiceAwards[conn.connectionId]);*/
         GameObject temp = (GameObject)GameObject.Instantiate(player,
             startPositions[conn.connectionId].position,
             Quaternion.identity);
