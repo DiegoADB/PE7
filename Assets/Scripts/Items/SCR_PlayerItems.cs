@@ -41,19 +41,19 @@ public class SCR_PlayerItems : MonoBehaviour {
                 break;
             case SCR_ItemManager.ItemIndex.SWITCHEROO:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem]).GetComponent<SCR_Switcheroo>().SetInstancer();
+                    //Instantiate(itemManager.itemsList[(int)myItem]).GetComponent<SCR_Switcheroo>().SetInstancer();
                     myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;
             case SCR_ItemManager.ItemIndex.REDSHELL:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem],transform.position,transform.rotation).GetComponent<SCR_RedShell>().SetInstancer(gameObject);
+                    //Instantiate(itemManager.itemsList[(int)myItem],transform.position,transform.rotation).GetComponent<SCR_RedShell>().SetInstancer(gameObject);
                     myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;
             case SCR_ItemManager.ItemIndex.ORCA:
                 {
-                    Instantiate(itemManager.itemsList[(int)myItem],transform.position,transform.rotation).GetComponent<SCR_OrcaBill>().SetInstancer();
+                    //Instantiate(itemManager.itemsList[(int)myItem],transform.position,transform.rotation).GetComponent<SCR_OrcaBill>().SetInstancer();
                     myItem = SCR_ItemManager.ItemIndex.NONE;
                 }
                 break;

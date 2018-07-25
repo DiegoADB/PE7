@@ -8,9 +8,10 @@ public class SCR_Switcheroo : NetworkBehaviour {
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     public float timeBeforeChange = 1.5f;
+
 	// Use this for initialization
 	public void Start () {
-        SetInstancer();
+        //SetInstancer();
         transform.parent = instancer.transform;
         transform.localPosition = new Vector3(0, 0.5f, 0);
         myStats = instancer.GetComponent<SCR_PlayerTempStats>();
@@ -42,19 +43,24 @@ public class SCR_Switcheroo : NetworkBehaviour {
         instancer.transform.position = otherPos;
         Destroy(gameObject);
     }
-    public void SetInstancer()
+    public void SetInstancer(GameObject _netId)
     {
-        if (base.isServer)
-        {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
-                {
-                    instancer = players[i];
-                    break;
-                }
-            }
-        }
+
+        Cmd_SetInstancer(_netId.GetComponent<NetworkIdentity>().netId);
+    }
+    [Command]
+    void Cmd_SetInstancer(NetworkInstanceId _netId)
+    {
+        //
+        Debug.Log("Alone");
+
+        instancer = NetworkServer.FindLocalObject(_netId).gameObject;
+    }
+    [ClientRpc]
+    public void Rpc_SetMyObject(NetworkInstanceId _netId)
+    {
+        Debug.Log("Not Alone");
+
+        instancer = ClientScene.FindLocalObject(_netId);
     }
 }
