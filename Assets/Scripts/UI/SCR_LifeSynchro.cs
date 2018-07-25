@@ -5,49 +5,90 @@ using UnityEngine;
 public class SCR_LifeSynchro : MonoBehaviour {
 
     public GameObject[] lifePrefabs;
-    [Range(0, 100)]
     public int playerTotalHP;
 
-    [Range(0, 100)]
+    public int playerMaxHP;
+
     public int currentHP;
+    private int tempHPValue;
+
 
     public int loopInt = 0;
     
 	void Start () {
 
-        playerTotalHP = 100;
-		
+        playerMaxHP = (int)GetComponent<SCR_CharacterStats>().playerHP;
+        tempHPValue = playerMaxHP;
+        currentHP = (int)GetComponent<SCR_CharacterStats>().playerHP;
+
+    }
+
+    void Update ()
+    {
+        currentHP = (int)GetComponent<SCR_CharacterStats>().playerHP;
+
+        if (currentHP != tempHPValue)
+        {
+            tempHPValue = currentHP;
+            NewSynchro();
+        }
 	}
 
-	void Update ()
+    //Call on playerHP change
+    void NewSynchro()
+    {
+        if(currentHP <= 0)
+        {
+            ToggleHealthPrefabs(0, true, false);
+        }
+
+        if(currentHP >= playerMaxHP)
+        {
+            ToggleHealthPrefabs(0, false, true);
+        }
+
+        if(currentHP != 0 && currentHP != playerMaxHP && currentHP > 0 && currentHP < playerMaxHP)
+        {
+            float indexMagicNumber = playerMaxHP / 6;
+            int prefabIndex = Mathf.RoundToInt((currentHP / indexMagicNumber));
+
+            Debug.Log("prefabIndex: " + prefabIndex);
+            ToggleHealthPrefabs(prefabIndex, false, false);
+        }
+
+    }
+
+    public void ToggleHealthPrefabs(int _prefabIndex, bool _allOff, bool _allOn)
     {
         for(int i = 0; i < lifePrefabs.Length; i++)
         {
             lifePrefabs[i].SetActive(false);
         }
 
-        if(playerTotalHP == 100)
+        lifePrefabs[0].SetActive(true);
+
+        if (!_allOff && !_allOn)
         {
-            for (int i = 0; i < lifePrefabs.Length; i++)
+            for (int i = 0; i < _prefabIndex; i++)
             {
                 lifePrefabs[i].SetActive(true);
             }
         }
 
-        loopInt = Mathf.RoundToInt((playerTotalHP / 100.0f) * 6);
-
-        for (int i = 0; i < loopInt; i++)
-        {
-            lifePrefabs[i].SetActive(true);
-        }
-		
-        if(playerTotalHP == 0)
+        if(_allOn)
         {
             for(int i = 0; i < lifePrefabs.Length; i++)
+            {
+                lifePrefabs[i].SetActive(true);
+            }
+        }
+
+        if(_allOff)
+        {
+            for (int i = 0; i < lifePrefabs.Length; i++)
             {
                 lifePrefabs[i].SetActive(false);
             }
         }
-
-	}
+    }
 }
