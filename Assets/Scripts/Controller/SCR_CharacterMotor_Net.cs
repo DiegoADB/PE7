@@ -73,8 +73,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            Cmd_ChangePlayer();
         //if(isAlive)
             helloMoto.MyFixedUpdate();
     }

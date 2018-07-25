@@ -771,7 +771,7 @@ MonoBehaviour:
   m_MinPlayers: 8
   m_LobbyPlayerPrefab: {fileID: 114922848208878364, guid: 834e8c9935ec1b349a98e788194e5b10,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1385597347808846, guid: 5d5fb981087879f41bf4a8510cefd12a,
+  m_GamePlayerPrefab: {fileID: 1156156647086294, guid: a36a886faf9f3a34a8bceabb9249726a,
     type: 2}
   m_LobbyScene: Inicio
   m_PlayScene: Level_Karina
