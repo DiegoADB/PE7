@@ -56,8 +56,10 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float horizontalInput;
     [HideInInspector]
     public bool aButton;
-    private bool bButton;
-    private bool drifting;
+    [HideInInspector]
+    public bool bButton;
+    [HideInInspector]
+    public bool drifting;
 
     [HideInInspector]
     public bool chocado = false;
