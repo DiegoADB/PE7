@@ -16,7 +16,7 @@ public class SCR_PingoSpawner : NetworkBehaviour
     void Cmd_ChangePlayer()
     {
         var conn = GetComponent<NetworkIdentity>().connectionToClient;
-        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/Normal"), transform.position, transform.rotation);
+        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/Lucky"), transform.position, transform.rotation);
         Destroy(GetComponent<NetworkIdentity>().gameObject);
         NetworkServer.ReplacePlayerForConnection(conn, newPlayer, 0);
         //Rpc_SpawnPlayer();
