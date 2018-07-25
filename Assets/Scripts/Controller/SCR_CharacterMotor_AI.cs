@@ -31,7 +31,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     public GameObject myExplosion;
     public GameObject burnOutState;
     bool isAlive = true;
-    
+    RaycastHit myRay;
     
     private void Start()
     {
@@ -39,6 +39,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         helloMoto.MyStart();
         helloMoto.isIA = true;
         nextTargets = rankings[count];
+        myRay = new RaycastHit();
     }
     private void Update()
     {
@@ -58,60 +59,38 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         // Debug.Log("Pinguino " + this.transform.name + " va a " +rankings[count]);
         timer += Time.deltaTime;
         timer2 += Time.deltaTime;
-
-        if (timer >= 1.5f)
+        
+        Debug.DrawRay(this.transform.position, this.transform.forward * 10, Color.cyan);
+        if (Physics.Raycast(this.transform.position, this.transform.forward,out myRay, 10.0f))
         {
-            Debug.Log("entro1");
-            if (Random.Range(1, 100) <= 70)
+            //Debug.Log(myRay.transform.name);
+            if(myRay.transform.CompareTag("Obstacle"))
             {
-                if (Random.Range(1, 100) <= 70)
-                {
-                    Debug.Log("Pinguino " + this.transform.name + "Entro al hori false");
-                    helloMoto.horizontalInput = -0.5f;
-                }
-                else
-                {
-                    Debug.Log("Pinguino " + this.transform.name + "Entro al hori true");
 
-                    helloMoto.horizontalInput = 0.5f;
-
-                }
+                helloMoto.horizontalInput = 1.0f;
+                //helloMoto.verticalInput = -1.0f;
+                helloMoto.drifting = true;
+                Debug.Log("Pinguino " + this.transform.name + " +1 pego con " + myRay.transform.name);
+               
+                
             }
-            else
-            {
-                helloMoto.horizontalInput = 0.0f;
-            }
-
-            timer = 0.0f;
         }
         else
         {
-            helloMoto.horizontalInput = 0.0f;   
+            helloMoto.drifting = false;
+            helloMoto.horizontalInput = 0.0f;
         }
+
+         
+      
 
         helloMoto.verticalInput = 1.0f; 
 
-        if(timer2 >= 2.0f)
-        {
-            Debug.Log("entro2");
-            if (Random.Range(1, 100) <= 70)
-            {
-                Debug.Log("Pinguino " + this.transform.name + "Entro al a false");
-                helloMoto.aButton = false;
-            }
-            else
-            {
-                helloMoto.aButton = true;
-            }
-            timer2 = 0.0f;
-        }
-        else
-        {
-            helloMoto.aButton = true;
-        }
-         
         
-            helloMoto.MyFixedUpdate();
+        helloMoto.aButton = true;
+      
+        
+       helloMoto.MyFixedUpdate();
     }
 
   

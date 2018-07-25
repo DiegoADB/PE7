@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 88285977}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 160209551}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (6)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 188431378}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1845,7 +1845,7 @@ GameObject:
   - component: {fileID: 305227005}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2489,7 +2489,7 @@ GameObject:
   - component: {fileID: 405000796}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3986,7 +3986,7 @@ GameObject:
   - component: {fileID: 762641820}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4188,7 +4188,7 @@ GameObject:
   - component: {fileID: 795331978}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4367,7 +4367,7 @@ GameObject:
   - component: {fileID: 816004283}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4517,7 +4517,7 @@ GameObject:
   - component: {fileID: 825436332}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (6)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4810,7 +4810,7 @@ GameObject:
   - component: {fileID: 881285633}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (8)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5221,7 +5221,7 @@ GameObject:
   - component: {fileID: 915708397}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5573,7 +5573,7 @@ GameObject:
   - component: {fileID: 983070949}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5661,7 +5661,7 @@ GameObject:
   - component: {fileID: 988772483}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5787,7 +5787,7 @@ GameObject:
   - component: {fileID: 1010433074}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5875,7 +5875,7 @@ GameObject:
   - component: {fileID: 1095961591}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6103,7 +6103,7 @@ GameObject:
   - component: {fileID: 1144275946}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (8)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6307,7 +6307,7 @@ GameObject:
   - component: {fileID: 1201880035}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (6)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6790,7 +6790,7 @@ GameObject:
   - component: {fileID: 1326836577}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (5)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6959,7 +6959,7 @@ GameObject:
   - component: {fileID: 1359768650}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8015,7 +8015,7 @@ GameObject:
   - component: {fileID: 1544992763}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8732,7 +8732,7 @@ GameObject:
   - component: {fileID: 1690028654}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8848,7 +8848,7 @@ GameObject:
   - component: {fileID: 1720633395}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9499,7 +9499,7 @@ GameObject:
   - component: {fileID: 1876743594}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (8)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10014,7 +10014,7 @@ GameObject:
   - component: {fileID: 1973498537}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10102,7 +10102,7 @@ GameObject:
   - component: {fileID: 2004030426}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10657,7 +10657,7 @@ GameObject:
   - component: {fileID: 2086254961}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (5)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10745,7 +10745,7 @@ GameObject:
   - component: {fileID: 2121176324}
   m_Layer: 0
   m_Name: MSH_IceBerg_UV (5)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
