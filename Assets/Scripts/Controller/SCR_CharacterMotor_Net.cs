@@ -123,9 +123,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             {
                 MayhemState();
             }
-
-
-            
         }
     }
 

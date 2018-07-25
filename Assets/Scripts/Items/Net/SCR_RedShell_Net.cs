@@ -43,38 +43,24 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     }
 
 
-    public void SetInstancer(NetworkInstanceId _netId)
+    public void SetInstancer(GameObject _netId)
     {
-        Cmd_SetInstancer(_netId);
-        /*
-        if (base.isServer)
-        {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
-                {
-                    instancer = players[i];
-                    break;
-                }
-            }
-        }
-        */
-        //List<GameObject> players = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>().players;
-        //for (int i = 0; i < players.Count; i++)
-        //{
-        //    if (players[i].GetComponent<SCR_CharacterMotor_Net>().isLocalPlayer)
-        //    {
-        //        myGo = players[i];
-        //        break;
-        //    }
-        //}
+        Cmd_SetInstancer(_netId.GetComponent<NetworkIdentity>().netId);
     }
     [Command]
     void Cmd_SetInstancer(NetworkInstanceId _netId)
     {
         //
-        instancer = NetworkServer.FindLocalObject(_netId);
+        Debug.Log("Alone");
+
+        instancer = NetworkServer.FindLocalObject(_netId).gameObject;
+    }
+    [ClientRpc]
+    public void Rpc_SetMyObject(NetworkInstanceId _netId)
+    {
+        Debug.Log("Not Alone");
+
+        instancer = ClientScene.FindLocalObject(_netId);
     }
 
     private void OnTriggerEnter(Collider collision)

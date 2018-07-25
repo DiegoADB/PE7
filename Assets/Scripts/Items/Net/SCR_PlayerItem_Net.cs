@@ -45,6 +45,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             case SCR_ItemManager_Net.ItemIndex_Net.SWITCHEROO:
                 {
                     GameObject item = Instantiate(itemManager.itemsList[(int)myItem]);
+                    item.GetComponent<SCR_Switcheroo>().SetInstancer(gameObject);
                     NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
@@ -52,6 +53,8 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             case SCR_ItemManager_Net.ItemIndex_Net.REDSHELL:
                 {
                     GameObject item = Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation);
+                    item.GetComponent<SCR_RedShell_Net>().SetInstancer(gameObject);
+
                     NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
@@ -59,6 +62,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             case SCR_ItemManager_Net.ItemIndex_Net.ORCA:
                 {
                     GameObject item = Instantiate(itemManager.itemsList[(int)myItem], transform.position, transform.rotation);
+                    item.GetComponent<SCR_OrcaBill>().SetInstancer(gameObject);
                     NetworkServer.Spawn(item);
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
