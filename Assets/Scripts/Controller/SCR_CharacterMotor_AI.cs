@@ -32,7 +32,10 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     public GameObject burnOutState;
     bool isAlive = true;
     RaycastHit myRay;
-    
+    int randomx;
+    int randomz;
+
+
     private void Start()
     {
         helloMoto.playerPrefix = "P2_";
@@ -40,6 +43,8 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         helloMoto.isIA = true;
         nextTargets = rankings[count];
         myRay = new RaycastHit();
+        randomx = Random.Range(-2, 2);
+        randomz = Random.Range(-2, 2);
     }
     private void Update()
     {
@@ -55,7 +60,9 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         //if(isAlive)
         //dot1 = Vector3.Dot(this.transform.position, rankings[count].transform.position);
         //dot2 = Vector3.Dot(this.transform.right, rankings[count].transform.position);
-        this.transform.LookAt(nextTargets.transform.position);
+        this.transform.LookAt(new Vector3(nextTargets.transform.position.x + randomx, 
+                                            nextTargets.transform.position.y,
+                                            nextTargets.transform.position.z + randomz));
         // Debug.Log("Pinguino " + this.transform.name + " va a " +rankings[count]);
         timer += Time.deltaTime;
         timer2 += Time.deltaTime;
@@ -66,13 +73,10 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
             //Debug.Log(myRay.transform.name);
             if(myRay.transform.CompareTag("Obstacle"))
             {
-
                 helloMoto.horizontalInput = 1.0f;
                 //helloMoto.verticalInput = -1.0f;
                 helloMoto.drifting = true;
-                Debug.Log("Pinguino " + this.transform.name + " +1 pego con " + myRay.transform.name);
-               
-                
+                Debug.Log("Pinguino " + this.transform.name + " +1 pego con " + myRay.transform.name);                             
             }
         }
         else
@@ -80,9 +84,6 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
             helloMoto.drifting = false;
             helloMoto.horizontalInput = 0.0f;
         }
-
-         
-      
 
         helloMoto.verticalInput = 1.0f; 
 
@@ -105,7 +106,6 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
             if (helloMoto.currentSpeed >= temp.currentSpeed)
             {
                 helloMoto.laFuerza = collision.impulse;
-                //Debug.Log(helloMoto.laFuerza + " fuerza");
                 helloMoto.laDireccion = collision.contacts[0].normal;
                 temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_AI>().myStats.strength);
                 helloMoto.currentSpeed = 0.0f;
@@ -129,7 +129,6 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     {
         if (collision.transform.CompareTag("DeathCheck") && isAlive && !orca)
         {
-            Debug.Log("### MUERTE: " + collision.transform.name);
             Rpc_DeathPlayer();
         }
 
@@ -139,10 +138,19 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
            count++;
            nextTargets = rankings[count];
            
-            if (count >= rankings.Length)
+            if (count >= rankings.Length-1)
             {
                 count = 0;
             }
+            randomx = Random.Range(-2, 2);
+            randomz = Random.Range(-2, 2);
+            if (count == 4 || count == 3)
+            {
+                randomx = 0;
+                randomz = 0;
+            }
+            
+
             //Debug.Log("Pinguino " + this.transform.name + " va a " + count);
         }
     }
