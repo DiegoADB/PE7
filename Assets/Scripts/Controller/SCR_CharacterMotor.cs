@@ -109,7 +109,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Ground"))
+        {
             isGrounded = true;
+        }
     }
 
     //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
@@ -306,12 +308,14 @@ public class SCR_CharacterMotor : MonoBehaviour
     void DriftingBehaviour()
     {
         activeModelAnim.SetBool("Drifting", drifting);
-        sparks.SetActive(drifting);
         if (drifting && currentSpeed > 5)
         {
             float driftDirection = Mathf.Sign(horizontalInput);
             horizontalInput = driftDirection * 10 * myStats.handling;
+            sparks.SetActive(true);
         }
+        else
+            sparks.SetActive(false);
     }
 
     //Funcion que regresa el vector frontal del jugador en todo momento que se encuentre en el suelo

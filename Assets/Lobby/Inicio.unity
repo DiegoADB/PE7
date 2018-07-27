@@ -774,7 +774,7 @@ MonoBehaviour:
   m_GamePlayerPrefab: {fileID: 1156156647086294, guid: a36a886faf9f3a34a8bceabb9249726a,
     type: 2}
   m_LobbyScene: Inicio
-  m_PlayScene: Level01
+  m_PlayScene: Level_Karina
   lobbySlots: []
   theNetworkManager: {fileID: 1588026496}
 --- !u!4 &1588026497
