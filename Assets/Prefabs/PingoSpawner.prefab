@@ -84,4 +84,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32244feaacdd17645928a0acf00321e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pingoName: Normal
+  pingoName: Heavy
