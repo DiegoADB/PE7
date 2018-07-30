@@ -4,18 +4,19 @@ using System.Collections;
 public class SCR_CharacterMotor_Solo : MonoBehaviour
 {
     //public Behaviour[] componentsToDisable;
-    public SCR_PlayerTempStats xdsdas;
     public SCR_CharacterMotor helloMoto;
-    public SCR_CharacterStats_Solo myStats;
+    public SCR_CharacterStats myStats;
     //public Transform RespawnPoint;
+    public bool orca;
     public GameObject myExplosion;
+    public GameObject burnOutState;
+
     public GameObject CameraPrefab;
     bool isAlive = true;
 
     
     private void Start()
     {
-        xdsdas.enabled = true;
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
         temp.playerNum++;
@@ -27,8 +28,30 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     }
     private void Update()
     {
-        if(isAlive)
+        if (isAlive)
             helloMoto.MyUpdate();
+        ChooseCharacter();
+    }
+
+    void ChooseCharacter()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Cmd_ChangePlayerType("Normal");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Cmd_ChangePlayerType("Heavy");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Cmd_ChangePlayerType("Lucky");
+        }
+    }
+
+    void Cmd_ChangePlayerType(string _pingoName)
+    {
+        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/" + _pingoName), transform.position, transform.rotation);
     }
 
     private void FixedUpdate()
@@ -73,8 +96,7 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.CompareTag("DeathCheck") && isAlive)
-        {
-            
+        {            
           Rpc_DeathPlayer();           
         }
     }
@@ -106,6 +128,7 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         helloMoto.mayhemState = false;
         helloMoto.currentSpeed = 0;
         isAlive = true;
+        burnOutState.SetActive(false);
         myStats.strength = myStats.startingStr;
         myStats.playerHP = myStats.startingHP;
         myStats.speed = myStats.startingSpd;

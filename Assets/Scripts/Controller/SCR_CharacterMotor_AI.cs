@@ -1,5 +1,4 @@
-﻿//Made by Diego Diaz
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 
