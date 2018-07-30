@@ -706,10 +706,9 @@ MonoBehaviour:
   - {fileID: 1159330865026886, guid: 99e7df75b32c6464fa51194276a66efe, type: 2}
   - {fileID: 1922579925311040, guid: 041ff0043cc90264a937b551a566a218, type: 2}
   - {fileID: 1407876790009664, guid: ca285c743fa01bc48be28f15d8084188, type: 2}
-  - {fileID: 1385597347808846, guid: db63a81e1141bf34dba85195f8d1f1ae, type: 2}
+  - {fileID: 1246486157115798, guid: 9499715cbcc0ebe42b9bf12f86c98ee7, type: 2}
   - {fileID: 1385597347808846, guid: cd70cc424faa05445a0250805df561c0, type: 2}
-  - {fileID: 1385597347808846, guid: 93759d8ddfb918e41924354e2320a7a9, type: 2}
-  - {fileID: 1385597347808846, guid: 70289cf7331b1a24c82e5769f66af8d5, type: 2}
+  - {fileID: 1236962573624916, guid: 182c446e941a74546b2404986fea24e9, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -771,10 +770,10 @@ MonoBehaviour:
   m_MinPlayers: 8
   m_LobbyPlayerPrefab: {fileID: 114922848208878364, guid: 834e8c9935ec1b349a98e788194e5b10,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1156156647086294, guid: a36a886faf9f3a34a8bceabb9249726a,
+  m_GamePlayerPrefab: {fileID: 1385597347808846, guid: cd70cc424faa05445a0250805df561c0,
     type: 2}
   m_LobbyScene: Inicio
-  m_PlayScene: Level_Karina
+  m_PlayScene: Level01
   lobbySlots: []
   theNetworkManager: {fileID: 1588026496}
 --- !u!4 &1588026497

@@ -66,6 +66,33 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         if(isAlive && !orca)
             helloMoto.MyUpdate();
+        ChooseCharacter();
+    }
+
+
+    void ChooseCharacter()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Cmd_ChangePlayerType("Normal");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Cmd_ChangePlayerType("Heavy");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Cmd_ChangePlayerType("Lucky");
+        }
+    }
+
+    [Command]
+    void Cmd_ChangePlayerType(string _pingoName)
+    {
+        var conn = GetComponent<NetworkIdentity>().connectionToClient;
+        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/" + _pingoName), transform.position, transform.rotation);
+        Destroy(GetComponent<NetworkIdentity>().gameObject);
+        NetworkServer.ReplacePlayerForConnection(conn, newPlayer, 0);
     }
 
     private void FixedUpdate()
@@ -78,22 +105,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         SCR_Disconnect.DisconnectFromMatch();
     }
-
-    [Command]
-    void Cmd_ChangePlayer()
-    {
-        Rpc_SpawnPlayer();
-    }
-    [ClientRpc]
-    void Rpc_SpawnPlayer()
-    {
-        var conn = GetComponent<NetworkIdentity>().connectionToClient;
-        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/3"), transform.position, transform.rotation);
-        Destroy(GetComponent<NetworkIdentity>().gameObject);
-        NetworkServer.ReplacePlayerForConnection(conn, newPlayer, 0);
-    }
-
-
 
     [ServerCallback]
     private void OnCollisionEnter(Collision collision)
