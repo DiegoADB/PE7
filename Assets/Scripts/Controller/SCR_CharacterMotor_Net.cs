@@ -84,6 +84,10 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         {
             Cmd_ChangePlayerType("Lucky");
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Cmd_ChangePlayerType("Fast");
+        }
     }
 
     [Command]
