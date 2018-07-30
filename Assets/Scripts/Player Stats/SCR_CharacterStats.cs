@@ -26,6 +26,12 @@ public class SCR_CharacterStats : NetworkBehaviour
 
     private void Start()
     {
+
+        if (isLocalPlayer)
+        {
+            GetComponentInChildren<Canvas>().enabled = true;
+        }
+
         playerHP = startingHP;
         strength = startingStr;
         speed = startingSpd;

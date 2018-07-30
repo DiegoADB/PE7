@@ -7,7 +7,7 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
 
     public int myPlace = 0;
     public int myScore = 0;
-    int tempScore;
+    public int tempScore;
     public float distanceToNext;
     [HideInInspector]
     public GameObject[] myCheckpoints;
