@@ -11,7 +11,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     NavMeshAgent navAgent;
     float timer = 20f;
     // Use this for initialization
-    public void Start()
+    public void Start2()
     {
         //SetInstancer();
         myStats = instancer.GetComponent<SCR_PlayerTempStats>();
@@ -45,7 +45,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
 
     public void SetInstancer(GameObject _netId)
     {
-        Cmd_SetInstancer(_netId.GetComponent<NetworkIdentity>().netId);
+        Rpc_SetMyObject(_netId.GetComponent<NetworkIdentity>().netId);
     }
     [Command]
     void Cmd_SetInstancer(NetworkInstanceId _netId)
@@ -54,6 +54,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         Debug.Log("Alone");
 
         instancer = NetworkServer.FindLocalObject(_netId).gameObject;
+        Start2();
     }
     [ClientRpc]
     public void Rpc_SetMyObject(NetworkInstanceId _netId)
@@ -61,6 +62,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         Debug.Log("Not Alone");
 
         instancer = ClientScene.FindLocalObject(_netId);
+        Start2();
     }
 
     private void OnTriggerEnter(Collider collision)

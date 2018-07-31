@@ -14,7 +14,7 @@ public class SCR_OrcaBill : NetworkBehaviour {
     SCR_PlayerTempStats next_dest;
     public int totalchk;
     // Use this for initialization
-    public void Start()
+    public void Start2()
     {
         //SetInstancer();
         _navAgnt = gameObject.GetComponent<NavMeshAgent>();
@@ -64,7 +64,7 @@ public class SCR_OrcaBill : NetworkBehaviour {
     public void SetInstancer(GameObject _netId)
     {
 
-        Cmd_SetInstancer(_netId.GetComponent<NetworkIdentity>().netId);
+        Rpc_SetMyObject(_netId.GetComponent<NetworkIdentity>().netId);
     }
     [Command]
     void Cmd_SetInstancer(NetworkInstanceId _netId)
@@ -73,6 +73,8 @@ public class SCR_OrcaBill : NetworkBehaviour {
         Debug.Log("Alone");
 
         instancer = NetworkServer.FindLocalObject(_netId).gameObject;
+        Start2();
+
     }
     [ClientRpc]
     public void Rpc_SetMyObject(NetworkInstanceId _netId)
@@ -80,5 +82,7 @@ public class SCR_OrcaBill : NetworkBehaviour {
         Debug.Log("Not Alone");
 
         instancer = ClientScene.FindLocalObject(_netId);
+        Start2();
+
     }
 }
