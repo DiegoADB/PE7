@@ -811,7 +811,6 @@ GameObject:
   - component: {fileID: 4120711409703148}
   - component: {fileID: 54649884447507282}
   - component: {fileID: 136556285525461558}
-  - component: {fileID: 114773251122889892}
   - component: {fileID: 114526297576195514}
   - component: {fileID: 114623870316679670}
   - component: {fileID: 65586402801028508}
@@ -820,6 +819,7 @@ GameObject:
   - component: {fileID: 114003089181278616}
   - component: {fileID: 114702916833596712}
   - component: {fileID: 114834788740009854}
+  - component: {fileID: 114905806206369608}
   - component: {fileID: 114244541111837362}
   - component: {fileID: 82037784192027958}
   - component: {fileID: 81738551703879140}
@@ -2920,39 +2920,6 @@ MonoBehaviour:
   startingStr: 1
   startingSpd: 1
   startingHandling: 1
---- !u!114 &114773251122889892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1604471776268524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 337c7e484fcd80842ba6f2a8075b9e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentsToDisable:
-  - {fileID: 114003089181278616}
-  - {fileID: 114702916833596712}
-  - {fileID: 114773251122889892}
-  helloMoto: {fileID: 114003089181278616}
-  myStats: {fileID: 114702916833596712}
-  orca: 0
-  SFX_clip:
-  - {fileID: 8300000, guid: ed6050484d89ed548b0bdd50e7a83b17, type: 3}
-  - {fileID: 8300000, guid: 8a5d92eea9776fb48ab60e80255096b2, type: 3}
-  - {fileID: 8300000, guid: 39ef42a5227774e48b67723698d77359, type: 3}
-  - {fileID: 8300000, guid: 691edbd7be1f8774086898de0aebdac0, type: 3}
-  - {fileID: 8300000, guid: 1c527b25f9f45f8499652cf5df936d6c, type: 3}
-  - {fileID: 8300000, guid: 3c1e25f05ec24b64f9e4fdc828444a66, type: 3}
-  - {fileID: 8300000, guid: 3f652e2e252a58a45bf1f9bf48872d49, type: 3}
-  - {fileID: 8300000, guid: 9433d43746d6bd940aa280ed194d8476, type: 3}
-  - {fileID: 8300000, guid: 2e13a89c294622f498e99d0c611578da, type: 3}
-  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
-    type: 2}
-  burnOutState: {fileID: 1609526960711190}
-  CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
-    type: 2}
 --- !u!114 &114816264901298286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3053,6 +3020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlace: 0
   myScore: 0
+  tempScore: 0
   distanceToNext: 0
   myCheckpoints: []
   nextTarget: {fileID: 0}
@@ -3107,6 +3075,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Item
+--- !u!114 &114905806206369608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604471776268524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edd9c0ba7ece8840b93cc0bc0f69545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helloMoto: {fileID: 114003089181278616}
+  myStats: {fileID: 114702916833596712}
+  orca: 0
+  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+    type: 2}
+  burnOutState: {fileID: 1609526960711190}
+  CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
+    type: 2}
 --- !u!114 &114918864228092228
 MonoBehaviour:
   m_ObjectHideFlags: 1
