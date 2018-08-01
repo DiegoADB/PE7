@@ -23,6 +23,6 @@ public class SCR_LapSync : MonoBehaviour
 
         checkpointsPassed = GetComponent<SCR_PlayerTempStats>().myScore;
         Debug.Log("PASSED: " + checkpointsPassed);
-        currentLap = Mathf.FloorToInt(checkpointsPassed / SCR_PlayerTempStats.numberOfCheckpoints) + 1;
+        currentLap = Mathf.FloorToInt(checkpointsPassed / SCR_PlayerTempStats.numberOfCheckpoints);
 	}
 }
