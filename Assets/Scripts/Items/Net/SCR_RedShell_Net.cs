@@ -85,7 +85,6 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         instancer = ClientScene.FindLocalObject(_netId);
         Start2();
     }
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player" && collision.gameObject !=instancer)
