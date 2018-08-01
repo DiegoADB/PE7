@@ -9,9 +9,13 @@ public class PlaySound : StateMachineBehaviour {
     {
         if (!myAudio)
             myAudio = animator.transform.GetComponent<AudioSource>();
-        myAudio.Stop();
-        myAudio.clip = soundToPlay;
-        myAudio.Play();
+        if(animator.transform.GetComponent<SCR_CharacterMotor>().isIA == false)
+        {
+            myAudio.Stop();
+            myAudio.clip = soundToPlay;
+            myAudio.Play();
+        }
+       
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

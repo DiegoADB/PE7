@@ -113,7 +113,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
                 temp.currentSpeed = 0.0f;
             }
 
-            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_AI>().myStats.handling);
+            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterStats>().handling);
             if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();

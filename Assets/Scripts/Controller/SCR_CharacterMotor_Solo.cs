@@ -64,7 +64,7 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") && isAlive)
         {
-            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.strength;
+            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterStats>().strength;
             helloMoto.chocado = true;
 
             SCR_CharacterMotor temp = collision.transform.GetComponent<SCR_CharacterMotor>();
@@ -73,12 +73,12 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
                 helloMoto.laFuerza = collision.impulse;
                 Debug.Log(helloMoto.laFuerza + " fuerza");
                 helloMoto.laDireccion = collision.contacts[0].normal;
-                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.strength);
+                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterStats>().strength);
                 helloMoto.currentSpeed = 0.0f;
                 temp.currentSpeed = 0.0f;
             }
 
-            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_Solo>().myStats.handling);
+            Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterStats>().handling);
             if (helloMoto.mayhemState)
             {
                 Rpc_DeathPlayer();
@@ -104,7 +104,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     void MayhemState()
     {
         helloMoto.mayhemState = true;
-        //Invoke("Rpc_DeathPlayer", 5.0f);
+        burnOutState.SetActive(true);
+        Invoke("Rpc_DeathPlayer", 5.0f);
     }
 
     void Rpc_DeathPlayer()
@@ -112,8 +113,9 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         //Debug.Log("morido");
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
-        tempexplosion.transform.position = this.transform.position;
+        tempexplosion.transform.position = this.transform.position;;
         isAlive = false;
+        burnOutState.SetActive(true);
         Invoke("Rpc_Respawn", 3.0f);
         transform.GetChild(0).gameObject.SetActive(false);
     }
@@ -125,6 +127,15 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
 
     void Rpc_Respawn()
     {
+        helloMoto.RandomAddOn();
+        if (GetComponent<SCR_PlayerTempStats>().pastTarget != null)
+            helloMoto.savedPosition = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
+        transform.position = helloMoto.savedPosition;
+        Invoke("Rpc_RespawnPosition", 0.1f);
+    }
+
+    void Rpc_RespawnPosition()
+    {
         helloMoto.mayhemState = false;
         helloMoto.currentSpeed = 0;
         isAlive = true;
@@ -134,11 +145,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         myStats.speed = myStats.startingSpd;
         myStats.handling = myStats.startingHandling;
         transform.GetChild(0).gameObject.SetActive(true);
-        //Vector3 destination = GetComponent<SCR_PlayerTempStats>().nextTarget.transform.position - transform.position;
-        //transform.LookAt((new Vector3(0, destination.y, 0)));
         helloMoto.GetMyRB().velocity = Vector3.zero;
-        this.transform.position = helloMoto.savedPosition;
-        if(helloMoto.mainCamera != null)
+        if (helloMoto.mainCamera != null)
         {
             helloMoto.mainCamera.position = helloMoto.transform.position;
         }
