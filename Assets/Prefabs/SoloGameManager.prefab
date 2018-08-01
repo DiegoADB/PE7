@@ -61,5 +61,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   cage: {fileID: 0}
-  myPlayer: {fileID: 1385597347808846, guid: 558d299e199e2ae4e8e18895f502b52d, type: 2}
-  theEnemy: {fileID: 1385597347808846, guid: d68761814a072fa4d8518d07c4433325, type: 2}
+  myPlayer:
+  - {fileID: 1496601878774294, guid: a95d693dafed0434b8ce2a701f5818bc, type: 2}
+  - {fileID: 1143284116540836, guid: fff0dc4afb1adba45a071ff24b06768b, type: 2}
+  - {fileID: 1710320100132142, guid: dd4e67a2aeeca5d4aa635779c226f6ae, type: 2}
+  - {fileID: 1891933831653950, guid: 2b96f034eb67f434b9b76c44df7ba11c, type: 2}
+  theEnemy:
+  - {fileID: 1236270754701818, guid: b0fe763261ad59149b730e7bcf74c796, type: 2}
+  - {fileID: 1702987892782428, guid: a7cebe5f57c5fe048951634e7efb769d, type: 2}
+  - {fileID: 1271787047799310, guid: 80f6ec89ecf9c134cb40140d7a9738e7, type: 2}
+  - {fileID: 1665828542500376, guid: 62962bfb2105cb44cbea385bdb72dd16, type: 2}

@@ -1821,7 +1821,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496601878774294}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 118.38016, y: -13.346241, z: 44.63167}
+  m_LocalPosition: {x: -397.22037, y: 611.21545, z: 442.6012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4907754292005284}
@@ -2837,6 +2837,22 @@ MonoBehaviour:
   laDireccion: {x: 0, y: 0, z: 0}
   sparks: {fileID: 1822141977827186}
   yaw: {fileID: 1167011491329916}
+  addOns:
+  - {fileID: 1514985351355028}
+  - {fileID: 1533861923378762}
+  - {fileID: 1836304105787078}
+  - {fileID: 1396971266355260}
+  - {fileID: 1518744663073024}
+  - {fileID: 1752200884229766}
+  - {fileID: 1869895219806666}
+  - {fileID: 1842064853179442}
+  - {fileID: 1646218590280510}
+  - {fileID: 1809628227700986}
+  - {fileID: 1976002379723836}
+  - {fileID: 1718740362436340}
+  - {fileID: 1618128008336518}
+  - {fileID: 1068947730808084}
+  - {fileID: 1643632317098438}
 --- !u!114 &114705450071693554
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -33,6 +33,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     RaycastHit myRay;
     int randomx;
     int randomz;
+    public Transform cameraFake;
 
 
     private void Start()
@@ -44,6 +45,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         myRay = new RaycastHit();
         randomx = Random.Range(-2, 2);
         randomz = Random.Range(-2, 2);
+        helloMoto.mainCamera = Instantiate(cameraFake).transform;
     }
     private void Update()
     {
@@ -75,7 +77,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
                 helloMoto.horizontalInput = 1.0f;
                 //helloMoto.verticalInput = -1.0f;
                 helloMoto.drifting = true;
-                Debug.Log("Pinguino " + this.transform.name + " +1 pego con " + myRay.transform.name);                             
+
             }
         }
         else

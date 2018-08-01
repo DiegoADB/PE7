@@ -447,8 +447,6 @@ GameObject:
   - component: {fileID: 114592748134412026}
   - component: {fileID: 114866806393999294}
   - component: {fileID: 114116395684767568}
-  - component: {fileID: 82227640853636280}
-  - component: {fileID: 81345027221876046}
   - component: {fileID: 114974374236130650}
   - component: {fileID: 114952223616850352}
   m_Layer: 0
@@ -2182,7 +2180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271787047799310}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 104.16411, y: -1.8498163, z: 56.3812}
+  m_LocalPosition: {x: 477.09235, y: -41.649162, z: 163.195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4998747904093836}
@@ -3225,93 +3223,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2, z: 0.92341536}
   m_Center: {x: 0, y: 0.5, z: 0.011707693}
---- !u!81 &81345027221876046
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271787047799310}
-  m_Enabled: 1
---- !u!82 &82227640853636280
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271787047799310}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &95591663746708106
 Animator:
   serializedVersion: 3
@@ -3509,6 +3420,22 @@ MonoBehaviour:
   laDireccion: {x: 0, y: 0, z: 0}
   sparks: {fileID: 1529423963464274}
   yaw: {fileID: 1837069706111992}
+  addOns:
+  - {fileID: 1044940579279386}
+  - {fileID: 1377322602522114}
+  - {fileID: 1082193480433492}
+  - {fileID: 1916380714742044}
+  - {fileID: 1191758761315606}
+  - {fileID: 1104796118104410}
+  - {fileID: 1032669670973054}
+  - {fileID: 1501887585401262}
+  - {fileID: 1064377211126340}
+  - {fileID: 1159069751291528}
+  - {fileID: 1584299062105248}
+  - {fileID: 1673137946255944}
+  - {fileID: 1969371813748300}
+  - {fileID: 1260807108216194}
+  - {fileID: 1552291654842402}
 --- !u!114 &114263681387735276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4120,9 +4047,10 @@ MonoBehaviour:
   - {fileID: 1339269069690764, guid: 6952c939de7ecaf40a3df0853ac2f8de, type: 2}
   - {fileID: 1144946217751488, guid: 6952c939de7ecaf40a3df0853ac2f8de, type: 2}
   SFX_clip: []
-  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+  myExplosion: {fileID: 1319806205380990, guid: b0790201bd437564b94add985525c741,
     type: 2}
   burnOutState: {fileID: 1611144026386874}
+  cameraFake: {fileID: 4282351165651886, guid: 2caefa27879a9b743a02831d477bf6a0, type: 2}
 --- !u!114 &114974374236130650
 MonoBehaviour:
   m_ObjectHideFlags: 1

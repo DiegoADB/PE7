@@ -6,7 +6,7 @@ public class SoloGameManager : MonoBehaviour {
 
     public GameObject[] StartPos;
     public SCR_TheCage cage;
-    public GameObject myPlayer;
+    public GameObject[] myPlayer;
     public GameObject[] theEnemy;
 
 
@@ -19,7 +19,7 @@ public class SoloGameManager : MonoBehaviour {
         {
             if (i == 0)
             {
-                thePlayer = Instantiate(myPlayer, StartPos[i].transform.position, Quaternion.identity);
+                thePlayer = Instantiate(myPlayer[Random.Range(0, 4)], StartPos[i].transform.position, Quaternion.identity);
                 //thePlayer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
                 //thePlayer.SetActive(true);
             }

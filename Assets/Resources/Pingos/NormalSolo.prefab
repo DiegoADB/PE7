@@ -2012,7 +2012,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891933831653950}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 117.695, y: -13.360552, z: 43.97858}
+  m_LocalPosition: {x: -394.57947, y: 611.99005, z: 447.24924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4380376885269596}
@@ -2359,6 +2359,19 @@ MonoBehaviour:
   laDireccion: {x: 0, y: 0, z: 0}
   sparks: {fileID: 1532059011168198}
   yaw: {fileID: 1966845612130708}
+  addOns:
+  - {fileID: 1359535305452536}
+  - {fileID: 1941506567019764}
+  - {fileID: 1435371852173954}
+  - {fileID: 1512903677324856}
+  - {fileID: 1821083564601050}
+  - {fileID: 1430733781428048}
+  - {fileID: 1232911521210702}
+  - {fileID: 1634697433976132}
+  - {fileID: 1162746143751762}
+  - {fileID: 1783197247883618}
+  - {fileID: 1325776191016052}
+  - {fileID: 1293980778699688}
 --- !u!114 &114137025900344542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2954,7 +2967,7 @@ MonoBehaviour:
   helloMoto: {fileID: 114113326653057892}
   myStats: {fileID: 114959822121840384}
   orca: 0
-  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+  myExplosion: {fileID: 1319806205380990, guid: b0790201bd437564b94add985525c741,
     type: 2}
   burnOutState: {fileID: 1563770443450630}
   CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
