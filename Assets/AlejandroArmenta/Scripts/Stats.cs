@@ -480,12 +480,12 @@ public class Stats : MonoBehaviour
     }
 #endif
 
-    void BEGIN_PLAYER_ITEMS(custom_state CState, uint PlayerIndex)
+    void BEGIN_PLAYER_ITEMS(ref custom_state CState, uint PlayerIndex)
     {
         CState.CurrentPlayerIndex = PlayerIndex;
         CState.AddingPlayerItems = true;
     }
-    void ADD_PLAYER_ITEMS(custom_state CState, sprite_item_name ItemName, sprite_item_type ItemType)
+    void ADD_PLAYER_ITEMS(ref custom_state CState, sprite_item_name ItemName, sprite_item_type ItemType)
     {
         if(CState.AddingPlayerItems)
         {
@@ -495,7 +495,7 @@ public class Stats : MonoBehaviour
         }
     }
 
-    void END_PLAYER_ITEMS(custom_state CState)
+    void END_PLAYER_ITEMS(ref custom_state CState)
     {
         PlayerPrefs.SetInt("P"+ CState.CurrentPlayerIndex.ToString() +"_Count", (int)CState.PlayerItemCount);
         CState.AddingPlayerItems = false;
@@ -508,6 +508,7 @@ public class Stats : MonoBehaviour
 
     void Start()
     {
+        print("aaaaaaa");
         CState = new custom_state();
         CState.MainMenu = GameObject.Find("MainMenu");
 
@@ -541,12 +542,12 @@ public class Stats : MonoBehaviour
 
             //NOTE(Alex): Add Items in this way!
             uint PlayerIndex = 0;
-            BEGIN_PLAYER_ITEMS(CState, PlayerIndex++);
-            ADD_PLAYER_ITEMS(CState, sprite_item_name.SpriteItem_Morfina, sprite_item_type.SpriteAddon_Customizable);
-            ADD_PLAYER_ITEMS(CState, sprite_item_name.SpriteItem_Espinaca, sprite_item_type.SpriteAddon_Feet);
-            ADD_PLAYER_ITEMS(CState, sprite_item_name.SpriteItem_Pesas, sprite_item_type.SpriteAddon_Feet);
-            ADD_PLAYER_ITEMS(CState, sprite_item_name.SpriteItem_Vodka, sprite_item_type.SpriteAddon_Head);
-            END_PLAYER_ITEMS(CState);
+            BEGIN_PLAYER_ITEMS(ref CState, PlayerIndex++);
+            ADD_PLAYER_ITEMS(ref CState, sprite_item_name.SpriteItem_Morfina, sprite_item_type.SpriteAddon_Customizable);
+            ADD_PLAYER_ITEMS(ref CState, sprite_item_name.SpriteItem_Espinaca, sprite_item_type.SpriteAddon_Feet);
+            ADD_PLAYER_ITEMS(ref CState, sprite_item_name.SpriteItem_Pesas, sprite_item_type.SpriteAddon_Feet);
+            ADD_PLAYER_ITEMS(ref CState, sprite_item_name.SpriteItem_Vodka, sprite_item_type.SpriteAddon_Head);
+            END_PLAYER_ITEMS(ref CState);
 
 #if false
             BEGIN_PLAYER_ITEMS(CState, PlayerIndex++);
