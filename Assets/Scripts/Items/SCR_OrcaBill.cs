@@ -25,10 +25,11 @@ public class SCR_OrcaBill : NetworkBehaviour {
         instancer.GetComponent<SCR_CharacterMotor_Net>().orca = true;
         instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX  | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
+        _navAgnt.enabled = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void PreviousUpdate()
     {
         if (!instancer)
             return;
@@ -50,6 +51,28 @@ public class SCR_OrcaBill : NetworkBehaviour {
             instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
             if(pingo.parent==null)
                 Destroy(this.gameObject);   
+        }
+    }
+    void Update()
+    {
+        if (!instancer)
+            return;
+
+        transform.position = Vector3.MoveTowards(transform.position,next_dest.nextTarget.transform.position,10000);
+
+        if (myScore + totalchk == next_dest.myScore)
+        {
+            //_navAgnt.Warp(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z));
+            instancer.transform.GetChild(0).gameObject.SetActive(true);
+            instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
+            instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+
+            _navAgnt.isStopped = true;
+            pingo.parent = null;
+            instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
+            if (pingo.parent == null)
+                Destroy(this.gameObject);
         }
     }
 
