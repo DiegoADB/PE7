@@ -15,13 +15,14 @@ public class SCR_LapSync : MonoBehaviour
     {
         currentLap = 1;
         lapTotal = SCR_Ranking.numberOfLaps;
-        checkpointsPassed = GetComponent<SCR_PlayerTempStats>().myScore;
 	}
 	
 	void Update ()
     {
         lapText.text = currentLap + "-" + lapTotal;
 
-        currentLap = Mathf.FloorToInt(checkpointsPassed / SCR_PlayerTempStats.numberOfCheckpoints) + 1;
+        checkpointsPassed = GetComponent<SCR_PlayerTempStats>().myScore;
+        Debug.Log("PASSED: " + checkpointsPassed);
+        currentLap = Mathf.FloorToInt(checkpointsPassed / SCR_PlayerTempStats.numberOfCheckpoints + 1) + 1;
 	}
 }

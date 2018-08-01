@@ -66,29 +66,28 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     {
         if(isAlive && !orca)
             helloMoto.MyUpdate();
-        ChooseCharacter();
     }
 
 
-    void ChooseCharacter()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Cmd_ChangePlayerType("Normal");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Cmd_ChangePlayerType("Heavy");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Cmd_ChangePlayerType("Lucky");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Cmd_ChangePlayerType("Fast");
-        }
-    }
+    //void ChooseCharacter()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        Cmd_ChangePlayerType("Normal");
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        Cmd_ChangePlayerType("Heavy");
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        Cmd_ChangePlayerType("Lucky");
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha4))
+    //    {
+    //        Cmd_ChangePlayerType("Fast");
+    //    }
+    //}
 
     [Command]
     void Cmd_ChangePlayerType(string _pingoName)
