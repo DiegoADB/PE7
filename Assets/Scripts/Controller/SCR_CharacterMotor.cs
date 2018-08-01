@@ -217,7 +217,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             currentSpeed += _delta * acceleration;
         //Frenar e ir en reversa
         if (bButton && mayhemState == false)
-            currentSpeed -= _delta * acceleration * 2;
+            currentSpeed -= _delta * acceleration * 3;
 
         //Break
         if (bButton && currentSpeed > 0)
@@ -259,7 +259,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         }
 
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
-        if (currentSpeed <= 0.1f && currentSpeed >= -0.1f && chocado == false)
+        if (currentSpeed == 0 && chocado == false)
         {
             if (isIA == false)
             {
@@ -277,8 +277,8 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             //Asignamos la velocidad a nuestro RB
             Vector3 myVelocity = CrashCheck();
-            if (myRB.velocity.magnitude <= 0.005f)
-                currentSpeed = 0;
+            //if (myRB.velocity.magnitude <= 0.005f)
+            //    currentSpeed = 0;
             if(!chocado)
                 myRB.velocity = new Vector3(myVelocity.x, myRB.velocity.y, myVelocity.z);
         }
@@ -356,7 +356,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             //Debug.Log(myStats);
             if (isIA == false)
             {
-                horizontalInput = -(Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
+                horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
             }
         }
   
