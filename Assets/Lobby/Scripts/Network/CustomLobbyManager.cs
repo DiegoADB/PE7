@@ -139,10 +139,33 @@ public class CustomLobbyManager : NetworkLobbyManager
         if (thePlayersChoiceAwards.ContainsKey(conn))
             thePlayersChoiceAwards[conn] = _type;
     }
-
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
     {
-        GameObject player = gamePlayerPrefab;/* Resources.Load<GameObject>("Pingos/"+thePlayersChoiceAwards[conn.connectionId]);*/
+        /* Resources.Load<GameObject>("Pingos/"+thePlayersChoiceAwards[conn.connectionId]);*/
+        int randomPlayer = Random.Range(0, 4);
+        switch (randomPlayer)
+        {
+            case 0:
+                {
+                    gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Fast");
+                } break;
+            case 1:
+                {
+                    gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Heavy");
+                }
+                break;
+            case 2:
+                {
+                    gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Lucky");
+                }
+                break;
+            case 3:
+                {
+                    gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Normal");
+                }
+                break;
+        }
+        GameObject player = gamePlayerPrefab;
         GameObject temp = (GameObject)GameObject.Instantiate(player,
             startPositions[conn.connectionId].position,
             Quaternion.identity);

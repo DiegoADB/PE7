@@ -2037,7 +2037,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236962573624916}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1716.6991, y: 1510.8804, z: -2494.8276}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4259724265669200}
@@ -3242,10 +3242,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3492,14 +3492,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHPBar: {fileID: 0}
-  strength: 1
-  speed: 1
-  handling: 1
-  playerHP: 100
-  startingHP: 100
-  startingStr: 1
-  startingSpd: 1
-  startingHandling: 1
+  strength: 1.5
+  speed: 1.5
+  handling: 1.5
+  playerHP: 50
+  startingHP: 50
+  startingStr: 1.5
+  startingSpd: 1.5
+  startingHandling: 1.5
 --- !u!114 &114137522297138528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3688,7 +3688,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3f652e2e252a58a45bf1f9bf48872d49, type: 3}
   - {fileID: 8300000, guid: 9433d43746d6bd940aa280ed194d8476, type: 3}
   - {fileID: 8300000, guid: 2e13a89c294622f498e99d0c611578da, type: 3}
-  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+  myExplosion: {fileID: 1319806205380990, guid: b0790201bd437564b94add985525c741,
     type: 2}
   burnOutState: {fileID: 1739734480041138}
   CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
@@ -4138,6 +4138,22 @@ MonoBehaviour:
   laDireccion: {x: 0, y: 0, z: 0}
   sparks: {fileID: 1056075990921726}
   yaw: {fileID: 1107179685333416}
+  addOns:
+  - {fileID: 1533149828962594}
+  - {fileID: 1122986578208232}
+  - {fileID: 1371310434574664}
+  - {fileID: 1803310258499350}
+  - {fileID: 1699352296059276}
+  - {fileID: 1366764349697560}
+  - {fileID: 1501668129328900}
+  - {fileID: 1409721676734672}
+  - {fileID: 1226320705911934}
+  - {fileID: 1648071896217274}
+  - {fileID: 1968914342741896}
+  - {fileID: 1893801348544396}
+  - {fileID: 1222043942933468}
+  - {fileID: 1321993164662290}
+  - {fileID: 1666975255065242}
 --- !u!136 &136254184185989936
 CapsuleCollider:
   m_ObjectHideFlags: 1

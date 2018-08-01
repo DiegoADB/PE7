@@ -183,6 +183,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ClientRpc]
     void Rpc_Respawn()
     {
+        helloMoto.RandomAddOn();
         helloMoto.mayhemState = false;
         helloMoto.currentSpeed = 0;
         isAlive = true;
