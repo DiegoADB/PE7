@@ -12,7 +12,7 @@ public class SCR_Ranking : MonoBehaviour {
     public int playerNum;
 
     public static string winnerNetID;
-    public static int numberOfLaps = 1;
+    public static int numberOfLaps = 3;
     public static bool b_raceFinished = false;
 
 
