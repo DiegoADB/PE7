@@ -37,20 +37,22 @@ public class SCR_OrcaBill : NetworkBehaviour {
         {
             instancer.transform.GetChild(0).gameObject.SetActive(true);
             instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
+            instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
+            instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
-            // instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
-            instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+            pingo.SetParent(null);
+            Invoke("GiveBackPlayerControl", 0.2f);
+        }
+    }
 
-
-            //_navAgnt.isStopped = true;
-            pingo.parent = null;
-            if (pingo.parent == null && instancer.GetComponent<SCR_CharacterMotor_Net>().orca == false)
-            {
-                pingo.parent = null;
-
-                Destroy(gameObject);
-
-            }
+    void GiveBackPlayerControl()
+    {
+        pingo.SetParent(null);
+        if (!pingo.parent && instancer.GetComponent<SCR_CharacterMotor_Net>().orca == false)
+            Destroy(gameObject);
+        else if(pingo.parent)
+        {
+            Invoke("GiveBackPlayerControl", 0.2f);
         }
     }
 
