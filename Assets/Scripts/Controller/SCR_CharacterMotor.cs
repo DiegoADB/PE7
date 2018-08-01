@@ -98,7 +98,7 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     public void RandomAddOn()
     {
-        int randomAddOn = Random.Range(0, 12);
+        int randomAddOn = Random.Range(0, addOns.Length -1);
         for (int i = 0; i < addOns.Length; i++)
         {
             addOns[i].SetActive(false);

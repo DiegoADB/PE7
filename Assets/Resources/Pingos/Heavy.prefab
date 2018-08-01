@@ -2802,12 +2802,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHPBar: {fileID: 0}
   strength: 2
-  speed: 0.85
+  speed: 0.9
   handling: 2
   playerHP: 150
   startingHP: 150
   startingStr: 2
-  startingSpd: 0.85
+  startingSpd: 0.9
   startingHandling: 2
 --- !u!114 &114396750238712900
 MonoBehaviour:

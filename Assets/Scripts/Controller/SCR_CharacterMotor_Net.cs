@@ -185,7 +185,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void Rpc_Respawn()
     {
         helloMoto.RandomAddOn();
-        transform.position = helloMoto.savedPosition;
+        transform.position = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
         Invoke("Rpc_RespawnPosition", 0.1f);
       
     }
