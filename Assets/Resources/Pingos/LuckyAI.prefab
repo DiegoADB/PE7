@@ -531,7 +531,6 @@ GameObject:
   - component: {fileID: 114152548614568754}
   - component: {fileID: 114407122948203922}
   - component: {fileID: 82375462595485088}
-  - component: {fileID: 81713354944356870}
   - component: {fileID: 114420301098977366}
   - component: {fileID: 114329822669300914}
   - component: {fileID: 114684184762060724}
@@ -3226,13 +3225,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2, z: 0.92341536}
   m_Center: {x: 0, y: 0.5, z: 0.011707693}
---- !u!81 &81713354944356870
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1457857041762590}
-  m_Enabled: 1
 --- !u!82 &82375462595485088
 AudioSource:
   m_ObjectHideFlags: 1

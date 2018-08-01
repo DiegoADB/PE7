@@ -24,35 +24,35 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         helloMoto.MyStart();
         
         helloMoto.mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        Debug.Log(helloMoto.mainCamera.name);
+        //Debug.Log(helloMoto.mainCamera.name);
     }
     private void Update()
     {
         if (isAlive)
             helloMoto.MyUpdate();
-        ChooseCharacter();
+        //ChooseCharacter();
     }
 
-    void ChooseCharacter()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Cmd_ChangePlayerType("Normal");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Cmd_ChangePlayerType("Heavy");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Cmd_ChangePlayerType("Lucky");
-        }
-    }
+    //void ChooseCharacter()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        Cmd_ChangePlayerType("Normal");
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        Cmd_ChangePlayerType("Heavy");
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        Cmd_ChangePlayerType("Lucky");
+    //    }
+    //}
 
-    void Cmd_ChangePlayerType(string _pingoName)
-    {
-        var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/" + _pingoName), transform.position, transform.rotation);
-    }
+    //void Cmd_ChangePlayerType(string _pingoName)
+    //{
+    //    var newPlayer = Instantiate<GameObject>(Resources.Load<GameObject>("Pingos/" + _pingoName), transform.position, transform.rotation);
+    //}
 
     private void FixedUpdate()
     {
@@ -129,8 +129,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     {
         helloMoto.RandomAddOn();
         if (GetComponent<SCR_PlayerTempStats>().pastTarget != null)
-            helloMoto.savedPosition = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
-        transform.position = helloMoto.savedPosition;
+             helloMoto.savedPosition = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
+        
         Invoke("Rpc_RespawnPosition", 0.1f);
     }
 
@@ -146,6 +146,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         myStats.handling = myStats.startingHandling;
         transform.GetChild(0).gameObject.SetActive(true);
         helloMoto.GetMyRB().velocity = Vector3.zero;
+        Debug.Log("###### muerte " + transform.position);
+        transform.position = helloMoto.savedPosition;
         if (helloMoto.mainCamera != null)
         {
             helloMoto.mainCamera.position = helloMoto.transform.position;

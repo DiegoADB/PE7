@@ -22,7 +22,6 @@ public class SCR_ChangeScene : MonoBehaviour
 
         SceneManager.LoadScene(_sceneIndex);
     }
-
     public void QuitGame()
     {
         Application.Quit();
