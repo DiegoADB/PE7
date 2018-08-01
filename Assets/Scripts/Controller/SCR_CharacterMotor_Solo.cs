@@ -22,6 +22,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         temp.playerNum++;
         temp.AddPlayerList();
         helloMoto.MyStart();
+
+        GetComponentInChildren<Canvas>().enabled = true;
         
         helloMoto.mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         //Debug.Log(helloMoto.mainCamera.name);
@@ -29,7 +31,10 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     private void Update()
     {
         if (isAlive)
+        {
+            helloMoto.SaveLastPosition();
             helloMoto.MyUpdate();
+        }
         //ChooseCharacter();
     }
 
@@ -113,7 +118,8 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         //Debug.Log("morido");
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
-        tempexplosion.transform.position = this.transform.position;;
+        tempexplosion.AddComponent<SCR_Destroy>();
+        tempexplosion.transform.position = this.transform.position;
         isAlive = false;
         burnOutState.SetActive(true);
         Invoke("Rpc_Respawn", 3.0f);
@@ -128,8 +134,6 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
     void Rpc_Respawn()
     {
         helloMoto.RandomAddOn();
-        if (GetComponent<SCR_PlayerTempStats>().pastTarget != null)
-             helloMoto.savedPosition = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
         
         Invoke("Rpc_RespawnPosition", 0.1f);
     }
@@ -146,7 +150,7 @@ public class SCR_CharacterMotor_Solo : MonoBehaviour
         myStats.handling = myStats.startingHandling;
         transform.GetChild(0).gameObject.SetActive(true);
         helloMoto.GetMyRB().velocity = Vector3.zero;
-        Debug.Log("###### muerte " + transform.position);
+        Debug.Log("###### muerte " + helloMoto.savedPosition);
         transform.position = helloMoto.savedPosition;
         if (helloMoto.mainCamera != null)
         {

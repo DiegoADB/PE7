@@ -23,7 +23,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("P1_X"))
         {
             Debug.Log("Item Value "+(int)myItem);
             Cmd_SpawnCurrentItem();
@@ -96,7 +96,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     [Command]
     void Cmd_GiveItem()
     {
-            myItem = (SCR_ItemManager_Net.ItemIndex_Net)Random.Range(0, numItems);
+            myItem = (SCR_ItemManager_Net.ItemIndex_Net)Random.Range(0, numItems-1);
             Debug.Log("Item Giver " + myItem);
             //Destroy(gameObject);
     }

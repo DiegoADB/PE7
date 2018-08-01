@@ -165,7 +165,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         }
     }
 
-    void SaveLastPosition()
+    public void SaveLastPosition()
     {
         float distanceToGround = 1.2f;
         Vector3 origin = transform.position + new Vector3(0, 0.1f, 0);

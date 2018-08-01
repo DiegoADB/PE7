@@ -18,9 +18,10 @@ public class SCR_OrcaBill : NetworkBehaviour {
         //SetInstancer();
         pingo = instancer.GetComponent<Transform>();
         next_dest = instancer.GetComponent<SCR_PlayerTempStats>();
-        pingo.SetParent(transform);
-        instancer.transform.GetChild(0).gameObject.SetActive(false);
+        //pingo.SetParent(transform);
+        //instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
         instancer.GetComponent<SCR_CharacterMotor_Net>().orca = true;
+        instancer.GetComponent<CapsuleCollider>().enabled = false;
         instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX  | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -32,30 +33,18 @@ public class SCR_OrcaBill : NetworkBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, next_dest.nextTarget.transform.position, Time.deltaTime * 20);
             transform.rotation = Quaternion.LookRotation(next_dest.nextTarget.transform.position - transform.position);
+            pingo.position = transform.position;
         }
         else
         {
-            instancer.transform.GetChild(0).gameObject.SetActive(true);
+            pingo.gameObject.SetActive(true);
             instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
             instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
+            instancer.GetComponent<CapsuleCollider>().enabled = true;
             instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-
-            pingo.SetParent(null);
-            Invoke("GiveBackPlayerControl", 0.2f);
-        }
-    }
-
-    void GiveBackPlayerControl()
-    {
-        pingo.SetParent(null);
-        if (!pingo.parent && instancer.GetComponent<SCR_CharacterMotor_Net>().orca == false)
             Destroy(gameObject);
-        else if(pingo.parent)
-        {
-            Invoke("GiveBackPlayerControl", 0.2f);
         }
     }
-
 
     public void SetInstancer(GameObject _netId)
     {
