@@ -153,7 +153,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void MayhemState()
     {
         helloMoto.mayhemState = true;
-        //Invoke("Rpc_DeathPlayer", 5.0f);
+        burnOutState.SetActive(true);
+        Invoke("Rpc_DeathPlayer", 5.0f);
     }
 
     [ClientRpc]
