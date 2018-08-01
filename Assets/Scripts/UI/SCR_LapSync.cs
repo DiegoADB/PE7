@@ -15,7 +15,7 @@ public class SCR_LapSync : MonoBehaviour
     {
         currentLap = 1;
         lapTotal = SCR_Ranking.numberOfLaps;
-        checkpointsPassed = GetComponent<SCR_PlayerTempStats>().tempScore;
+        checkpointsPassed = GetComponent<SCR_PlayerTempStats>().myScore;
 	}
 	
 	void Update ()
