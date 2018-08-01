@@ -24,12 +24,15 @@ public class SCR_RedShell_Net : NetworkBehaviour {
             if (myRanks.mySortingList[i].myPlace == myStats.myPlace - 1)
             {
                 //Switch!
+                Debug.Log("RedShell Not First");
                 myTarget=myRanks.mySortingList[i].gameObject;
 
 
             }
             else if (myStats.myPlace == 1)
             {
+                Debug.Log("RedShell Not First");
+
                 myTarget = myRanks.mySortingList[myRanks.mySortingList.Count-1].gameObject;
 
             }
@@ -40,13 +43,23 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     void Rpc_FollowEnemy()
     {
         Debug.Log("RedShellTarget:" + myTarget.name);
-        StartCoroutine(IERedShell(myTarget));
+        StartCoroutine(IERedShell());
 
     }
-    IEnumerator IERedShell(GameObject _target)
+    void Update()
+    {
+        if(navAgent.destination!=null)
+        {
+            navAgent.SetDestination(myTarget.transform.position);
+            Debug.Log("Navmeshagent" + navAgent.destination);
+
+        }
+    }
+    IEnumerator IERedShell()
     {
         yield return new WaitForEndOfFrame();
-        navAgent.destination = _target.transform.position;
+        navAgent.SetDestination(myTarget.transform.position);
+        Debug.Log("Navmeshagent" + navAgent.destination);
 
     }
 
@@ -85,6 +98,8 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
         myGo.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+        myGo.GetComponent<SCR_CharacterMotor>().currentSpeed = 0;
+
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
         Destroy(gameObject);
     }
