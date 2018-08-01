@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+
 //public struct MyEvent : UnityEvent<int>
 //{
 
@@ -80,10 +81,6 @@ public class DisplayControl : MonoBehaviour {
 		*/
 	}
 		
-	void ModifyStat(int ElementIndex)
-	{
-		StartCoroutine (Draw (Rects[0], ElementIndex));
-	}
 
 	/*
 	void ModifyVelocity()
@@ -120,45 +117,8 @@ public class DisplayControl : MonoBehaviour {
 		return Result;
 	}
 
-	public float CurrentSize;
-
-	IEnumerator 
-	Draw(UnityEngine.RectTransform rect, float DestSize)
-	{
-		Assert (CurrentSize != DestSize);
-		float DeltaP = DestSize - CurrentSize;
-		float Sign = DeltaP / Abs(DeltaP);
-
-		float RectDimY = rect.sizeDelta.y;
-
-		float t = CurrentSize;
-		float RecVel = .001f; //m / s;
-		float BaseTimeInSeconds = Time.realtimeSinceStartup;
-		while(t != DestSize)
-		{
-			rect.sizeDelta = new Vector2 (t, RectDimY);
-
-			//Debug.Log ("X: " + VelocityRect.sizeDelta.x.ToString() + "Y: " + VelocityRect.sizeDelta.y.ToString());
-			//Debug.Log ("Time: " + Time.unscaledTime.ToString());
-			yield return new WaitForEndOfFrame();
-
-			float DeltaT = Time.realtimeSinceStartup - BaseTimeInSeconds;
-			t += DeltaT * RecVel * Sign;
-			Debug.Log ("BaseTime: " + DeltaT.ToString());
-
-			//NOTE: Try DeltaTime 
-
-		}
-	}
-
-	public void OnPointerDown(PointerEventData Data)
-	{
-		//So bizarre!!
-	}
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
+	
+	float [] CurrentStats;
+	public Image MainImage;
+   
 }

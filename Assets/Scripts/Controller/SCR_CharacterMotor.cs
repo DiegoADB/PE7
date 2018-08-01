@@ -94,10 +94,23 @@ public class SCR_CharacterMotor : MonoBehaviour
     public GameObject sparks;
     public GameObject yaw;
 
+    public GameObject[] addOns;
+
+    public void RandomAddOn()
+    {
+        int randomAddOn = Random.Range(0, 12);
+        for (int i = 0; i < addOns.Length; i++)
+        {
+            addOns[i].SetActive(false);
+        }
+        addOns[randomAddOn].SetActive(true);
+    }
+
 
     //Inicializamos a nuestro jugador
     public void MyStart()
     {
+        RandomAddOn();
         timerPosition = 0.0f;
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
         activeModelAnim = GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
@@ -431,7 +444,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         {
             if (maxForwardSpeed > maxDefaultSpeed)
             {
-                maxForwardSpeed -= Time.fixedDeltaTime;
+                maxForwardSpeed -= Time.fixedDeltaTime * 2;
             }
             if (maxForwardSpeed < maxDefaultSpeed)
                 maxForwardSpeed = maxDefaultSpeed;

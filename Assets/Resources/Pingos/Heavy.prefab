@@ -2064,7 +2064,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1246486157115798}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -14.128794, y: -3.2000918, z: 0.29241228}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4076139948774624}
@@ -2267,10 +2267,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2496,6 +2496,21 @@ MonoBehaviour:
   laDireccion: {x: 0, y: 0, z: 0}
   sparks: {fileID: 1030859143535830}
   yaw: {fileID: 1691825350210520}
+  addOns:
+  - {fileID: 1066381863577266}
+  - {fileID: 1610588862003238}
+  - {fileID: 1297462984047988}
+  - {fileID: 1135157075316606}
+  - {fileID: 1249807479489620}
+  - {fileID: 1867889290029516}
+  - {fileID: 1948777972441194}
+  - {fileID: 1184255877521454}
+  - {fileID: 1289157714743588}
+  - {fileID: 1830706201581884}
+  - {fileID: 1154251044992564}
+  - {fileID: 1908052632633080}
+  - {fileID: 1675684918351200}
+  - {fileID: 1357504580541548}
 --- !u!114 &114077915643706134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2653,14 +2668,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHPBar: {fileID: 0}
-  strength: 1
+  strength: 2
   speed: 1
-  handling: 1
-  playerHP: 100
-  startingHP: 100
-  startingStr: 1
+  handling: 2
+  playerHP: 150
+  startingHP: 150
+  startingStr: 2
   startingSpd: 1
-  startingHandling: 1
+  startingHandling: 2
 --- !u!114 &114415795239047270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2735,7 +2750,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3f652e2e252a58a45bf1f9bf48872d49, type: 3}
   - {fileID: 8300000, guid: 9433d43746d6bd940aa280ed194d8476, type: 3}
   - {fileID: 8300000, guid: 2e13a89c294622f498e99d0c611578da, type: 3}
-  myExplosion: {fileID: 1353216950270070, guid: b0790201bd437564b94add985525c741,
+  myExplosion: {fileID: 1319806205380990, guid: b0790201bd437564b94add985525c741,
     type: 2}
   burnOutState: {fileID: 1461013732761056}
   CameraPrefab: {fileID: 1216371397643860, guid: 92c13d82e4f925347b31173736a858a4,
@@ -2813,6 +2828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlace: 0
   myScore: 0
+  tempScore: 0
   distanceToNext: 0
   myCheckpoints: []
   nextTarget: {fileID: 0}
