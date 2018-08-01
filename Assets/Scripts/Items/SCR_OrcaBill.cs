@@ -36,15 +36,21 @@ public class SCR_OrcaBill : NetworkBehaviour {
         else
         {
             instancer.transform.GetChild(0).gameObject.SetActive(true);
-            instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
+            instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
+
+            // instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
             instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
 
             //_navAgnt.isStopped = true;
             pingo.parent = null;
-            instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
-            if (pingo.parent == null)
-                Destroy(this.gameObject);
+            if (pingo.parent == null && instancer.GetComponent<SCR_CharacterMotor_Net>().orca == false)
+            {
+                pingo.parent = null;
+
+                Destroy(gameObject);
+
+            }
         }
     }
 
