@@ -259,7 +259,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         }
 
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
-        if (currentSpeed == 0 && chocado == false)
+        if (currentSpeed <= 1 && chocado == false)
         {
             if (isIA == false)
             {
