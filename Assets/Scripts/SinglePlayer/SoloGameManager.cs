@@ -7,7 +7,7 @@ public class SoloGameManager : MonoBehaviour {
     public GameObject[] StartPos;
     public SCR_TheCage cage;
     public GameObject myPlayer;
-    public GameObject theEnemy;
+    public GameObject[] theEnemy;
 
 
     GameObject thePlayer;
@@ -25,7 +25,7 @@ public class SoloGameManager : MonoBehaviour {
             }
             else
             {
-                Instantiate(theEnemy, StartPos[i].transform.position, Quaternion.identity).transform.name = "Pinguino_IA_" + i ;
+                Instantiate(theEnemy[Random.Range(0,4)], StartPos[i].transform.position, Quaternion.identity).transform.name = "Pinguino_IA_" + i ;
             }
         }
     }

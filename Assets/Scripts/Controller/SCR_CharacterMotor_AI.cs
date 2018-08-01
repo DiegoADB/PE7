@@ -98,7 +98,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") && isAlive && !orca)
         {
-            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterMotor_AI>().myStats.strength;
+            myStats.playerHP -= 10 * collision.transform.GetComponent<SCR_CharacterStats>().strength;
             helloMoto.chocado = true;
 
             SCR_CharacterMotor temp = collision.transform.GetComponent<SCR_CharacterMotor>();
@@ -106,7 +106,7 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
             {
                 helloMoto.laFuerza = collision.impulse;
                 helloMoto.laDireccion = collision.contacts[0].normal;
-                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_AI>().myStats.strength);
+                temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterStats>().strength);
                 helloMoto.currentSpeed = 0.0f;
                 temp.currentSpeed = 0.0f;
             }
