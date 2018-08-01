@@ -170,6 +170,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
+        tempexplosion.AddComponent<SCR_Destroy>();
         tempexplosion.transform.position = this.transform.position;
         //NetworkServer.Spawn(tempexplosion);
         isAlive = false;

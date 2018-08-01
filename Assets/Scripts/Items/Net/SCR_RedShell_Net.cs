@@ -26,6 +26,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
             else if (myStats.myPlace == 1)
             {
                 myTarget = myRanks.mySortingList[myRanks.mySortingList.Count-1].gameObject;
+                NetworkServer.Destroy(gameObject);
             }
         }
 
