@@ -356,7 +356,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             //Debug.Log(myStats);
             if (isIA == false)
             {
-                horizontalInput = (Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
+                horizontalInput = -(Input.GetAxisRaw(_playerPrefix + "Horizontal") * steerForce * myStats.handling);
             }
         }
   
