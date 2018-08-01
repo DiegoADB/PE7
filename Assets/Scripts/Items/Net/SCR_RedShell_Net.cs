@@ -9,6 +9,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     NavMeshAgent navAgent;
+    public GameObject myTarget;
     float timer = 20f;
     // Use this for initialization
     public void Start2()
@@ -23,18 +24,25 @@ public class SCR_RedShell_Net : NetworkBehaviour {
             if (myRanks.mySortingList[i].myPlace == myStats.myPlace - 1)
             {
                 //Switch!
-                StartCoroutine(IERedShell(myRanks.mySortingList[i].gameObject));
+                myTarget=myRanks.mySortingList[i].gameObject;
+
+
             }
             else if (myStats.myPlace == 1)
             {
-                StartCoroutine(IERedShell(myRanks.mySortingList[myRanks.mySortingList.Count].gameObject));
+                myTarget = myRanks.mySortingList[myRanks.mySortingList.Count-1].gameObject;
 
-                //Destroy(gameObject);
             }
         }
 
     }
+    [ClientRpc]
+    void Rpc_FollowEnemy()
+    {
+        Debug.Log("RedShellTarget:" + myTarget.name);
+        StartCoroutine(IERedShell(myTarget));
 
+    }
     IEnumerator IERedShell(GameObject _target)
     {
         yield return new WaitForEndOfFrame();
@@ -67,7 +75,7 @@ public class SCR_RedShell_Net : NetworkBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && collision.gameObject !=instancer)
         {
             StartCoroutine(IEAttack(collision.gameObject));
         }
@@ -78,6 +86,6 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         yield return new WaitForSeconds(0.1f);
         myGo.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

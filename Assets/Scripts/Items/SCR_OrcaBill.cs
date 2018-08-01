@@ -48,7 +48,8 @@ public class SCR_OrcaBill : NetworkBehaviour {
             _navAgnt.isStopped = true;
             pingo.parent = null;
             instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
-            Destroy(this.gameObject);   
+            if(pingo.parent==null)
+                Destroy(this.gameObject);   
         }
     }
 
