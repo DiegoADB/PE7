@@ -209,6 +209,8 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         }
     }
 
+
+
     void ReleaseChoke()
     {
         helloMoto.chocado = false;
