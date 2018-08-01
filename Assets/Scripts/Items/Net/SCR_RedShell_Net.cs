@@ -85,12 +85,17 @@ public class SCR_RedShell_Net : NetworkBehaviour {
         instancer = ClientScene.FindLocalObject(_netId);
         Start2();
     }
-
+    [ServerCallback]
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player" && collision.gameObject !=instancer)
         {
-            StartCoroutine(IEAttack(collision.gameObject));
+            //StartCoroutine(IEAttack(collision.gameObject));
+            collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            collision.gameObject.GetComponent<SCR_CharacterMotor>().currentSpeed = 0;
+
+            gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            Destroy(gameObject);
         }
     }
 
