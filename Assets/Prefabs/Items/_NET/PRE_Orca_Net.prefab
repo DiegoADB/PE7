@@ -241,7 +241,6 @@ GameObject:
   - component: {fileID: 65923385644614802}
   - component: {fileID: 23668582398515958}
   - component: {fileID: 114127244365718780}
-  - component: {fileID: 195671509148438736}
   - component: {fileID: 114045923162123842}
   - component: {fileID: 114514038682487514}
   m_Layer: 0
@@ -1963,27 +1962,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.972594, y: 0.10285044, z: 0.012748301}
     m_Extent: {x: 3.2078917, y: 1.6219723, z: 1.9496317}
   m_DirtyAABB: 0
---- !u!195 &195671509148438736
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1407876790009664}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 2
-  m_Speed: 200
-  m_Acceleration: 15
-  avoidancePriority: 50
-  m_AngularSpeed: 200
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!198 &198322061102075574
 ParticleSystem:
   m_ObjectHideFlags: 1

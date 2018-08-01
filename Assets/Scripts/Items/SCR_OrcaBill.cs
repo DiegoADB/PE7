@@ -6,7 +6,6 @@ using UnityEngine.Networking;
 
 public class SCR_OrcaBill : NetworkBehaviour {
 
-    private NavMeshAgent _navAgnt;
     Transform pingo;
     int myScore = -1;
     public GameObject instancer;
@@ -17,58 +16,31 @@ public class SCR_OrcaBill : NetworkBehaviour {
     public void Start2()
     {
         //SetInstancer();
-        _navAgnt = gameObject.GetComponent<NavMeshAgent>();
         pingo = instancer.GetComponent<Transform>();
         next_dest = instancer.GetComponent<SCR_PlayerTempStats>();
         pingo.SetParent(transform);
         instancer.transform.GetChild(0).gameObject.SetActive(false);
         instancer.GetComponent<SCR_CharacterMotor_Net>().orca = true;
         instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX  | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
-        _navAgnt.enabled = false;
     }
 
-    // Update is called once per frame
-    void PreviousUpdate()
-    {
-        if (!instancer)
-            return;
-        if (_navAgnt.enabled == true)
-        {
-            nav_mech();
-        }
-        //Agregar Follow de camera(SCR_CharacterMotor)
-        if (myScore + totalchk == next_dest.myScore)
-        {
-            //_navAgnt.Warp(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z));
-            instancer.transform.GetChild(0).gameObject.SetActive(true);
-            instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
-            instancer.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-            
-
-            _navAgnt.isStopped = true;
-            pingo.parent = null;
-            instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
-            if(pingo.parent==null)
-                Destroy(this.gameObject);   
-        }
-    }
     void Update()
     {
         if (!instancer)
             return;
-
-        transform.position = Vector3.MoveTowards(transform.position,next_dest.nextTarget.transform.position,10000);
-
-        if (myScore + totalchk == next_dest.myScore)
+        if (Vector3.Distance(transform.position, next_dest.nextTarget.transform.position) > 5)
         {
-            //_navAgnt.Warp(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z));
+            transform.position = Vector3.MoveTowards(transform.position, next_dest.nextTarget.transform.position, Time.deltaTime * 20);
+            transform.rotation = Quaternion.LookRotation(next_dest.nextTarget.transform.position - transform.position);
+        }
+        else
+        {
             instancer.transform.GetChild(0).gameObject.SetActive(true);
             instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
             instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
 
-            _navAgnt.isStopped = true;
+            //_navAgnt.isStopped = true;
             pingo.parent = null;
             instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
             if (pingo.parent == null)
@@ -76,14 +48,6 @@ public class SCR_OrcaBill : NetworkBehaviour {
         }
     }
 
-    void nav_mech()
-    {
-        if (myScore == -1)
-        {
-            myScore = next_dest.myScore;
-        }
-        _navAgnt.destination = next_dest.nextTarget.transform.position;
-    }
 
     public void SetInstancer(GameObject _netId)
     {
