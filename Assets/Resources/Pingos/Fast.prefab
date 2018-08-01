@@ -1966,7 +1966,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556888785139708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.806, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4141338704731676}
@@ -2608,7 +2608,7 @@ MonoBehaviour:
   myCheckpoints: []
   nextTarget: {fileID: 0}
   pastTarget: {fileID: 0}
-  resultText: {fileID: 0}
+  resultText: {fileID: 114793522616280178}
 --- !u!114 &114248848665870482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -48405,7 +48405,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738379840214780}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
