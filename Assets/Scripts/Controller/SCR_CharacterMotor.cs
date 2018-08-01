@@ -115,7 +115,6 @@ public class SCR_CharacterMotor : MonoBehaviour
         myRB = GetComponent<Rigidbody>();   //Referencia del RB
         activeModelAnim = GetComponent<Animator>(); //Animator que se encuentra en el modelo activo
         myStats = GetComponent<SCR_CharacterStats>();   //Referencia de las stats del jugador. Varia en las clases de los pinguinos
-        savedPosition = this.transform.position;
     }
 
     //Usamos OnTriggerStay y Exit para detectar cuando estamos en el suelo o algun tipo de superficie
@@ -155,7 +154,6 @@ public class SCR_CharacterMotor : MonoBehaviour
     {
         GetInput(playerPrefix); //Captura de movimiento
         BoostTimerManager();    //Manejo del boost
-        SaveLastPosition();     //Guarda la ultima posicion en la que estuvo el jugador antes de caer
     }
     //Fixed Update para calcular fisica y movimiento de camara
     public void MyFixedUpdate()

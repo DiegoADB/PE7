@@ -47,7 +47,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
        //SFX_player.GetComponent<AudioSource>();
 
-        
+        helloMoto.savedPosition = transform.position;
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
         temp.playerNum++;
@@ -185,7 +185,9 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void Rpc_Respawn()
     {
         helloMoto.RandomAddOn();
-        transform.position = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
+        if(GetComponent<SCR_PlayerTempStats>().pastTarget != null)
+            helloMoto.savedPosition = GetComponent<SCR_PlayerTempStats>().pastTarget.transform.position;
+        transform.position = helloMoto.savedPosition;
         Invoke("Rpc_RespawnPosition", 0.1f);
       
     }
