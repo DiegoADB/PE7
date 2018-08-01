@@ -13,6 +13,7 @@ TagManager:
   - Lyf
   - RankingTriggers
   - littleranks
+  - Red
   layers:
   - Default
   - TransparentFX

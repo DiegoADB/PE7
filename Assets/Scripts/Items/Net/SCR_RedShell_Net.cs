@@ -8,7 +8,6 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     public GameObject instancer;
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
-    NavMeshAgent navAgent;
     public GameObject myTarget;
     float timer = 20f;
     // Use this for initialization
@@ -16,53 +15,27 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     {
         //SetInstancer();
         myStats = instancer.GetComponent<SCR_PlayerTempStats>();
-        navAgent = gameObject.GetComponent<NavMeshAgent>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
-        navAgent.Warp(new Vector3(instancer.transform.position.x, instancer.transform.position.y, instancer.transform.position.z) + gameObject.transform.forward);
+        transform.position = new Vector3(instancer.transform.position.x, instancer.transform.position.y, instancer.transform.position.z) + gameObject.transform.forward;
         for (int i = 0; i < myRanks.playerNum; i++)
         {
             if (myRanks.mySortingList[i].myPlace == myStats.myPlace - 1)
             {
-                //Switch!
-                Debug.Log("RedShell Not First");
                 myTarget=myRanks.mySortingList[i].gameObject;
-
-
             }
             else if (myStats.myPlace == 1)
             {
-                Debug.Log("RedShell Not First");
-
                 myTarget = myRanks.mySortingList[myRanks.mySortingList.Count-1].gameObject;
-
             }
         }
 
     }
-    [ClientRpc]
-    void Rpc_FollowEnemy()
-    {
-        Debug.Log("RedShellTarget:" + myTarget.name);
-        StartCoroutine(IERedShell());
-
-    }
+    [ServerCallback]
     void Update()
     {
-        if(navAgent.destination!=null)
-        {
-            navAgent.SetDestination(myTarget.transform.position);
-            Debug.Log("Navmeshagent" + navAgent.destination);
-
-        }
+        transform.position = Vector3.MoveTowards(transform.position, myTarget.transform.position, Time.deltaTime * 30);
+        transform.rotation = Quaternion.LookRotation(myTarget.transform.position - transform.position);
     }
-    IEnumerator IERedShell()
-    {
-        yield return new WaitForEndOfFrame();
-        navAgent.SetDestination(myTarget.transform.position);
-        Debug.Log("Navmeshagent" + navAgent.destination);
-
-    }
-
 
     public void SetInstancer(GameObject _netId)
     {
@@ -84,22 +57,5 @@ public class SCR_RedShell_Net : NetworkBehaviour {
 
         instancer = ClientScene.FindLocalObject(_netId);
         Start2();
-    }
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player" && collision.gameObject !=instancer)
-        {
-            StartCoroutine(IEAttack(collision.gameObject));
-        }
-    }
-
-    IEnumerator IEAttack(GameObject myGo)
-    {
-        yield return new WaitForSeconds(0.1f);
-        myGo.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-        myGo.GetComponent<SCR_CharacterMotor>().currentSpeed = 0;
-
-        gameObject.GetComponent<NavMeshAgent>().enabled = false;
-        Destroy(gameObject);
     }
 }
