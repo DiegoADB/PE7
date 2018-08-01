@@ -9,7 +9,7 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
     public Toggle tgl_ready;
     public Text txt_Jugador;
     public Image background;
-
+    private bool imReady = false;
     public override void OnClientEnterLobby()
     {
         print("OnClientEnterLobby");
@@ -31,6 +31,12 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
     public override void OnClientExitLobby()
     {
         print("OnClientExitLobby");
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("P1_Start"))
+            CambioReady(true);
     }
 
     public override void OnClientReady(bool readyState)
@@ -71,6 +77,8 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
 
     public void CambioReady(bool _set)
     {
+        if (imReady)
+            return;
         //cambiamos para acvisarle a los demas, pero solo si es local
         if (!base.isLocalPlayer) return;
 
@@ -78,5 +86,6 @@ public class CustomLobbyPlayer : NetworkLobbyPlayer
             base.SendReadyToBeginMessage();
         else
             base.SendNotReadyToBeginMessage();
+        imReady = true;
     }
 }

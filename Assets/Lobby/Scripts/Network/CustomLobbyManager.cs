@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 //https://docs.unity3d.com/Manual/UNetLobby.html
 public class CustomLobbyManager : NetworkLobbyManager
 {
+    public bool startGame = false;
     private Dictionary<int, int> thePlayersChoiceAwards;
     [SerializeField] NetworkManager theNetworkManager;
 	void Start ()
@@ -110,6 +111,8 @@ public class CustomLobbyManager : NetworkLobbyManager
 
     public void IniciarPartida()
     {
+        if (startGame)
+            return;
         bool start = true;
         NetworkLobbyPlayer[] players = FindObjectsOfType<NetworkLobbyPlayer>();
         for (int i = 0; i < players.Length; i++)
@@ -122,6 +125,7 @@ public class CustomLobbyManager : NetworkLobbyManager
         }
         if(start)
             base.ServerChangeScene(playScene);
+        startGame = true;
     }
 
 

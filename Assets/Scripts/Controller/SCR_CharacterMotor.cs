@@ -215,7 +215,7 @@ public class SCR_CharacterMotor : MonoBehaviour
             currentSpeed += _delta * acceleration;
         //Frenar e ir en reversa
         if (bButton && mayhemState == false)
-            currentSpeed -= _delta * acceleration * 3;
+            currentSpeed -= _delta * acceleration * 4;
 
         //Break
         if (bButton && currentSpeed > 0)
@@ -257,7 +257,7 @@ public class SCR_CharacterMotor : MonoBehaviour
         }
 
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
-        if (currentSpeed <= 1 && chocado == false)
+        if (currentSpeed <= 1 && currentSpeed > -1 && chocado == false)
         {
             if (isIA == false)
             {

@@ -2426,12 +2426,12 @@ MonoBehaviour:
   playerHPBar: {fileID: 0}
   strength: 0.75
   speed: 1.1
-  handling: 1.5
+  handling: 1
   playerHP: 100
   startingHP: 100
   startingStr: 0.75
   startingSpd: 1.1
-  startingHandling: 1.5
+  startingHandling: 1
 --- !u!114 &114023583594733772
 MonoBehaviour:
   m_ObjectHideFlags: 1
