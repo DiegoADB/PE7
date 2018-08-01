@@ -144,8 +144,13 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.CompareTag("DeathCheck") && isAlive && !orca)
-        {          
-          Rpc_DeathPlayer();           
+        {
+            Rpc_DeathPlayer();
+        }
+        else if (collision.transform.CompareTag("Red") && isAlive && !orca && collision.transform.GetComponent<SCR_RedShell_Net>().instancer != gameObject)
+        {
+            Rpc_DeathPlayer();
+            NetworkServer.Destroy(collision.gameObject);
         }
     }
 
