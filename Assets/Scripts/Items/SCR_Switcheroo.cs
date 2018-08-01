@@ -30,7 +30,7 @@ public class SCR_Switcheroo : NetworkBehaviour {
         }
 
     }
-	
+
     IEnumerator IESwitcheroo(GameObject _target)
     {
         Vector3 otherPos = _target.transform.position;
@@ -39,8 +39,8 @@ public class SCR_Switcheroo : NetworkBehaviour {
         _target.transform.position = instancer.transform.position;
         //Could be removed
         _target.transform.rotation = instancer.transform.rotation;
-        instancer.transform.rotation = otherRot;
-        instancer.transform.position = otherPos;
+        //instancer.transform.rotation = otherRot;
+        //instancer.transform.position = otherPos;
         Destroy(gameObject);
     }
     public void SetInstancer(GameObject _netId)

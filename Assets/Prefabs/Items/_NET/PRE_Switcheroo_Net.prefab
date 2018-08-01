@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 4709708227764182}
   - component: {fileID: 95912528350857894}
   m_Layer: 0
-  m_Name: "ADarleCa\xF1a"
+  m_Name: ADarleCana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -779,7 +779,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159330865026886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.429214, y: -8.52, z: 119.4901}
+  m_LocalPosition: {x: 17.817963, y: -50.082012, z: 63.07016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4709708227764182}
@@ -1744,7 +1744,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d32a5c06c902f784490983076cc03a7d, type: 3}
+  - {fileID: 2100000, guid: c133ee0965c0f0d49a0579c1676adb5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
