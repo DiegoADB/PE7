@@ -185,6 +185,13 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     void Rpc_Respawn()
     {
         helloMoto.RandomAddOn();
+        transform.position = helloMoto.savedPosition;
+        Invoke("Rpc_RespawnPosition", 0.1f);
+      
+    }
+    [ClientRpc]
+    void Rpc_RespawnPosition()
+    {
         helloMoto.mayhemState = false;
         helloMoto.currentSpeed = 0;
         isAlive = true;
@@ -194,16 +201,12 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         myStats.speed = myStats.startingSpd;
         myStats.handling = myStats.startingHandling;
         transform.GetChild(0).gameObject.SetActive(true);
-        //Vector3 destination = GetComponent<SCR_PlayerTempStats>().nextTarget.transform.position - transform.position;
-        //transform.LookAt((new Vector3(0, destination.y, 0)));
         helloMoto.GetMyRB().velocity = Vector3.zero;
-        this.transform.position = helloMoto.savedPosition;
-        if(helloMoto.mainCamera != null)
+        if (helloMoto.mainCamera != null)
         {
             helloMoto.mainCamera.position = helloMoto.transform.position;
         }
     }
-
 
     void ReleaseChoke()
     {
