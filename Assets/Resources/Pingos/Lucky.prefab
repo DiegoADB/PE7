@@ -3386,14 +3386,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHPBar: {fileID: 0}
-  strength: 1.5
-  speed: 1.5
-  handling: 1.5
+  strength: 10
+  speed: 1
+  handling: 1
   playerHP: 50
   startingHP: 50
-  startingStr: 1.5
-  startingSpd: 1.5
-  startingHandling: 1.5
+  startingStr: 10
+  startingSpd: 1
+  startingHandling: 1
 --- !u!114 &114191164316359008
 MonoBehaviour:
   m_ObjectHideFlags: 1

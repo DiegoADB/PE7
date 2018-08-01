@@ -2425,13 +2425,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHPBar: {fileID: 0}
   strength: 0.75
-  speed: 2
-  handling: 1
+  speed: 1.2
+  handling: 1.5
   playerHP: 100
   startingHP: 100
   startingStr: 0.75
-  startingSpd: 2
-  startingHandling: 1
+  startingSpd: 1.2
+  startingHandling: 1.5
 --- !u!114 &114023583594733772
 MonoBehaviour:
   m_ObjectHideFlags: 1
