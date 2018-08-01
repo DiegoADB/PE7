@@ -54,7 +54,7 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
             }
             nextTarget = myCheckpoints[tempScore];
 
-            if (tempScore == (numberOfCheckpoints * SCR_Ranking.numberOfLaps) + 1)
+            if (myScore == (numberOfCheckpoints * SCR_Ranking.numberOfLaps) + 1)
             {
                 SCR_Ranking.winnerNetID = netId.ToString();
                 SCR_Ranking.b_raceFinished = true;
