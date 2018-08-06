@@ -1,62 +1,69 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.AI;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class SCR_OrcaBill : NetworkBehaviour {
 
-    Transform pingo;
-    int myScore = -1;
     public GameObject instancer;
-
+    public float whaleDuration = 5;
     SCR_PlayerTempStats next_dest;
-    public int totalchk;
-    // Use this for initialization
+    private float timer = 0;
+    private float distanceToTarget = 5;
     public void Start2()
     {
-        //SetInstancer();
-        pingo = instancer.GetComponent<Transform>();
         next_dest = instancer.GetComponent<SCR_PlayerTempStats>();
-        //pingo.SetParent(transform);
-        //instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = false;
-        instancer.GetComponent<SCR_CharacterMotor_Net>().orca = true;
-        instancer.GetComponent<CapsuleCollider>().enabled = false;
-        instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX  | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+        ChangePingoStatus(false);
+    }
+
+    void ChangePingoStatus(bool _status)
+    {
+        instancer.GetComponent<SCR_CharacterMotor_Net>().usingItem = !_status;
+        instancer.GetComponent<CapsuleCollider>().enabled = _status;
+        instancer.GetComponent<SCR_CharacterMotor>().activeModel.gameObject.SetActive(_status);
+        instancer.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        instancer.GetComponent<Rigidbody>().useGravity = _status;
+        instancer.GetComponent<SCR_CharacterMotor>().currentSpeed = 0;
     }
 
     void Update()
     {
         if (!instancer)
             return;
-        if (Vector3.Distance(transform.position, next_dest.nextTarget.transform.position) > 5)
+
+        timer += Time.deltaTime;
+        if (timer < whaleDuration)
+            distanceToTarget = 0;
+        else
+            distanceToTarget = 5.0f;
+
+        if (Vector3.Distance(transform.position, next_dest.nextTarget.transform.position) > distanceToTarget)
         {
             transform.position = Vector3.MoveTowards(transform.position, next_dest.nextTarget.transform.position, Time.deltaTime * 20);
             transform.rotation = Quaternion.LookRotation(next_dest.nextTarget.transform.position - transform.position);
-            pingo.position = transform.position;
+            instancer.GetComponent<Rigidbody>().position = transform.position;
+            instancer.transform.position = transform.position;
         }
         else
         {
-            pingo.gameObject.SetActive(true);
-            instancer.GetComponent<SCR_CharacterMotor_Net>().orca = false;
-            instancer.GetComponent<SCR_CharacterMotor_Net>().enabled = true;
-            instancer.GetComponent<CapsuleCollider>().enabled = true;
-            instancer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-            Destroy(gameObject);
+            instancer.GetComponent<Rigidbody>().position = transform.position;
+            instancer.transform.rotation = Quaternion.LookRotation(next_dest.nextTarget.transform.position - instancer.transform.position);
+            ChangePingoStatus(true);
+            Invoke("DestroyMe", 0.2f);
         }
+    }
+
+    void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 
     public void SetInstancer(GameObject _netId)
     {
-
         Rpc_SetMyObject(_netId.GetComponent<NetworkIdentity>().netId);
     }
     [Command]
     void Cmd_SetInstancer(NetworkInstanceId _netId)
     {
-        //
-        Debug.Log("Alone");
-
         instancer = NetworkServer.FindLocalObject(_netId).gameObject;
         Start2();
 
@@ -64,8 +71,6 @@ public class SCR_OrcaBill : NetworkBehaviour {
     [ClientRpc]
     public void Rpc_SetMyObject(NetworkInstanceId _netId)
     {
-        Debug.Log("Not Alone");
-
         instancer = ClientScene.FindLocalObject(_netId);
         Start2();
 

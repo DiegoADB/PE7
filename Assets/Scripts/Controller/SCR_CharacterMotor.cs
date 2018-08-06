@@ -83,10 +83,9 @@ public class SCR_CharacterMotor : MonoBehaviour
     public float currentSpeed;  //Velocidad actual del jugador
     public float acceleration = 5;  //Que tan rapido alcanza la velocidad maxima el jugador
     public float steerForce = 0.5f; //Que tan aguda es la vuelta 
-    public float walkingSpeed = 1.5f;   //Velocidad del pinguino cuando esta caminando 
+    public float walkingSpeed = 3.0f;   //Velocidad del pinguino cuando esta caminando 
     public Vector3 steerVector;    //Direccion a la que se mueve el volante, se puede invertir
     public float cameraDirection = 1;   //Direccion en la que se pone la camara, 1 para atras del jugador y -1 para adelante
-    public bool mayhemState = false;
     public Vector3 laFuerza;
     public Vector3 laDireccion;
 
@@ -98,7 +97,7 @@ public class SCR_CharacterMotor : MonoBehaviour
 
     public void RandomAddOn()
     {
-        int randomAddOn = Random.Range(0, addOns.Length -1);
+        int randomAddOn = Random.Range(0, addOns.Length);
         for (int i = 0; i < addOns.Length; i++)
         {
             addOns[i].SetActive(false);
@@ -211,10 +210,10 @@ public class SCR_CharacterMotor : MonoBehaviour
         //Checamos si estamos derrapando
         DriftingBehaviour();
         //Acelerar
-        if (aButton && mayhemState == false)
+        if (aButton)
             currentSpeed += _delta * acceleration;
         //Frenar e ir en reversa
-        if (bButton && mayhemState == false)
+        if (bButton)
             currentSpeed -= _delta * acceleration * 4;
 
         //Break
@@ -243,18 +242,6 @@ public class SCR_CharacterMotor : MonoBehaviour
         activeModel.rotation = Quaternion.Slerp(activeModel.rotation, activeModelRotation, _delta * 10);
         //Ponemos los limites de la velocidad
         currentSpeed = Mathf.Clamp(currentSpeed, maxReverseSpeed, maxForwardSpeed);
-        if(mayhemState)
-        {
-            if(currentSpeed > 0)
-            {
-                currentSpeed -= 2 * Time.deltaTime;
-                myStats.handling = 0.5f;
-            }
-            else
-            {
-                currentSpeed = 0;
-            }
-        }
 
         //Checamos si estamos acelerando o en reversa para dar el control de movimiento adecuado
         if (currentSpeed <= 1 && currentSpeed > -1 && chocado == false)
@@ -409,7 +396,7 @@ public class SCR_CharacterMotor : MonoBehaviour
     //Lanzamos un raycast hacia abajo para determinar si estamos en el suelo
     public void RaycastManager()
     {
-        float distanceToGround = 1.2f;
+        float distanceToGround = 3;
         Vector3 origin = transform.position + new Vector3(0, 0.1f, 0);
         Vector3 direction = -transform.up;
 

@@ -28,14 +28,8 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            TestChangeText();
-        }
-
         if (!SCR_Ranking.b_raceFinished)
             return;
-
         ChangeEndText();
     }
 
@@ -45,16 +39,14 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
         {
             myScore++;
             tempScore++;
-            Debug.Log("Checkpoint Reached!: " + tempScore);
             pastTarget = nextTarget;
-            Debug.Log(tempScore);
             if (tempScore > myCheckpoints.Length - 1)
             {
                 tempScore = 0;
             }
             nextTarget = myCheckpoints[tempScore];
 
-            if (myScore == (numberOfCheckpoints * SCR_Ranking.numberOfLaps) + 1)
+            if (myScore == (numberOfCheckpoints * SCR_Ranking.numberOfLaps) && !SCR_Ranking.b_raceFinished)
             {
                 SCR_Ranking.winnerNetID = netId.ToString();
                 SCR_Ranking.b_raceFinished = true;
@@ -83,11 +75,9 @@ public class SCR_PlayerTempStats : NetworkBehaviour {
 
     IEnumerator KickPlayers()
     {
-        yield return new WaitForSeconds(7.0f);
-        //NetworkManager.singleton.StopHost();
+        yield return new WaitForSeconds(3.0f);
         SCR_Disconnect.DisconnectFromMatch();
-
-        //Return them to main menu
+        SCR_Ranking.b_raceFinished = false;
     }
 
 }

@@ -9,22 +9,11 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     public Behaviour[] componentsToDisable;
     public SCR_CharacterMotor helloMoto;
     public SCR_CharacterStats myStats;
-    public bool orca;
+    public bool usingItem;
 
     AudioSource SFX_player;
     public AudioClip[] SFX_clip;
-    /*
-     0 deslizar
-     1 explosion 1
-     2 explosion 2
-     3 freno 1
-     4 freno 2
-     5 pasos 1
-     6 pasos 2
-     7 pasos 3
-     8 idle
-    */
-    // public Transform RespawnPoint;
+
     [Header("Particles")]
     public GameObject myExplosion;
     public GameObject burnOutState;
@@ -44,9 +33,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             }
         }
 
-
-       //SFX_player.GetComponent<AudioSource>();
-
         helloMoto.savedPosition = transform.position;
         SCR_Ranking temp = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         temp.players.Add(this.gameObject);
@@ -56,38 +42,22 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         if (isLocalPlayer)
         {
             GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
-            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
             helloMoto.mainCamera = Instantiate(CameraPrefab, this.transform.position, Quaternion.identity).transform;
 
         }
-       // helloMoto.mainCamera.position = this.transform.position;
     }
     private void Update()
     {
-        if(isAlive && !orca)
+        if (isAlive && !usingItem)
+        {
             helloMoto.MyUpdate();
+            if (Input.GetButtonDown("P1_LB") && !usingItem)
+                Rpc_DeathPlayer();
+            if (Input.GetKeyDown(KeyCode.Escape))
+                SCR_Disconnect.DisconnectFromMatch();
+        }
     }
 
-
-    //void ChooseCharacter()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Alpha1))
-    //    {
-    //        Cmd_ChangePlayerType("Normal");
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha2))
-    //    {
-    //        Cmd_ChangePlayerType("Heavy");
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha3))
-    //    {
-    //        Cmd_ChangePlayerType("Lucky");
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha4))
-    //    {
-    //        Cmd_ChangePlayerType("Fast");
-    //    }
-    //}
 
     [Command]
     void Cmd_ChangePlayerType(string _pingoName)
@@ -100,8 +70,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        //if(isAlive)
-            helloMoto.MyFixedUpdate();
+        helloMoto.MyFixedUpdate();
     }
 
     private void OnApplicationQuit()
@@ -112,7 +81,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ServerCallback]
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player") && isAlive && !orca)
+        if (collision.transform.CompareTag("Player") && isAlive && !usingItem)
         {
             myStats.playerHP -= 25 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength;
             helloMoto.chocado = true;
@@ -121,7 +90,6 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             if (helloMoto.currentSpeed >= temp.currentSpeed)
             {
                 helloMoto.laFuerza = collision.impulse;
-                Debug.Log(helloMoto.laFuerza + " fuerza");
                 helloMoto.laDireccion = collision.contacts[0].normal;
                 temp.myRB.AddForce(helloMoto.laFuerza * 100 * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.strength);
                 helloMoto.currentSpeed = 0.0f;
@@ -129,13 +97,9 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
             }
 
             Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterMotor_Net>().myStats.handling);
-            if (helloMoto.mayhemState)
+            if (myStats.playerHP <= 0)
             {
                 Rpc_DeathPlayer();
-            }
-            else if (myStats.playerHP <= 0)
-            {
-                MayhemState();
             }
         }
     }
@@ -143,41 +107,34 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ServerCallback]
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.transform.CompareTag("DeathCheck") && isAlive && !orca)
+        if (collision.transform.CompareTag("DeathCheck") && isAlive && !usingItem)
         {
             Rpc_DeathPlayer();
         }
-        else if (collision.transform.CompareTag("Red") && isAlive && !orca && collision.transform.GetComponent<SCR_RedShell_Net>().instancer != gameObject)
+        else if (collision.transform.CompareTag("Red") && isAlive && !usingItem && collision.transform.GetComponent<SCR_RedShell_Net>().instancer != gameObject)
         {
             Rpc_DeathPlayer();
             NetworkServer.Destroy(collision.gameObject);
         }
     }
 
-    void MayhemState()
+    [ClientRpc]
+    public void Rpc_Boost()
     {
-        helloMoto.mayhemState = true;
-        burnOutState.SetActive(true);
-        Invoke("Rpc_DeathPlayer", 5.0f);
+        helloMoto.SpeedBoost(1);
     }
 
     [ClientRpc]
     void Rpc_DeathPlayer()
     {
-        //Debug.Log("morido");
-
-        //SFX_player.clip = SFX_clip[Random.Range(1, 2)];
-
         GameObject tempexplosion;
         tempexplosion = Instantiate(myExplosion);
         tempexplosion.AddComponent<SCR_Destroy>();
         tempexplosion.transform.position = this.transform.position;
-        //NetworkServer.Spawn(tempexplosion);
         isAlive = false;
         burnOutState.SetActive(true);
         Invoke("Rpc_Respawn", 3.0f);
         transform.GetChild(0).gameObject.SetActive(false);
-      //  gameObject.SetActive(false);
     }
 
     [ClientRpc]
@@ -199,7 +156,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
     [ClientRpc]
     void Rpc_RespawnPosition()
     {
-        helloMoto.mayhemState = false;
+        helloMoto.myRB.velocity = Vector3.zero;
         helloMoto.currentSpeed = 0;
         isAlive = true;
         burnOutState.SetActive(false);
@@ -208,7 +165,7 @@ public class SCR_CharacterMotor_Net : NetworkBehaviour
         myStats.speed = myStats.startingSpd;
         myStats.handling = myStats.startingHandling;
         transform.GetChild(0).gameObject.SetActive(true);
-        helloMoto.GetMyRB().velocity = Vector3.zero;
+        helloMoto.myRB.velocity = Vector3.zero;
         if (helloMoto.mainCamera != null)
         {
             helloMoto.mainCamera.position = helloMoto.transform.position;

@@ -114,14 +114,10 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
             }
 
             Invoke("ReleaseChoke", 1.0f * collision.transform.GetComponent<SCR_CharacterStats>().handling);
-            if (helloMoto.mayhemState)
+            if (myStats.playerHP <= 0)
             {
                 Rpc_DeathPlayer();
             }
-            else if (myStats.playerHP <= 0)
-            {
-                MayhemState();
-            } 
         }
         
     }
@@ -156,11 +152,6 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
         }
     }
 
-    void MayhemState()
-    {
-        helloMoto.mayhemState = true;
-        //Invoke("Rpc_DeathPlayer", 5.0f);
-    }
 
    
     void Rpc_DeathPlayer()
@@ -189,7 +180,6 @@ public class SCR_CharacterMotor_AI : MonoBehaviour
    
     void Rpc_Respawn()
     {
-        helloMoto.mayhemState = false;
         helloMoto.currentSpeed = 0;
         isAlive = true;
         burnOutState.SetActive(false);

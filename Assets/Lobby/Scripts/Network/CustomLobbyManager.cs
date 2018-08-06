@@ -42,7 +42,7 @@ public class CustomLobbyManager : NetworkLobbyManager
                 bool createNewRoom = true;
                 for (int i = 0; i < _matchList.Count; i++)
                 {
-                    if (_matchList[i].currentSize < 8)
+                    if (_matchList[i].currentSize < 4)
                     {
                         CUnirSala(_matchList[i]);
                         createNewRoom = false;
@@ -76,7 +76,7 @@ public class CustomLobbyManager : NetworkLobbyManager
     void CCrearSala(string _roomName)
     {
         print("Crear sala");   //NombreSala, Jugadores, EsPublica, contraseña
-        base.matchMaker.CreateMatch(_roomName, 8, true, "", "", "", 0, 0, OnMatchCreate);
+        base.matchMaker.CreateMatch(_roomName, 4, true, "", "", "", 0, 0, OnMatchCreate);
     }    
 
     public override void OnMatchJoined(bool _sucess, string _extendInfo, UnityEngine.Networking.Match.MatchInfo _matchInfo)
@@ -132,9 +132,6 @@ public class CustomLobbyManager : NetworkLobbyManager
     //Se llama cuando se genera el lobby player (SOLO EN SERVIDOR)
     public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
     {
-        //if (!thePlayersChoiceAwards.ContainsKey(conn.connectionId))
-        //    thePlayersChoiceAwards.Add(conn.connectionId, 1);
-
         return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
     }
 
@@ -145,8 +142,7 @@ public class CustomLobbyManager : NetworkLobbyManager
     }
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
     {
-        /* Resources.Load<GameObject>("Pingos/"+thePlayersChoiceAwards[conn.connectionId]);*/
-        int randomPlayer = Random.Range(0, 4);
+        int randomPlayer = Random.Range(0, 3);
         switch (randomPlayer)
         {
             case 0:
@@ -159,11 +155,6 @@ public class CustomLobbyManager : NetworkLobbyManager
                 }
                 break;
             case 2:
-                {
-                    gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Lucky");
-                }
-                break;
-            case 3:
                 {
                     gamePlayerPrefab = Resources.Load<GameObject>("Pingos/Normal");
                 }

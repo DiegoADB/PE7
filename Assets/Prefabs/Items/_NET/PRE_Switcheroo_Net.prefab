@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instancer: {fileID: 0}
-  timeBeforeChange: 2
+  timeBeforeChange: 1
 --- !u!137 &137560335299566920
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

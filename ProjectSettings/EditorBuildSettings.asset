@@ -9,26 +9,11 @@ EditorBuildSettings:
     path: Assets/Lobby/Menu.unity
     guid: e55de80dcb3770f4dab6f21b3927a88f
   - enabled: 1
-    path: Assets/Scenes/TempLevel/hgfjgfhgf.unity
-    guid: cf3c54bfe18b1a84c95781286be2cd93
-  - enabled: 1
     path: Assets/Lobby/Inicio.unity
     guid: 406da3b9b8b4cdf4b9c5b867abccb5a3
   - enabled: 1
-    path: Assets/Scenes/Lobbies.unity
-    guid: 1fba624a5be8f16498a8801f40408b0d
-  - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: c7552d20e7228d14e87e42f2f1c72c4c
-  - enabled: 0
-    path: Assets/Scenes/Level02.unity
-    guid: d5ca0fe2e8db12941942658340fc5803
-  - enabled: 0
-    path: Assets/Scenes/Level_Karina.unity
-    guid: b1182cd3aa7c0aa4dbac9acfcfc24007
-  - enabled: 1
-    path: Assets/AlejandroArmenta/CustomizationScene.unity
-    guid: 4554dc2d64b04d14e96a418d3ff3ab48
   - enabled: 1
     path: Assets/Scenes/SinglePlayer.unity
     guid: 3797a3b4a78b1434c85e905b8964baa2

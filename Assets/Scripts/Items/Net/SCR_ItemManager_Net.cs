@@ -11,6 +11,7 @@ public class SCR_ItemManager_Net : MonoBehaviour {
         NONE = -1,
         SWITCHEROO,
         REDSHELL,
-        ORCA
+        ORCA,
+        BOOST
     }
 }

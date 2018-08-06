@@ -7,6 +7,7 @@ public class SCR_LapSync : MonoBehaviour
 {
 
     public Text lapText;
+    public Text myPlace;
     public int currentLap;
     public int lapTotal;
     public int checkpointsPassed;
@@ -20,9 +21,9 @@ public class SCR_LapSync : MonoBehaviour
 	void Update ()
     {
         lapText.text = currentLap + "-" + lapTotal;
+        myPlace.text = GetComponent<SCR_PlayerTempStats>().myPlace.ToString();
 
         checkpointsPassed = GetComponent<SCR_PlayerTempStats>().myScore;
-        Debug.Log("PASSED: " + checkpointsPassed);
-        currentLap = Mathf.FloorToInt(checkpointsPassed / (SCR_PlayerTempStats.numberOfCheckpoints - 1));
+        currentLap = Mathf.FloorToInt(checkpointsPassed / (SCR_PlayerTempStats.numberOfCheckpoints));
 	}
 }

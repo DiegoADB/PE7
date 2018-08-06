@@ -9,11 +9,9 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     SCR_PlayerTempStats myStats;
     SCR_Ranking myRanks;
     public GameObject myTarget;
-    float timer = 20f;
-    // Use this for initialization
+    float timer = 0;
     public void Start2()
     {
-        //SetInstancer();
         myStats = instancer.GetComponent<SCR_PlayerTempStats>();
         myRanks = GameObject.FindGameObjectWithTag("RankingManager").GetComponent<SCR_Ranking>();
         transform.position = new Vector3(instancer.transform.position.x, instancer.transform.position.y, instancer.transform.position.z) + gameObject.transform.forward;
@@ -36,6 +34,9 @@ public class SCR_RedShell_Net : NetworkBehaviour {
     {
         transform.position = Vector3.MoveTowards(transform.position, myTarget.transform.position, Time.deltaTime * 30);
         transform.rotation = Quaternion.LookRotation(myTarget.transform.position - transform.position);
+        timer += Time.deltaTime;
+        if (timer > 5.0f)
+            NetworkServer.Destroy(gameObject);
     }
 
     public void SetInstancer(GameObject _netId)

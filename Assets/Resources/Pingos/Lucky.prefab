@@ -3582,7 +3582,7 @@ MonoBehaviour:
   - {fileID: 114390655173198826}
   helloMoto: {fileID: 114888430783849064}
   myStats: {fileID: 114114193091254854}
-  orca: 0
+  usingItem: 0
   SFX_clip:
   - {fileID: 8300000, guid: ed6050484d89ed548b0bdd50e7a83b17, type: 3}
   - {fileID: 8300000, guid: 8a5d92eea9776fb48ab60e80255096b2, type: 3}
@@ -4135,7 +4135,6 @@ MonoBehaviour:
   walkingSpeed: 1.5
   steerVector: {x: 0, y: 0, z: 0}
   cameraDirection: 1
-  mayhemState: 0
   laFuerza: {x: 0, y: 0, z: 0}
   laDireccion: {x: 0, y: 0, z: 0}
   sparks: {fileID: 1056075990921726}
@@ -4237,7 +4236,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236962573624916}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 75054aca6e3c70847a8db6617b46c219, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

@@ -10,8 +10,7 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     SCR_ItemManager_Net itemManager;
     [SyncVar]
     public SCR_ItemManager_Net.ItemIndex_Net myItem;
-    [HideInInspector]
-    public int numItems = 3;
+    public int numItems = 4;
     // Use this for initialization
     void Start()
     {
@@ -20,12 +19,10 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
         myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("P1_X"))
         {
-            Debug.Log("Item Value "+(int)myItem);
             Cmd_SpawnCurrentItem();
         }
     }
@@ -33,7 +30,6 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
     [Command]
     public void Cmd_SpawnCurrentItem()
     {
-
         switch (myItem)
         {
 
@@ -68,6 +64,12 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
                     myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
                 }
                 break;
+            case SCR_ItemManager_Net.ItemIndex_Net.BOOST:
+                {
+                    GetComponent<SCR_CharacterMotor_Net>().Rpc_Boost();
+                    myItem = SCR_ItemManager_Net.ItemIndex_Net.NONE;
+                }
+                break;
         }
         Debug.Log("Item Value " + (int)myItem);
 
@@ -81,23 +83,13 @@ public class SCR_PlayerItem_Net : NetworkBehaviour
             if (myItem == SCR_ItemManager_Net.ItemIndex_Net.NONE)
             {
                 other.GetComponent<SCR_ItemGiver_Net>().Rpc_Deactivate();
-
                 Cmd_GiveItem();
-                Debug.Log("Item: " + (int)myItem + myItem.ToString());
             }
-            else
-            {
-                Debug.Log("Im Full "+ (int)myItem + myItem.ToString());
-
-            }
-
         }
     }
     [Command]
     void Cmd_GiveItem()
     {
-            myItem = (SCR_ItemManager_Net.ItemIndex_Net)Random.Range(0, numItems-1);
-            Debug.Log("Item Giver " + myItem);
-            //Destroy(gameObject);
+            myItem = (SCR_ItemManager_Net.ItemIndex_Net)Random.Range(0, numItems);
     }
 }
